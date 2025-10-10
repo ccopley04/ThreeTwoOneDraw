@@ -20,7 +20,12 @@ public abstract class AbstractCard
         "Winchester Bullet"
     };
     public readonly string[] DefendCards = {
-        "Defend"
+        "Defend",
+        "That Was Close"
+    };
+
+    public readonly string[] OverrideCards = {
+        "That Was Close"
     };
 
     //4 argument constructor
@@ -53,6 +58,11 @@ public abstract class AbstractCard
     public bool IsCardType(String type)
     {
         return type == GetCardType();
+    }
+
+    public bool CanOverrideSlot()
+    {
+        return System.Array.IndexOf(OverrideCards, NAME) != -1;
     }
 
     //Abstract method to be implement by specific cards

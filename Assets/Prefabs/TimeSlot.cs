@@ -23,6 +23,8 @@ public class TimeSlot : MonoBehaviour
     //Count what card is playing next to apply multipliers
     public int counter = 0;
 
+    public Coroutine currentWaitCoroutine;
+
     private Sprite defaultSprite;
 
     //Set all the data associated with this slot
@@ -41,6 +43,19 @@ public class TimeSlot : MonoBehaviour
     }
 
     public AbstractCard occupyingCard;
+    
+    //Public method to reset slot state when overriding
+    public void ResetSlot()
+    {
+        occupied = false;
+        occupyingCard = null;
+        if (rendr != null)
+        {
+            rendr.sprite = defaultSprite;
+        }
+        currentWaitCoroutine = null;
+    }
+    
     //Start this slot's timer based on the provided cards cost
     public IEnumerator wait(float sec, AbstractPlayer user, AbstractCard selectedCard)
     {
@@ -100,13 +115,8 @@ public class TimeSlot : MonoBehaviour
             EncounterControl.Instance.updateDiscardPile(selectedCard);
         }
 
-        //Remove sprite and change the slot to unoccupied
-        if (rendr != null)
-        {
-            rendr.sprite = defaultSprite;
-        }
-        occupyingCard = null;
-        occupied = false;
+        //Reset the slot
+        ResetSlot();
     }
 
 }

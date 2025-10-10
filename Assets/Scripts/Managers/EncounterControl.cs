@@ -457,14 +457,45 @@ public class EncounterControl : MonoBehaviour
                 StartCoroutine(endTutorialPopUp(popUp, textPopUp));
             }
         }
-        //If the time slot does not exist or if it has a card already in it
-        if (WeaponMono.Instance.allSlots[index] == null || WeaponMono.Instance.allSlots[index].occupied)
+        
+        TimeSlot targetSlot = WeaponMono.Instance.allSlots[index];
+
+        // Check if slot exists
+        if (targetSlot == null)
         {
             return;
         }
 
-        //Start the specific time slot's timer with the card that is currently selected
-        StartCoroutine(WeaponMono.Instance.allSlots[index].wait(hoveredCard.thisCard.COST, currPlayer, hoveredCard.thisCard));
+        // Handle override for cards that can override occupied slots
+        if (targetSlot.occupied)
+        {
+            if (hoveredCard.thisCard.CanOverrideSlot())
+            {
+                // Stop the current timer
+                if (targetSlot.currentWaitCoroutine != null)
+                {
+                    StopCoroutine(targetSlot.currentWaitCoroutine);
+                }
+                
+                // Discard the overridden card without activation
+                if (targetSlot.occupyingCard != null)
+                {
+                    currPlayer.addToDiscardPile(targetSlot.occupyingCard);
+                    updateDiscardPile(targetSlot.occupyingCard);
+                }
+                
+                // Reset slot state
+                targetSlot.ResetSlot();
+            }
+            else
+            {
+                // Can't play to occupied slot
+                return;
+            }
+        }
+
+        // Start the time slot's timer with the selected card
+        targetSlot.currentWaitCoroutine = StartCoroutine(targetSlot.wait(hoveredCard.thisCard.COST, currPlayer, hoveredCard.thisCard));
 
         //Discard the card
         currPlayer.removeFromHand(hoveredCard.thisCard);
