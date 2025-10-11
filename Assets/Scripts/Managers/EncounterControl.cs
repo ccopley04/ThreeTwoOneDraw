@@ -61,6 +61,9 @@ public class EncounterControl : MonoBehaviour
     //Variable to hold if the next bullet negates enemy defends
     public bool takeAimActive;
 
+    //Holds if the enemy bullets must be half speed
+    public bool focusedUp = false;
+
     public bool combat;
 
     //Determines if we are in the tutorial or not
@@ -427,6 +430,13 @@ public class EncounterControl : MonoBehaviour
     //Play the current card to the time slot at the provided index
     public void playCardToSlot(int index)
     {
+        
+        //If the time slot does not exist or if it has a card already in it
+        if (WeaponMono.Instance.allSlots[index] == null || WeaponMono.Instance.allSlots[index].occupied)
+        {
+            return;
+        }
+
         if (tutorial)
         {
             if (!bulletPlayed && hoveredCard.thisCard.GetCardType() == "Bullet")
@@ -457,10 +467,9 @@ public class EncounterControl : MonoBehaviour
                 StartCoroutine(endTutorialPopUp(popUp, textPopUp));
             }
         }
-        //If the time slot does not exist or if it has a card already in it
-        if (WeaponMono.Instance.allSlots[index] == null || WeaponMono.Instance.allSlots[index].occupied)
-        {
-            return;
+
+        if (hoveredCard.thisCard.NAME == "Focus Up") {
+            EncounterControl.Instance.focusedUp = true;
         }
 
         //Start the specific time slot's timer with the card that is currently selected

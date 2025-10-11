@@ -27,6 +27,7 @@ public class OverworldManager : MonoBehaviour
             starterDeck.Add(new Defend());
             starterDeck.Add(new Defend());
             starterDeck.Add(new TakeAim());
+            starterDeck.Add(new FocusUp());
         }
 
         MusicManager.playSound(MusicType.Theme, 0.5F);
