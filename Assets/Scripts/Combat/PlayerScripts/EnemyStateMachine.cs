@@ -10,20 +10,24 @@ public class EnemyStateMachine : MonoBehaviour
     public System.Random random = new System.Random();
     public RuntimeAnimatorController cactusState;
     public RuntimeAnimatorController bossBanditState;
+    public RuntimeAnimatorController EnemySprite;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         animator = GetComponent<Animator>();
+        animator.runtimeAnimatorController = bossBanditState;
+        /*
         if (encounterController.currEnemy is Cactus)
         {
             animator.runtimeAnimatorController = cactusState;
         }
         else if (encounterController.currEnemy is BanditBoss)
         {
-            animator.runtimeAnimatorController = bossBanditState;
+            //Instead get sprite library of boss BanditState;
+            //animator.runtimeAnimatorController = bossBanditState;
         }
-
+        */
     }
 
     // Update is called once per frame

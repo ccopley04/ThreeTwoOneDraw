@@ -21,8 +21,6 @@ public class SpriteMovement : MonoBehaviour
         SprintInput();
         Move(horizontal, vertical);
         Animate();
-
-
     }
     void Move(float x, float y)
     {
@@ -61,7 +59,6 @@ public class SpriteMovement : MonoBehaviour
                 count += 0.2f;
             }
         }
-
     }
     private void Animate()
     {
@@ -77,10 +74,8 @@ public class SpriteMovement : MonoBehaviour
             }
             if (isMoving)
             {
-
                 anim.SetFloat("x", i);
                 anim.SetFloat("y", j);
-
             }
             anim.SetBool("isMoving", isMoving);
         } else {

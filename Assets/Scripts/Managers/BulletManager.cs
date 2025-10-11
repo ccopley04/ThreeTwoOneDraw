@@ -46,6 +46,7 @@ public class BulletManager : MonoBehaviour
         //Spawns the bullet on the head of the enemy
         else
         {
+            combat_Anim.Shoot();
             SoundManager.playSound(sound);
             BulletPrefab newBullet = Instantiate(bulletBlueprint,
                 EncounterControl.Instance.enemySpritePlaceholder.transform.position + new Vector3(0, 0.5F, 0), Quaternion.Euler(0f, 180f, 0f)) as BulletPrefab;

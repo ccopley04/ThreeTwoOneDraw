@@ -10,6 +10,5 @@ public class CombatAnimations : MonoBehaviour
     public void FinishShooting()
     {
         anim.SetBool("IsShooting", false);
-
     }
 }
