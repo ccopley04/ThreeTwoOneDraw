@@ -5,6 +5,7 @@ using System.Collections;
 using System;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.U2D.Animation;
 
 public class EncounterControl : MonoBehaviour
 {
@@ -89,6 +90,11 @@ public class EncounterControl : MonoBehaviour
     private SpriteRenderer drawPile;
     private Sprite cardBack;
 
+
+    public SpriteLibraryAsset spriteLibraryAsset;
+    public SpriteLibraryAsset overrideAsset;
+    public SpriteLibrary spriteLibrary;
+    public Sprite newSprite;
     //If the instance is the first one, it becomes the Instance.
     //Otherwise is is destroyed
     public void Awake()
@@ -107,8 +113,15 @@ public class EncounterControl : MonoBehaviour
     }
 
     //Begin the passed Encounter instance
-    public void startEncounter(Encounter encounter, bool tutorialActive)
+    public void startEncounter(Encounter encounter, bool tutorialActive) //when you start combat
     {
+        //Get sprites for enemy
+        spriteLibraryAsset = enemySpritePlaceholder.GetComponent<SpriteLibrary>().spriteLibraryAsset;
+        spriteLibrary = enemySpritePlaceholder.GetComponent<SpriteLibrary>();
+        spriteLibrary.AddOverride(spriteLibraryAsset, "Idle");
+        Debug.Log(spriteLibraryAsset);
+
+
         MusicManager.playSound(MusicType.Tutorial, 0.25F);
         MusicManager.audioSource.loop = true;
         setUI(true);
@@ -116,7 +129,8 @@ public class EncounterControl : MonoBehaviour
         currEnemy = encounter.enemy;
         currPlayer = encounter.player;
         currEncounter = encounter;
-
+        
+        //give player their chose weapon, bullets, and time slots
         currPlayer.addBullets(encounter.weapon.bullets);
         WeaponMono.Instance.activateWeapon(encounter.weapon);
         timeSlotInfo.text = encounter.weapon.timeSlotInfo;
