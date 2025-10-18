@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
-public abstract class AbstractPlayer
+public abstract class AbstractPlayer: MonoBehaviour
 {
     //Create variables used by both player and enemy
     public List<AbstractCard> deck;
@@ -78,6 +79,19 @@ public abstract class AbstractPlayer
         if (health >= maxHealth)
         {
             health = maxHealth;
+        }
+    }
+
+    public void getPoisoned(int tickDamage, double duration) {
+        StartCoroutine(poisonDamage(tickDamage, duration));
+    }
+
+    public IEnumerator poisonDamage(int tickDamage, double duration) {
+        double timer = 0;
+        while (timer <= duration) {
+            takeDamage(tickDamage);
+            timer += Time.deltaTime;
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
