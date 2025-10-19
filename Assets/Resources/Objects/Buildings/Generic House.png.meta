@@ -103,12 +103,12 @@ TextureImporter:
       name: Generic House_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 282
-        width: 128
-        height: 128
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        x: 64
+        y: 314
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,12 +125,12 @@ TextureImporter:
       name: Generic House_1
       rect:
         serializedVersion: 2
-        x: 128
-        y: 282
-        width: 128
-        height: 128
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        x: 160
+        y: 314
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -148,11 +148,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 282
-        width: 128
-        height: 128
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        y: 314
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -169,12 +169,12 @@ TextureImporter:
       name: Generic House_3
       rect:
         serializedVersion: 2
-        x: 384
-        y: 282
-        width: 128
-        height: 128
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        x: 352
+        y: 314
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -191,12 +191,12 @@ TextureImporter:
       name: Generic House_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 154
-        width: 128
-        height: 128
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        x: 64
+        y: 218
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -213,12 +213,12 @@ TextureImporter:
       name: Generic House_5
       rect:
         serializedVersion: 2
-        x: 128
-        y: 154
-        width: 128
-        height: 128
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        x: 160
+        y: 218
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -236,11 +236,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 154
-        width: 128
-        height: 128
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        y: 218
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -257,12 +257,12 @@ TextureImporter:
       name: Generic House_7
       rect:
         serializedVersion: 2
-        x: 384
-        y: 154
-        width: 128
-        height: 128
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        x: 352
+        y: 218
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -279,12 +279,12 @@ TextureImporter:
       name: Generic House_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 26
-        width: 128
-        height: 128
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        x: 64
+        y: 122
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -301,20 +301,20 @@ TextureImporter:
       name: Generic House_9
       rect:
         serializedVersion: 2
-        x: 128
-        y: 26
-        width: 128
-        height: 128
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        x: 160
+        y: 122
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 044a839c173505f44bb3b95a4840d43d
-      internalID: -1026883151
+      spriteID: 3a883c3f7a2e672418a6900869f5b7e5
+      internalID: 498344443
       vertices: []
       indices: 
       edges: []
@@ -324,19 +324,19 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 26
-        width: 128
-        height: 128
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        y: 122
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81c5bc67823878540b479690f1ba605f
-      internalID: 1592457727
+      spriteID: 3972abb15e49cf94fa8dcb38d185509b
+      internalID: 1001387036
       vertices: []
       indices: 
       edges: []
@@ -345,20 +345,108 @@ TextureImporter:
       name: Generic House_11
       rect:
         serializedVersion: 2
-        x: 384
-        y: 26
-        width: 128
-        height: 128
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        x: 352
+        y: 122
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbe4e3061d7c16740b90fd0fb1b148a7
-      internalID: -219303499
+      spriteID: 6d5de9eb3f677f340962e6cbd3cfb239
+      internalID: 1676077880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generic House_12
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 26
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 823f63c834cbca746897f58ac033989f
+      internalID: -806464327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generic House_13
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 26
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdf963916037358448a951491aab88e2
+      internalID: 1268024812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generic House_14
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 26
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46ea31a3f7b77e8469f5542e22395ccf
+      internalID: 972570759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generic House_15
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 26
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51291a63213a4c5458deeda1636d64a7
+      internalID: -1824624116
       vertices: []
       indices: 
       edges: []
@@ -379,8 +467,12 @@ TextureImporter:
     nameFileIdTable:
       Generic House_0: 5460995614305472291
       Generic House_1: 2096059673
-      Generic House_10: 1592457727
-      Generic House_11: -219303499
+      Generic House_10: 1001387036
+      Generic House_11: 1676077880
+      Generic House_12: -806464327
+      Generic House_13: 1268024812
+      Generic House_14: 972570759
+      Generic House_15: -1824624116
       Generic House_2: 682271234
       Generic House_3: 876353751
       Generic House_4: -1081009626
@@ -388,7 +480,7 @@ TextureImporter:
       Generic House_6: 1379789535
       Generic House_7: 977258427
       Generic House_8: 690275382
-      Generic House_9: -1026883151
+      Generic House_9: 498344443
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
