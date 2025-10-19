@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 96
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -103,12 +103,12 @@ TextureImporter:
       name: Generic House_0
       rect:
         serializedVersion: 2
-        x: 32
-        y: 12
-        width: 192
-        height: 190
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 282
+        width: 128
+        height: 128
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -121,11 +121,253 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Generic House_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 282
+        width: 128
+        height: 128
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51496468edf330e478ae9186d284bd6d
+      internalID: 2096059673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generic House_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 282
+        width: 128
+        height: 128
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b686160ae1d411c489f03038369a897c
+      internalID: 682271234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generic House_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 282
+        width: 128
+        height: 128
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39ee99ccd63355e459cb116acc295d7a
+      internalID: 876353751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generic House_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 154
+        width: 128
+        height: 128
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1636b88ab72f794438423d8cf5afdbf5
+      internalID: -1081009626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generic House_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 154
+        width: 128
+        height: 128
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1561cf0b9efc8c24cbda877b7cacc041
+      internalID: 1090048191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generic House_6
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 154
+        width: 128
+        height: 128
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53e96ea45c5154147aeb10258bd8138d
+      internalID: 1379789535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generic House_7
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 154
+        width: 128
+        height: 128
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf5bb8396a822e24e97b863c42080735
+      internalID: 977258427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generic House_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 26
+        width: 128
+        height: 128
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d68d975d6ea5e014f95f900fa3512400
+      internalID: 690275382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generic House_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 26
+        width: 128
+        height: 128
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 044a839c173505f44bb3b95a4840d43d
+      internalID: -1026883151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generic House_10
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 26
+        width: 128
+        height: 128
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81c5bc67823878540b479690f1ba605f
+      internalID: 1592457727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generic House_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 26
+        width: 128
+        height: 128
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbe4e3061d7c16740b90fd0fb1b148a7
+      internalID: -219303499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: a458816849d15b542b9beb737d2f4040
     internalID: 0
     vertices: []
     indices: 
@@ -136,6 +378,17 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Generic House_0: 5460995614305472291
+      Generic House_1: 2096059673
+      Generic House_10: 1592457727
+      Generic House_11: -219303499
+      Generic House_2: 682271234
+      Generic House_3: 876353751
+      Generic House_4: -1081009626
+      Generic House_5: 1090048191
+      Generic House_6: 1379789535
+      Generic House_7: 977258427
+      Generic House_8: 690275382
+      Generic House_9: -1026883151
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
