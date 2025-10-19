@@ -786,7 +786,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &360366336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4359,7 +4359,6 @@ GameObject:
   - component: {fileID: 1656953164}
   - component: {fileID: 1656953163}
   - component: {fileID: 1656953165}
-  - component: {fileID: 1656953166}
   m_Layer: 0
   m_Name: EnemySprite
   m_TagString: Untagged
@@ -4427,7 +4426,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -3065541619784859970, guid: 6064a3489546b59419df8e1a9340697e, type: 3}
+  m_Sprite: {fileID: -7772268654582419124, guid: 6064a3489546b59419df8e1a9340697e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4492,7 +4491,7 @@ MonoBehaviour:
   m_CategoryHash: 0.00000000389488
   m_labelHash: 3.4921928e-22
   m_SpriteKey: 0
-  m_SpriteHash: 291275028
+  m_SpriteHash: 0
 --- !u!114 &1656953164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4520,18 +4519,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1656953161}
---- !u!114 &1656953166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1656953158}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bc88a9d14211074cac0accca8d56fec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1684503680
 GameObject:
   m_ObjectHideFlags: 0

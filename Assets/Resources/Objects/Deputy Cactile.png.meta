@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6f5ea42c9a163a84f8b01612c51e979a
+guid: 8cf5977c4d56ab44395ded727475f344
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2303639118575511178
-    second: Cactus sprite_0
+      213: 647378302228448519
+    second: Deputy Cactile_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cactus sprite_0
+      name: Deputy Cactile_0
       rect:
         serializedVersion: 2
         x: 35
         y: 15
         width: 61
-        height: 101
+        height: 108
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 679dc964d64d700e0800000000000000
-      internalID: -2303639118575511178
+      spriteID: 7054f9bc223fbf800800000000000000
+      internalID: 647378302228448519
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Cactus sprite_0: -2303639118575511178
+      Deputy Cactile_0: 647378302228448519
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
