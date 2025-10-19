@@ -474,7 +474,9 @@ MonoBehaviour:
   drawText: {fileID: 473935399}
   discardPileText: {fileID: 186945264}
   drawPile: {fileID: 1189465482}
-  SpriteLibrary: {fileID: 0}
+  spriteLibraryAsset: {fileID: 0}
+  overrideAsset: {fileID: 0}
+  spriteLibrary: {fileID: 0}
   newSprite: {fileID: 0}
 --- !u!1 &229982878
 GameObject:
@@ -3293,7 +3295,7 @@ RectTransform:
   m_Father: {fileID: 1437291638}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -4.830002, y: 0.03000021}
   m_SizeDelta: {x: 0.1516, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3590,8 +3592,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1145826845}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4357,13 +4359,14 @@ GameObject:
   - component: {fileID: 1656953164}
   - component: {fileID: 1656953163}
   - component: {fileID: 1656953165}
+  - component: {fileID: 1656953166}
   m_Layer: 0
   m_Name: EnemySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1656953159
 Transform:
   m_ObjectHideFlags: 0
@@ -4424,7 +4427,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 3546213520187786038, guid: 178435b9d5fcd744e8b7bdc1c2390107, type: 3}
+  m_Sprite: {fileID: -3065541619784859970, guid: 6064a3489546b59419df8e1a9340697e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4489,7 +4492,7 @@ MonoBehaviour:
   m_CategoryHash: 0.009161512
   m_labelHash: 1.6221687e-25
   m_SpriteKey: 0
-  m_SpriteHash: 0
+  m_SpriteHash: 291275028
 --- !u!114 &1656953164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4503,7 +4506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Library: []
-  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: bca9c126a7bc8ad4dbe51ea04a0c23a7, type: 3}
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 7e0fecc7632737c45a5fceb125959dd2, type: 3}
 --- !u!114 &1656953165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4517,6 +4520,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1656953161}
+--- !u!114 &1656953166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656953158}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc88a9d14211074cac0accca8d56fec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1684503680
 GameObject:
   m_ObjectHideFlags: 0

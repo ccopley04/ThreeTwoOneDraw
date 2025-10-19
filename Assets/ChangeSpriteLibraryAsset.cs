@@ -1,22 +1,29 @@
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
-public class ChangeSpriteLibraryAsset : MonoBehaviour
+public class ChangeSpriteLibraryAsset : MonoBehaviour // Do this later
 {
+    /*
     public SpriteLibrary spriteLibrary;
-    public SpriteLibraryAsset currentLibraryAsset;
+    [SerializeField] public SpriteLibraryAsset currentLibraryAsset;
 
-    public SpriteLibraryAsset Cactus;
+    public SpriteLibraryAsset newAsset;
 
 
     void ChangeLibraryAsset(SpriteLibraryAsset spriteThing)
     {
+        
         spriteLibrary.AddOverride(spriteThing, "Idle");
     }
     void Start()
     {
+
+
         currentLibraryAsset = gameObject.GetComponent<SpriteLibrary>().spriteLibraryAsset;
 
         ChangeLibraryAsset(Cactus);
+
+        Debug.Log(spriteLibrary);
     }
+    */
 }
