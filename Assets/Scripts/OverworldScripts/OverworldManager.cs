@@ -26,7 +26,6 @@ public class OverworldManager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             starterDeck.Add(new Defend());
-            starterDeck.Add(new Defend());
             starterDeck.Add(new TakeAim());
             starterDeck.Add(new FocusUp());
         }
