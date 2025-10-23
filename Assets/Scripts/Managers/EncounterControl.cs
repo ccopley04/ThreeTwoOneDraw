@@ -5,6 +5,7 @@ using System.Collections;
 using System;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.U2D.Animation;
 
 public class EncounterControl : MonoBehaviour
 {
@@ -92,6 +93,7 @@ public class EncounterControl : MonoBehaviour
     private SpriteRenderer drawPile;
     private Sprite cardBack;
 
+
     //If the instance is the first one, it becomes the Instance.
     //Otherwise is is destroyed
     public void Awake()
@@ -110,7 +112,7 @@ public class EncounterControl : MonoBehaviour
     }
 
     //Begin the passed Encounter instance
-    public void startEncounter(Encounter encounter, bool tutorialActive)
+    public void startEncounter(Encounter encounter, bool tutorialActive) //when you start combat
     {
         MusicManager.playSound(MusicType.Tutorial, 0.4F);
         MusicManager.audioSource.loop = true;
@@ -119,7 +121,8 @@ public class EncounterControl : MonoBehaviour
         currEnemy = encounter.enemy;
         currPlayer = encounter.player;
         currEncounter = encounter;
-
+        
+        //give player their chose weapon, bullets, and time slots
         currPlayer.addBullets(encounter.weapon.bullets);
         WeaponMono.Instance.activateWeapon(encounter.weapon);
         timeSlotInfo.text = encounter.weapon.timeSlotInfo;
