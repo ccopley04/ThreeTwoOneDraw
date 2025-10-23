@@ -91,10 +91,6 @@ public class EncounterControl : MonoBehaviour
     private Sprite cardBack;
 
 
-    public SpriteLibraryAsset spriteLibraryAsset;
-    public SpriteLibraryAsset overrideAsset;
-    public SpriteLibrary spriteLibrary;
-    public Sprite newSprite;
     //If the instance is the first one, it becomes the Instance.
     //Otherwise is is destroyed
     public void Awake()
@@ -115,13 +111,6 @@ public class EncounterControl : MonoBehaviour
     //Begin the passed Encounter instance
     public void startEncounter(Encounter encounter, bool tutorialActive) //when you start combat
     {
-        //Get sprites for enemy
-        spriteLibraryAsset = enemySpritePlaceholder.GetComponent<SpriteLibrary>().spriteLibraryAsset;
-        spriteLibrary = enemySpritePlaceholder.GetComponent<SpriteLibrary>();
-        spriteLibrary.AddOverride(spriteLibraryAsset, "Idle");
-        Debug.Log(spriteLibraryAsset);
-
-
         MusicManager.playSound(MusicType.Tutorial, 0.25F);
         MusicManager.audioSource.loop = true;
         setUI(true);
