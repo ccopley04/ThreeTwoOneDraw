@@ -7887,6 +7887,7 @@ MonoBehaviour:
   - {fileID: 2103707776}
   - {fileID: 1555554832}
   - {fileID: 833560976}
+  - {fileID: 1428361883}
 --- !u!4 &1150400156
 Transform:
   m_ObjectHideFlags: 0
@@ -8081,7 +8082,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.625
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -66227,7 +66228,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.953125, y: 1.578125}
+    oldSize: {x: 0.6354167, y: 1.0520834}
     newSize: {x: 0.61, y: 1.01}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -66273,7 +66274,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.953125, y: 1.578125}
+    oldSize: {x: 0.6354167, y: 1.0520834}
     newSize: {x: 0.61, y: 1.01}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

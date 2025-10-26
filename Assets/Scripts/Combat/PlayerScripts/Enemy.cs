@@ -8,6 +8,11 @@ using Debug = UnityEngine.Debug;
 
 public abstract class Enemy : AbstractPlayer
 {
+    public float defendChance = 1.0f;
+    public float bulletChance = 1.0f;
+    public float skillChance = 1.0f;
+    System.Random random = new System.Random();
+
     //The value that will offset the seconds it takes for an enemy to play a card
     public int costAdjust { get; private set; }
 
@@ -25,13 +30,17 @@ public abstract class Enemy : AbstractPlayer
     //If the deck runs low on cards, the discardpile is shuffled back into the deck
     public float trySomething()
     {
+        suggestCardType(RollType());
+
         if (deck.Count <= 1 || num >= deck.Count || num < 0 ||
         (BulletManager.Instance.playerBullet <= 0 && deck[num] is AbstractDefend))
         {
+            Debug.Log("Shuffle");
             this.Shuffle();
             return 1;
         }
 
+        Debug.Log(deck[num].NAME);
         cost = deck[num].COST;
         deck[num].use(this, 0, null);
         discardPile.Add(deck[num]);
@@ -58,5 +67,17 @@ public abstract class Enemy : AbstractPlayer
             return;
         List<AbstractCard> options = GetCardsOfType(type);
         num = deck.IndexOf(options[rand.Next(options.Count)]);
+    }
+
+    public string RollType()
+    {
+        float chanceSum = defendChance + bulletChance + skillChance;
+        float chanceValue = (float)random.NextDouble();
+        if (chanceValue < defendChance / chanceSum)
+            return "Defend";
+        if (chanceValue < (bulletChance + defendChance) / chanceSum)
+            return "Bullet";
+        return "Skill";
+
     }
 }
