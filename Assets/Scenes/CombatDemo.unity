@@ -432,7 +432,6 @@ MonoBehaviour:
   allObjects:
   - {fileID: 1544027551}
   - {fileID: 662626839}
-  - {fileID: 360366335}
   - {fileID: 1819232897}
   - {fileID: 619394800}
   - {fileID: 453303499}
@@ -447,9 +446,8 @@ MonoBehaviour:
   - {fileID: 469651223}
   - {fileID: 1189465481}
   - {fileID: 1380360579}
-  - {fileID: 2055057460}
-  - {fileID: 2021650741}
   - {fileID: 519420028}
+  - {fileID: 360366335}
   position: 0
   visibleHand: []
   enemyTurn: 0
@@ -469,10 +467,6 @@ MonoBehaviour:
   drawText: {fileID: 473935399}
   discardPileText: {fileID: 186945264}
   drawPile: {fileID: 1189465482}
-  spriteLibraryAsset: {fileID: 0}
-  overrideAsset: {fileID: 0}
-  spriteLibrary: {fileID: 0}
-  newSprite: {fileID: 0}
 --- !u!1 &229982878
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,7 +775,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &360366336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1039,7 +1033,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7480976501889893247, guid: edb837ae75f61954abb988091eaedb59, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4192,7 +4186,7 @@ Transform:
   m_GameObject: {fileID: 1656953158}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12, y: -1, z: 0}
+  m_LocalPosition: {x: 12, y: -2, z: 0}
   m_LocalScale: {x: 1.4384, y: 1.4384, z: 1.4384}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4240,8 +4234,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1639701591
-  m_SortingLayer: 5
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: -3065541619784859970, guid: 6064a3489546b59419df8e1a9340697e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
