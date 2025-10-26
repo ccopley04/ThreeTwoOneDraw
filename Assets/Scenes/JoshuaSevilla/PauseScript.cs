@@ -1,19 +1,20 @@
 using UnityEngine;
 
-public class PauseMenu : MonoBehaviour
+public class PauseScript : MonoBehaviour
 {
     private bool isPaused = false; // Tracks whether the game is paused
 
     // Method to toggle pause
     public void TogglePause()
     {
+        
         isPaused = !isPaused;
 
         if (isPaused)
         {
             Time.timeScale = 0f; // Pause the game by setting time scale to 0
             // Debug.Log("Game Paused");
-
+            
             AudioListener.pause = true;
         }
         else
@@ -23,12 +24,12 @@ public class PauseMenu : MonoBehaviour
 
             AudioListener.pause = false;
         }
+
+        
     }
 
     public bool getIsPaused()
     {
         return isPaused;
     }
-
-
 }
