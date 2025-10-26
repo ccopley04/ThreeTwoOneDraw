@@ -135,7 +135,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<< Updated upstream:Assets/Resources/CardArt/Defend_2.png.meta
       Defend_2_0: 7051786797765262297
+=======
+      Cactus-3_0: -8943669252886272740
+>>>>>>> Stashed changes:Assets/Resources/CharSprites/NPCs/Cactus/Cactus-3.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

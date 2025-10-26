@@ -135,7 +135,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<< Updated upstream:Assets/Resources/CardArt/Take_Aim_Concept_2.png.meta
       Take_Aim_Concept_2_0: -647158671773146965
+=======
+      Cactus-4_0: -8018372287183332058
+>>>>>>> Stashed changes:Assets/Resources/CharSprites/NPCs/Cactus/Cactus-4.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

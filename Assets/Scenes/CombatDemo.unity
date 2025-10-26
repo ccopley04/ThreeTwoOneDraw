@@ -423,6 +423,7 @@ GameObject:
   m_Component:
   - component: {fileID: 201181781}
   - component: {fileID: 201181782}
+  - component: {fileID: 201181783}
   m_Layer: 0
   m_Name: EncounterControl
   m_TagString: Untagged
@@ -482,6 +483,45 @@ MonoBehaviour:
   visibleHand: []
   enemyTurn: 0
   takeAimActive: 0
+<<<<<<< Updated upstream
+=======
+  focusedUp: 0
+  combat: 0
+  tutorial: 1
+  bulletPlayed: 0
+  defendPlayed: 0
+  takeAimPlayed: 0
+  deckRanOut: 0
+  battleStarted: 0
+  popUp: {fileID: 1323941497}
+  textPopUp: {fileID: 1213508535}
+  timeSlotInfo: {fileID: 1474550153}
+  drawText: {fileID: 473935399}
+  discardPileText: {fileID: 186945264}
+  drawPile: {fileID: 1189465482}
+--- !u!95 &201181783
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201181779}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9a5e311d84a29d44b855569b3216de90, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+>>>>>>> Stashed changes
 --- !u!1 &229982878
 GameObject:
   m_ObjectHideFlags: 0
