@@ -17,9 +17,13 @@ public abstract class Enemy : AbstractPlayer
     public int costAdjust { get; private set; }
 
     //2 arg constuctor that set name to "Enemy"
-    public Enemy(List<AbstractCard> deck, int maxHealth, int costAdjust, string name) : base(deck, maxHealth, name)
+    public Enemy(List<AbstractCard> deck, int maxHealth, int costAdjust,
+    string name, float defendChance, float bulletChance, float skillChance) : base(deck, maxHealth, name)
     {
         this.costAdjust = costAdjust;
+        this.defendChance = defendChance;
+        this.bulletChance = bulletChance;
+        this.skillChance = skillChance;
         maxHandSize = 20;
     }
 
@@ -30,12 +34,22 @@ public abstract class Enemy : AbstractPlayer
     //If the deck runs low on cards, the discardpile is shuffled back into the deck
     public float trySomething()
     {
-        suggestCardType(RollType());
+
+        if (BulletManager.Instance.playerBullet > 0)
+        {
+            defendChance *= 2;
+        }
+        else
+        {
+            defendChance /= 2;
+        }
+        string type = RollType();
+        suggestCardType(type);
 
         if (deck.Count <= 1 || num >= deck.Count || num < 0 ||
-        (BulletManager.Instance.playerBullet <= 0 && deck[num] is AbstractDefend))
+        (BulletManager.Instance.playerBullet == 0 && deck[num] is AbstractDefend))
         {
-            Debug.Log("Shuffle");
+            Debug.Log(type);
             this.Shuffle();
             return 1;
         }
