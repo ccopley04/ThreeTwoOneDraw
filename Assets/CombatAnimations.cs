@@ -17,6 +17,6 @@ public class CombatAnimations : MonoBehaviour
     //for Enemies ONLY
     public void EnemyShoot()
     {
-        
+        anim.SetBool("IsShooting", true);
     }
 }
