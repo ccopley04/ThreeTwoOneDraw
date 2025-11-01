@@ -25,10 +25,8 @@ public class OverworldManager : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            starterDeck.Add(new Defend());
-            starterDeck.Add(new Defend());
             starterDeck.Add(new TakeAim());
-            starterDeck.Add(new FocusUp());
+            starterDeck.Add(new Defend());
         }
 
         MusicManager.playSound(MusicType.Theme, 0.5F);

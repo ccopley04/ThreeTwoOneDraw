@@ -121,15 +121,15 @@ public class EncounterControl : MonoBehaviour
         currEnemy = encounter.enemy;
         currPlayer = encounter.player;
         currEncounter = encounter;
-        
+
         //give player their chose weapon, bullets, and time slots
         currPlayer.addBullets(encounter.weapon.bullets);
         WeaponMono.Instance.activateWeapon(encounter.weapon);
         timeSlotInfo.text = encounter.weapon.timeSlotInfo;
 
-        EnemyStateMachine enemyStateMachine = enemySpritePlaceholder.GetComponent<EnemyStateMachine>();
-        enemyStateMachine.encounterController = this;
-        enemyStateMachine.enemy = currEnemy;
+        //EnemyStateMachine enemyStateMachine = enemySpritePlaceholder.GetComponent<EnemyStateMachine>();
+        //enemyStateMachine.encounterController = this;
+        //enemyStateMachine.enemy = currEnemy;
 
         position = -1;
         visibleHand = new List<CardPrefab>();
