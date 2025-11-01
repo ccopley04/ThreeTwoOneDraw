@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8dca5abbe22abdf469d0a6579d8aa23d
+guid: 31cc0e1537d05d040a169bc6f85b335c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7487464410829953817
-    second: GunsmithPixel_0
+      213: 2912297781628502651
+    second: pixil-frame-0 (4)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GunsmithPixel_0
+      name: pixil-frame-0 (4)_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 3
-        width: 86
-        height: 118
+        x: 25
+        y: 23
+        width: 92
+        height: 97
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7e4e914e9ce271890800000000000000
-      internalID: -7487464410829953817
+      spriteID: b720022076f8a6820800000000000000
+      internalID: 2912297781628502651
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GunsmithPixel_0: -7487464410829953817
+      pixil-frame-0 (4)_0: 2912297781628502651
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
