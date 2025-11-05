@@ -14,6 +14,11 @@ public class SpriteMovement : MonoBehaviour
     private float i = 0;
     private float j = 0;
 
+    private Rigidbody2D rb;
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
     void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -34,7 +39,7 @@ public class SpriteMovement : MonoBehaviour
                 input = input.normalized;
             }
             float moveSpeed_new = isSprinting ? 2f * moveSpeed : moveSpeed;
-            gameObject.transform.position += input * moveSpeed_new * Time.deltaTime;
+            rb.transform.position += input * moveSpeed_new * Time.deltaTime;
         }
     }
     private void walkingSound()
@@ -62,7 +67,8 @@ public class SpriteMovement : MonoBehaviour
     }
     private void Animate()
     {
-        if (!isFrozen) {
+        if (!isFrozen)
+        {
             if (input.magnitude > 0.1f)
             {
                 isMoving = true;
@@ -78,7 +84,9 @@ public class SpriteMovement : MonoBehaviour
                 anim.SetFloat("y", j);
             }
             anim.SetBool("isMoving", isMoving);
-        } else {
+        }
+        else
+        {
             anim.SetBool("isMoving", false);
         }
     }

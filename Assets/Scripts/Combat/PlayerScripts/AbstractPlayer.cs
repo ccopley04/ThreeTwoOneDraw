@@ -160,6 +160,6 @@ public abstract class AbstractPlayer: MonoBehaviour
 
     public int CountCardsOfType(string type)
     {
-        return GetCardsOfType(type).Count;
+        return GetCardsOfType(type).Count; //counts elements of given type in List
     }
 }
