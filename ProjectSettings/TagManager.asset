@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - TimeSlot
   - NPC
+  - Waypoint
   layers:
   - Default
   - TransparentFX

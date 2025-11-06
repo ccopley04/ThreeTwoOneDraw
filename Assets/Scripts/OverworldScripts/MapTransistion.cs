@@ -1,21 +1,24 @@
 using UnityEngine;
 using Unity.Cinemachine;
 using UnityEngine.Assertions.Must;
-
+using System.Collections;
 public class MapTransistion : MonoBehaviour
 {
+    public Animator fadeAnim;
+
     [SerializeField] PolygonCollider2D mapBoundary;
     CinemachineConfiner2D confiner2D;
     [SerializeField] float changePos;
-    
+
     [SerializeField] Direction direction;
 
-
+    [SerializeField] float delayDuration;
     enum Direction { Up, Down, Left, Right }
 
     private void Awake()
     {
         changePos = 5;
+        delayDuration = 1f;
         confiner2D = FindFirstObjectByType<CinemachineConfiner2D>();
     }
 
@@ -23,8 +26,12 @@ public class MapTransistion : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            confiner2D.BoundingShape2D = mapBoundary;
-            UpdatePlayerPosition(collision.gameObject);
+            fadeAnim.Play("FadeToBlack");
+
+            StartCoroutine(DelayFade(collision));
+
+            
+
         }
     }
 
@@ -49,4 +56,14 @@ public class MapTransistion : MonoBehaviour
         }
         player.transform.position = newPos;
     }
+
+    IEnumerator DelayFade(Collider2D collision)
+    {
+        yield return new WaitForSeconds(delayDuration);
+        confiner2D.BoundingShape2D = mapBoundary;
+        UpdatePlayerPosition(collision.gameObject);
+        yield return new WaitForSeconds(delayDuration);
+        fadeAnim.Play("FadeBack");
+    }
+
 }
