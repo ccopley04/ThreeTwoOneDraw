@@ -6,6 +6,7 @@ public class MapTransistion : MonoBehaviour
 {
     public Animator fadeAnim;
 
+    [SerializeField] Transform teleportTargetPosition;
     [SerializeField] PolygonCollider2D mapBoundary;
     CinemachineConfiner2D confiner2D;
     [SerializeField] float changePos;
@@ -13,7 +14,7 @@ public class MapTransistion : MonoBehaviour
     [SerializeField] Direction direction;
 
     [SerializeField] float delayDuration;
-    enum Direction { Up, Down, Left, Right }
+    enum Direction { Up, Down, Left, Right, Teleport}
 
     private void Awake()
     {
@@ -37,24 +38,34 @@ public class MapTransistion : MonoBehaviour
 
     private void UpdatePlayerPosition(GameObject player)
     {
-        Vector3 newPos = player.transform.position;
-
-        switch (direction)
+        if (direction == Direction.Teleport)
         {
-            case Direction.Up:
-                newPos.y += changePos;
-                break;
-            case Direction.Down:
-                newPos.y -= changePos;
-                break;
-            case Direction.Left:
-                newPos.x -= changePos;
-                break;
-            case Direction.Right:
-                newPos.x += changePos;
-                break;
+            player.transform.position = teleportTargetPosition.position;
+
+            return;
         }
-        player.transform.position = newPos;
+
+        else
+        {
+            Vector3 newPos = player.transform.position;
+
+            switch (direction)
+            {
+                case Direction.Up:
+                    newPos.y += changePos;
+                    break;
+                case Direction.Down:
+                    newPos.y -= changePos;
+                    break;
+                case Direction.Left:
+                    newPos.x -= changePos;
+                    break;
+                case Direction.Right:
+                    newPos.x += changePos;
+                    break;
+            }
+            player.transform.position = newPos;
+        }
     }
 
     IEnumerator DelayFade(Collider2D collision)
