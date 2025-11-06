@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      GunsmithPixel_0: -7487464410829953817
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

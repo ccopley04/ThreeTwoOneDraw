@@ -1,5 +1,8 @@
 using UnityEngine;
 using System;
+using UnityEditor.Callbacks;
+using System.Collections;
+
 public class SpriteMovement : MonoBehaviour
 {
 
@@ -97,5 +100,20 @@ public class SpriteMovement : MonoBehaviour
         else
         { isSprinting = false; }
 
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Waypoint"))
+        {
+            isFrozen = true;
+            StartCoroutine(Delay());
+        }
+    }
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(2);
+        isFrozen = false;
     }
 }

@@ -426,6 +426,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseMode: 1
+  currEnemy: {fileID: 0}
+  currPlayer: {fileID: 0}
   playerWonLast: 0
   cardBlueprint: {fileID: 109410727950391430, guid: fd76f9bc22ac35047b84ea1cfb6da7d0, type: 3}
   playerSpritePlaceholder: {fileID: 1705657348}
