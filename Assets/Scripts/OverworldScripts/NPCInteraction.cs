@@ -23,7 +23,7 @@ public class NPCInteraction : MonoBehaviour
     //The number corresponds to what line is the one to check, -1 means no line should be checked
     public int weaponSelectLine = 3;
     public int enemySelectLine = 4;
-    private bool demoNPC = true;
+    public bool demoNPC = true;
 
 
     // Update is called once per frame
@@ -137,6 +137,7 @@ public class NPCInteraction : MonoBehaviour
             {
                 StartCoroutine(OverworldManager.startCombat(OverworldManager.weapon, OverworldManager.starterDeck, OverworldManager.enemy));
             }
+            movement.isFrozen = false;
             inDialogue = false;
         }
         else

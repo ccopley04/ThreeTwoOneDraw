@@ -29,7 +29,9 @@ public class MusicManager : MonoBehaviour
         {
             return;
         }
-        audioSource.PlayOneShot(sounds[(int)sound], volume);
+        audioSource.volume = volume;
+        audioSource.clip = sounds[(int)sound];
+        audioSource.Play();
     }
 
 }

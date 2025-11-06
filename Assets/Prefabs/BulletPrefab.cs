@@ -48,7 +48,16 @@ public class BulletPrefab : MonoBehaviour
         {
             return;
         }
-        gameObject.transform.position += thisBullet.flightPath(gameObject.transform.position.x, gameObject.transform.position.y, pixelPerSecond);
+
+        if (EncounterControl.Instance.focusedUp == true && (shooter is Enemy))
+        {
+            gameObject.transform.position += (thisBullet.flightPath(gameObject.transform.position.x, gameObject.transform.position.y, pixelPerSecond)/2);
+        } 
+        else 
+        {
+            gameObject.transform.position += thisBullet.flightPath(gameObject.transform.position.x, gameObject.transform.position.y, pixelPerSecond);
+        }
+
         gameObject.transform.Rotate(thisBullet.rotation(gameObject.transform.position.x, gameObject.transform.position.y, pixelPerSecond));
 
         if (!(shooter is Enemy) && this.transform.position.x >= EncounterControl.Instance.enemySpritePlaceholder.transform.position.x)
