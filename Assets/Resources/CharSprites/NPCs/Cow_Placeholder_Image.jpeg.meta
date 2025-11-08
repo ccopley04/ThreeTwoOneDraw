@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 63dc5b8638c882e40a2bd02d63a726b6
+guid: 439b146982b4c884fbfac9a1ad2b6266
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5840297686568934275
-    second: lasso_chat_bubble_0
+      213: 8795746479983361847
+    second: Cow_Placeholder_Image_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lasso_chat_bubble_0
+      name: Cow_Placeholder_Image_0
       rect:
         serializedVersion: 2
-        x: 88
-        y: 188
-        width: 694
-        height: 241
+        x: 0
+        y: 0
+        width: 2250
+        height: 1500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d74e581823813fea0800000000000000
-      internalID: -5840297686568934275
+      spriteID: 73ffcc952d4c01a70800000000000000
+      internalID: 8795746479983361847
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      lasso_chat_bubble_0: -5840297686568934275
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
