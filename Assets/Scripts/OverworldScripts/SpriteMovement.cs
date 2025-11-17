@@ -1,6 +1,5 @@
 using UnityEngine;
 using System;
-using UnityEditor.Callbacks;
 using System.Collections;
 
 public class SpriteMovement : MonoBehaviour
