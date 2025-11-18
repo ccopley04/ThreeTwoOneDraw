@@ -18,7 +18,7 @@ public class InventoryCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        displayRenderer.sprite = currSprite;
+        displayRenderer.sprite = gameObject.GetComponent<Image>().sprite;
         thisColor.a = 1f;
         displayRenderer.color = thisColor;
     }

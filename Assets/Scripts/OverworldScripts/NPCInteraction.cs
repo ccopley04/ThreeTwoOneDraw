@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class NPCInteraction : MonoBehaviour
 {
@@ -12,12 +13,15 @@ public class NPCInteraction : MonoBehaviour
     public GameObject interactPrompt;
     public GameObject enterPrompt;
     public GameObject player;
+    private Boolean fighting;
 
     public string[] lines;
     private int lineNum;
 
     public bool playerIsNearby { get; private set; }
     public bool inDialogue { get; private set; }
+    public string playerWinDialogue;
+    public string playerLoseDialogue;
 
     //Temp variable to indicate if we are testing weapon selection
     //The number corresponds to what line is the one to check, -1 means no line should be checked
@@ -104,7 +108,7 @@ public class NPCInteraction : MonoBehaviour
     //Enter NPC hitbox
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !inDialogue)
         {
             playerIsNearby = true;
             interactPrompt.SetActive(true);
@@ -124,7 +128,7 @@ public class NPCInteraction : MonoBehaviour
     private void nextLine()
     {
         ++lineNum;
-        if (lineNum == lines.Length)
+        if (lineNum == lines.Length || (demoNPC && lineNum == lines.Length - 1))
         {
             dialogueText.gameObject.SetActive(false);
             enterPrompt.SetActive(false);
@@ -133,17 +137,55 @@ public class NPCInteraction : MonoBehaviour
 
             SpriteMovement movement = player.GetComponent<SpriteMovement>();
 
-            if (demoNPC)
+            if (demoNPC && lineNum == lines.Length - 1)
             {
+                if (gameObject.tag == "Cactus")
+                {
+                    OverworldManager.enemy = new Cactus();
+                }
+                else if (gameObject.tag == "BanditBoss")
+                {
+                    OverworldManager.enemy = new BanditBoss();
+                }
+
+                OverworldManager.isTutorial = false;
+                fighting = true;
                 StartCoroutine(OverworldManager.startCombat(OverworldManager.weapon, OverworldManager.starterDeck, OverworldManager.enemy));
             }
-            movement.isFrozen = false;
-            inDialogue = false;
+            else
+            {
+                dialogueText.gameObject.SetActive(false);
+                enterPrompt.SetActive(false);
+                dialogueBox.SetActive(false);
+
+                movement.isFrozen = false;
+                inDialogue = false;
+            }
         }
         else
         {
             enterPrompt.SetActive(true);
             dialogueText.text = lines[lineNum];
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (fighting && demoNPC)
+        {
+            fighting = false;
+            lines[lines.Length - 1] = (EncounterControl.Instance.playerWonLast) ? playerWinDialogue : playerLoseDialogue;
+            inDialogue = true;
+            lineNum = lines.Length - 1;
+
+            interactPrompt.SetActive(false);
+            dialogueBox.SetActive(true);
+            enterPrompt.SetActive(true);
+            dialogueText.gameObject.SetActive(true);
+            dialogueText.text = lines[lineNum];
+
+            SpriteMovement movement = player.GetComponent<SpriteMovement>();
+            movement.isFrozen = true;
         }
     }
 }

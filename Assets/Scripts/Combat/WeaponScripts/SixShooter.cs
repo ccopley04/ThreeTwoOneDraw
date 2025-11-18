@@ -6,7 +6,7 @@ public class SixShooter : AbstractWeapon
 {
     //0 arg constructor
     //Adds 6 Six Shooter bullet cards and creates two InfoNodes (one of which is special and adds one to costs)
-    public SixShooter() : base(1f, "Time Slot 1: No Effect\nTime Slot 2: Add 1 second to cards played here, bullets played here do double damage")
+    public SixShooter() : base(1.5f, "Time Slot 1: No Effect\nTime Slot 2: Add 1 second to cards played here, bullets played here do double damage")
     {
         for (int i = 0; i < 6; i++)
         {

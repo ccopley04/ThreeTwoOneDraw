@@ -33,9 +33,13 @@ public class OverworldManager : MonoBehaviour
             starterDeck.Add(new TakeAim());
             starterDeck.Add(new Defend());
         }
+        starterDeck.Add(new SweetRewards());
+        starterDeck.Add(new SweetRewards());
+        starterDeck.Add(new Bandage());
 
         MusicManager.playSound(MusicType.Theme, 0.5F);
         MusicManager.audioSource.loop = true;
+        OverworldManager.weapon = new SixShooter();
         movement = player.GetComponent<SpriteMovement>();
     }
 

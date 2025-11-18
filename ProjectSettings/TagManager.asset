@@ -9,6 +9,8 @@ TagManager:
   - TimeSlot
   - NPC
   - Waypoint
+  - Cactus
+  - BanditBoss
   layers:
   - Default
   - TransparentFX

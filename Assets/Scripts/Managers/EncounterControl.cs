@@ -6,6 +6,7 @@ using System;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.U2D.Animation;
+using System.Runtime.CompilerServices;
 
 public class EncounterControl : MonoBehaviour
 {
@@ -14,6 +15,14 @@ public class EncounterControl : MonoBehaviour
 
     //Create a single, static instance of this manager that will be referenced 
     public static EncounterControl Instance { get; private set; }
+
+    [SerializeField]
+    private SpriteLibraryAsset cactusLibrary;
+    [SerializeField]
+    private SpriteLibraryAsset banditBossLibrary;
+    [SerializeField]
+    private GameObject enemyObject;
+
 
     //Variables dictated by the passed Encounter
     public Encounter currEncounter;
@@ -121,6 +130,8 @@ public class EncounterControl : MonoBehaviour
         currEnemy = encounter.enemy;
         currPlayer = encounter.player;
         currEncounter = encounter;
+
+        enemyObject.GetComponent<SpriteLibrary>().spriteLibraryAsset = (currEnemy is Cactus) ? cactusLibrary : banditBossLibrary;
 
         //give player their chose weapon, bullets, and time slots
         currPlayer.addBullets(encounter.weapon.bullets);

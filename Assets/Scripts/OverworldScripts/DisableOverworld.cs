@@ -8,7 +8,7 @@ public class DisableOverworld : MonoBehaviour
 
     [SerializeField]
     public string Combat = "CombatDemo";
-    public string Overworld = "OverworldWildWest";
+    public string Overworld = "OverWEug";
     public GameObject player;
 
 
@@ -48,6 +48,7 @@ public class DisableOverworld : MonoBehaviour
         if (state)
         {
             Scene overworldScene = SceneManager.GetSceneByName(Overworld);
+            Debug.Log(Overworld);
             if (!overworldScene.isLoaded) //Checks if scene is not loaded
             {
                 SceneManager.LoadScene(Overworld, LoadSceneMode.Additive);
