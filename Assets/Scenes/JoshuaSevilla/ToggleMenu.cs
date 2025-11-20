@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class ToggleMenu : MonoBehaviour
 {
-    private bool isToggled = false;
     [SerializeField] private GameObject targetButton;
-
     public void ChangeVisibility()
     {
-        targetButton.SetActive(!isToggled);
-        isToggled = !isToggled;
+        if (targetButton != null)
+        {
+            bool isActive = targetButton.activeSelf;
+            targetButton.SetActive(!isActive);
+        }
+        //isToggled = !isToggled;
     }
 }
