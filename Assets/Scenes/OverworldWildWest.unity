@@ -2588,7 +2588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8163993755375725575, guid: 59e5f3de743bdc3429fc157dcb688861, type: 3}
       propertyPath: m_Name
-      value: NPCPrefab (2)
+      value: SheriffPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 8551347756563954428, guid: 59e5f3de743bdc3429fc157dcb688861, type: 3}
       propertyPath: m_Size.x
@@ -3217,7 +3217,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 7
-      m_TileSpriteIndex: 7
+      m_TileSpriteIndex: 16
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3227,7 +3227,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 6
-      m_TileSpriteIndex: 6
+      m_TileSpriteIndex: 15
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3337,7 +3337,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 5
-      m_TileSpriteIndex: 5
+      m_TileSpriteIndex: 14
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3347,7 +3347,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 4
-      m_TileSpriteIndex: 4
+      m_TileSpriteIndex: 7
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3377,7 +3377,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 6
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3387,7 +3387,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 5
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3417,7 +3417,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 4
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -4496,6 +4496,12 @@ Tilemap:
   m_TileSpriteArray:
   - m_RefCount: 128
     m_Data: {fileID: 1429927367122127863, guid: ddcbaf6dfec9c5142adbd42cd2a0484d, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -267801211, guid: 8abc7b1ef4f681a4da9cabbc108df4f1, type: 3}
   - m_RefCount: 1
@@ -4504,12 +4510,6 @@ Tilemap:
     m_Data: {fileID: -1461315250, guid: 8abc7b1ef4f681a4da9cabbc108df4f1, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 2032403717, guid: 8abc7b1ef4f681a4da9cabbc108df4f1, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -692950854, guid: 8abc7b1ef4f681a4da9cabbc108df4f1, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -688761966, guid: 8abc7b1ef4f681a4da9cabbc108df4f1, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -382893744, guid: 39ea9c43dec686a4b8a05d71be686a4b, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: -1657918025, guid: 8abc7b1ef4f681a4da9cabbc108df4f1, type: 3}
   - m_RefCount: 5
@@ -4522,12 +4522,12 @@ Tilemap:
     m_Data: {fileID: 1918926568, guid: 8abc7b1ef4f681a4da9cabbc108df4f1, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: -431585058, guid: 8abc7b1ef4f681a4da9cabbc108df4f1, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -692950854, guid: 8abc7b1ef4f681a4da9cabbc108df4f1, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: -688761966, guid: 8abc7b1ef4f681a4da9cabbc108df4f1, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: -382893744, guid: 39ea9c43dec686a4b8a05d71be686a4b, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1986224393, guid: 8abc7b1ef4f681a4da9cabbc108df4f1, type: 3}
   - m_RefCount: 1
@@ -7910,7 +7910,7 @@ Transform:
   m_GameObject: {fileID: 1313816016}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.040863, y: -1.3082297, z: 7.370881}
+  m_LocalPosition: {x: -2.040863, y: -1.1082296, z: 7.370881}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -65877,7 +65877,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8163993755375725575, guid: 59e5f3de743bdc3429fc157dcb688861, type: 3}
       propertyPath: m_Name
-      value: NPCPrefab (1)
+      value: GunsmithPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 8551347756563954428, guid: 59e5f3de743bdc3429fc157dcb688861, type: 3}
       propertyPath: m_Sprite
@@ -66018,7 +66018,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8163993755375725575, guid: 59e5f3de743bdc3429fc157dcb688861, type: 3}
       propertyPath: m_Name
-      value: NPCPrefab
+      value: BanditPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 8551347756563954428, guid: 59e5f3de743bdc3429fc157dcb688861, type: 3}
       propertyPath: m_Sprite
@@ -68663,6 +68663,7 @@ MonoBehaviour:
   interactPrompt: {fileID: 874100492}
   enterPrompt: {fileID: 1968154030}
   player: {fileID: 1987500909}
+  tutorialNPC: 0
   lines:
   - Howdy Partner!
   - Welcome to the Wild West!
@@ -68674,8 +68675,10 @@ MonoBehaviour:
     form (Press 3)? Probably should only press 3 if you've dueled before...and are
     a masochist.
   - Alright great! Let's get to it!
-  weaponSelectLine: 3
-  enemySelectLine: 4
+  images: []
+  tutorialImage: {fileID: 0}
+  playerWinDialogue: 
+  playerLoseDialogue: 
   demoNPC: 1
 --- !u!61 &2103707778
 BoxCollider2D:
