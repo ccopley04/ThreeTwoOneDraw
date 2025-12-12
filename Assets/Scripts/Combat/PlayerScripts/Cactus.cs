@@ -14,8 +14,7 @@ public class Cactus : Enemy
     {
         for (int i = 0; i < 6; i++)
         {
-            deck.Add(new Defend());
-            deck.Add(new SixShooterBullet(Speed.Sluggish));
+            deck.Add(new SixShooterBullet(Speed.Slow));
         }
 
 

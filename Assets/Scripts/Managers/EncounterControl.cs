@@ -6,6 +6,7 @@ using System;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.U2D.Animation;
+using System.Runtime.CompilerServices;
 
 public class EncounterControl : MonoBehaviour
 {
@@ -14,6 +15,20 @@ public class EncounterControl : MonoBehaviour
 
     //Create a single, static instance of this manager that will be referenced 
     public static EncounterControl Instance { get; private set; }
+
+    [SerializeField]
+    private SpriteLibraryAsset cactusLibrary;
+    [SerializeField]
+    private SpriteLibraryAsset banditBossLibrary;
+    [SerializeField]
+    private GameObject enemyObject;
+    [SerializeField]
+    private GameObject stageBackground;
+    [SerializeField]
+    private Sprite cactusBackground;
+    [SerializeField]
+    private Sprite banditBackground;
+
 
     //Variables dictated by the passed Encounter
     public Encounter currEncounter;
@@ -92,6 +107,9 @@ public class EncounterControl : MonoBehaviour
     [SerializeField]
     private SpriteRenderer drawPile;
     private Sprite cardBack;
+    [SerializeField]
+    private GameObject drawPrompt;
+
 
 
     //If the instance is the first one, it becomes the Instance.
@@ -121,6 +139,9 @@ public class EncounterControl : MonoBehaviour
         currEnemy = encounter.enemy;
         currPlayer = encounter.player;
         currEncounter = encounter;
+
+        enemyObject.GetComponent<SpriteLibrary>().spriteLibraryAsset = (currEnemy is Cactus) ? cactusLibrary : banditBossLibrary;
+        stageBackground.GetComponent<SpriteRenderer>().sprite = (currEnemy is Cactus) ? cactusBackground : banditBackground;
 
         //give player their chose weapon, bullets, and time slots
         currPlayer.addBullets(encounter.weapon.bullets);
@@ -195,16 +216,18 @@ public class EncounterControl : MonoBehaviour
         {
             if (currEncounter.player.deck.Count == 0)
             {
+                drawPrompt.SetActive(true);
                 drawPile.sprite = null;
             }
             else
             {
+                drawPrompt.SetActive(false);
                 drawPile.sprite = cardBack;
             }
             drawText.text = currEncounter.player.deck.Count.ToString();
             discardPileText.text = currEncounter.player.discardPile.Count.ToString();
 
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Delete))
             {
                 Application.Quit();
             }

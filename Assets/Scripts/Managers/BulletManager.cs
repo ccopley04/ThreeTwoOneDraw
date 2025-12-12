@@ -55,6 +55,7 @@ public class BulletManager : MonoBehaviour
                 newBullet = Instantiate(bulletBlueprint,
                 EncounterControl.Instance.enemySpritePlaceholder.transform.position + new Vector3(0, 0.4F, 0), Quaternion.Euler(0f, 180f, 0f)) as BulletPrefab;
                 newBullet.setData(bullet, shooter, false);
+                bullet.setSpeed(Speed.Average);
                 StartCoroutine(delayEnemyShooting(1.1F, shooter, bullet, sound));
 
             }

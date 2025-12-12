@@ -10,13 +10,14 @@ public class BanditBoss : Enemy
 {
     System.Random random = new System.Random();
 
-    public BanditBoss() : base(new List<AbstractCard>(), 125, 1, "Bandit Boss", 1.0F, 1.0F, 1.0F)
+    public BanditBoss() : base(new List<AbstractCard>(), 150, 1, "Bandit Boss", 0.5F, 1.0F, 1.0F)
     {
         for (int i = 0; i < 6; i++)
         {
             deck.Add(new Defend());
             deck.Add(new Bandage());
-            deck.Add(new DoubleSixShooterBullet(Speed.Fast));
+            deck.Add(new Bandage());
+            deck.Add(new DoubleSixShooterBullet(Speed.Slow));
         }
 
         deck.Add(new Dynamite());

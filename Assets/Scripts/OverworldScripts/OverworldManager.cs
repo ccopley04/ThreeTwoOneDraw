@@ -5,13 +5,18 @@ using System.Collections;
 using System;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+using NUnit.Framework;
 
 public class OverworldManager : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject tempInventory;
     public static AbstractWeapon weapon = new SixShooter();
     public static Enemy enemy = new Cactus();
     public static bool isTutorial = false;
     public GameObject player;
+    private SpriteMovement movement;
 
     public static List<AbstractCard> starterDeck = new List<AbstractCard>();
 
@@ -28,15 +33,20 @@ public class OverworldManager : MonoBehaviour
             starterDeck.Add(new TakeAim());
             starterDeck.Add(new Defend());
         }
+        starterDeck.Add(new SweetRewards());
+        starterDeck.Add(new SweetRewards());
+        starterDeck.Add(new Bandage());
 
         MusicManager.playSound(MusicType.Theme, 0.5F);
         MusicManager.audioSource.loop = true;
+        OverworldManager.weapon = new SixShooter();
+        movement = player.GetComponent<SpriteMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Delete))
         {
             Application.Quit();
         }
@@ -48,6 +58,12 @@ public class OverworldManager : MonoBehaviour
                 SceneManager.LoadScene("CombatDemo", LoadSceneMode.Additive);
             }
             StartCoroutine(startCombat(weapon, starterDeck, enemy));
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            tempInventory.SetActive(!tempInventory.activeSelf);
+            movement.isFrozen = !movement.isFrozen;
         }
     }
 
