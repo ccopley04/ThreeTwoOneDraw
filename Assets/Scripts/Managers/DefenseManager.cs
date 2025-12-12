@@ -69,7 +69,7 @@ public class DefenseManager : MonoBehaviour
     /// <param name="user">User, player or enemy, doing defense</param>
     /// <param name="defenseType">Type of defense, i.e. deflect / defend etc.</param>
     //Activate the associated Defend() method of the passed defense size, this is called by a card's use() method
-    public void defend(Type size, AbstractPlayer user, PlayerDefense.DefenseType defenseType)
+    public void defend(Type size, AbstractPlayer user, AbstractDefend defend)
     {
         if (user is Enemy)
         {
@@ -88,22 +88,22 @@ public class DefenseManager : MonoBehaviour
             }
 
             //Activate the defense hitbox and sprite for a short time
-            smallEnemyDefense.GetComponent<PlayerDefense>().defend(defenseType);
+            smallEnemyDefense.GetComponent<PlayerDefense>().defend(defend);
             StartCoroutine(show(0.5F, smallEnemyDefenseSprite));
         }
         else
         {
             if (size == Type.Small)
             {
-                smallPlayerDefense.GetComponent<PlayerDefense>().defend(defenseType);
+                smallPlayerDefense.GetComponent<PlayerDefense>().defend(defend);
             }
             else if (size == Type.Medium)
             {
-                mediumPlayerDefense.GetComponent<PlayerDefense>().defend(defenseType);
+                mediumPlayerDefense.GetComponent<PlayerDefense>().defend(defend);
             }
             else if (size == Type.Large)
             {
-                largePlayerDefense.GetComponent<PlayerDefense>().defend(defenseType);
+                largePlayerDefense.GetComponent<PlayerDefense>().defend(defend);
             }
         }
     }
@@ -158,5 +158,10 @@ public class DefenseManager : MonoBehaviour
     void OnEnable()
     {
         smallEnemyDefenseSprite.enabled = false;
+    }
+
+    public static void Destory(GameObject other)
+    {
+        Destory(other);
     }
 }

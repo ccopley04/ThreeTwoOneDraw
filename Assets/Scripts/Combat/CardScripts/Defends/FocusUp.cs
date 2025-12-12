@@ -13,6 +13,6 @@ public class FocusUp : AbstractDefend
     {
         EncounterControl.Instance.focusedUp = false;
         DefenseManager.Instance.makeInvisible(this.TYPE);
-        DefenseManager.Instance.defend(this.TYPE, user, PlayerDefense.DefenseType.Defend);
+        DefenseManager.Instance.defend(this.TYPE, user, this);
     }
 }
