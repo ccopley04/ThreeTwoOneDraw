@@ -7,9 +7,14 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.U2D.Animation;
 using System.Runtime.CompilerServices;
+using System.Diagnostics;
 
 public class EncounterControl : MonoBehaviour
 {
+    //Event system that gets called whenever the player draws a card
+    public delegate void Draw();
+    public Draw draw;
+
     //Temp variable that says whether the mouse controls hand traversal or not
     public bool mouseMode = true;
 
@@ -71,9 +76,6 @@ public class EncounterControl : MonoBehaviour
     //Relays if the enemy can currently play a card or perform an action
     public bool enemyTurn;
 
-    //Relays if the player can currently draw a card
-    public bool drawTurn;
-
     //Variable to hold if the next bullet negates enemy defends
     public bool takeAimActive;
 
@@ -126,6 +128,7 @@ public class EncounterControl : MonoBehaviour
             combat = false;
             playerWonLast = false;
             cardBack = drawPile.sprite;
+            draw += AttemptDraw;
         }
     }
 
@@ -148,31 +151,19 @@ public class EncounterControl : MonoBehaviour
         WeaponMono.Instance.activateWeapon(encounter.weapon);
         timeSlotInfo.text = encounter.weapon.timeSlotInfo;
 
-        //EnemyStateMachine enemyStateMachine = enemySpritePlaceholder.GetComponent<EnemyStateMachine>();
-        //enemyStateMachine.encounterController = this;
-        //enemyStateMachine.enemy = currEnemy;
-
         position = -1;
         visibleHand = new List<CardPrefab>();
 
         enemyTurn = true;
-        drawTurn = true;
 
         takeAimActive = false;
 
-        reapplyHand();
+        currPlayer.damageTaken += updateHealth;
+        currEnemy.damageTaken += updateHealth;
 
-        if (tutorial && !battleStarted)
-        {
-            popUp.SetActive(true);
-            textPopUp.enabled = true;
-            textPopUp.text = "\nWelcome to the duel! You can use your mouse to select cards and play them to your time slots (those" +
-            " little circles on the left)! Just the press the corresponding number key! Your cards will " +
-            "sit there until their time is up and then they'll activate! The time it takes is located on the top left of the cards!" +
-            " Some time slots have special powers, they are detailed on the right! What are you waiting for? Try a few cards out! (Press Return)";
-            battleStarted = true;
-            StartCoroutine(endTutorialPopUp(popUp, textPopUp));
-        }
+        draw?.Invoke();
+        updateHealth();
+        reapplyHand();
     }
 
     //Destroy all card prefabs and created a new list of prefabs to visually represent the current hand
@@ -209,6 +200,24 @@ public class EncounterControl : MonoBehaviour
 
     }
 
+    private void updateHealth()
+    {
+        //Calculate the current health of the enemy and player
+        playerHealthBar.value = (float)currPlayer.health / currPlayer.maxHealth;
+        enemyHealthBar.value = (float)currEnemy.health / currEnemy.maxHealth;
+
+    }
+
+    private void AttemptDraw()
+    {
+        if (currPlayer.hand.Count < currPlayer.maxHandSize)
+        {
+            currPlayer.Draw();
+            reapplyHand();
+        }
+        StartCoroutine(wait(currEncounter.weapon.drawDelay, currPlayer));
+    }
+
     //Check every update whether the player draws or plays a card
     void Update()
     {
@@ -231,11 +240,6 @@ public class EncounterControl : MonoBehaviour
             {
                 Application.Quit();
             }
-
-            //Calculate the current health of the enemy and player
-            playerHealthBar.value = (float)currPlayer.health / currPlayer.maxHealth;
-            enemyHealthBar.value = (float)currEnemy.health / currEnemy.maxHealth;
-
             if (currPlayer.health == 0)
             {
                 EncounterControl.Instance.playerWonLast = false;
@@ -253,25 +257,6 @@ public class EncounterControl : MonoBehaviour
             if (enemyTurn)
             {
                 StartCoroutine(wait(currEnemy.trySomething() + currEnemy.costAdjust, currEnemy));
-            }
-
-            if (drawTurn && currPlayer.hand.Count < currPlayer.maxHandSize)
-            {
-                currPlayer.Draw();
-                StartCoroutine(wait(currEncounter.weapon.drawDelay, currPlayer));
-                if (tutorial)
-                {
-                    if (!deckRanOut && currPlayer.deck.Count == 0)
-                    {
-                        popUp.SetActive(true);
-                        textPopUp.enabled = true;
-                        textPopUp.text = "You've deck has run dry! You won't draw anymore cards because they are all discarded!" +
-                        " Don't worry! Just press E and reload! All the cards in the discard will return to the draw pile! (Press Return)";
-                        deckRanOut = true;
-                        StartCoroutine(endTutorialPopUp(popUp, textPopUp));
-                    }
-                }
-                reapplyHand();
             }
             if (currEncounter != null)
             {
@@ -400,10 +385,6 @@ public class EncounterControl : MonoBehaviour
         {
             EncounterControl.Instance.enemyTurn = false;
         }
-        else
-        {
-            EncounterControl.Instance.drawTurn = false;
-        }
 
         //While there is time left
         float duration = sec;
@@ -423,9 +404,9 @@ public class EncounterControl : MonoBehaviour
         {
             EncounterControl.Instance.enemyTurn = true;
         }
-        else
+        else if (combat)
         {
-            EncounterControl.Instance.drawTurn = true;
+            draw?.Invoke();
         }
     }
 
@@ -474,37 +455,6 @@ public class EncounterControl : MonoBehaviour
         if (WeaponMono.Instance.allSlots[index] == null || WeaponMono.Instance.allSlots[index].occupied)
         {
             return;
-        }
-
-        if (tutorial)
-        {
-            if (!bulletPlayed && hoveredCard.thisCard.GetCardType() == "Bullet")
-            {
-                popUp.SetActive(true);
-                textPopUp.enabled = true;
-                textPopUp.text = "You've played a Bullet! This town ain't big enough for a cowboy and a cactus! " +
-                "When the timer hits zero, you'll fire a bullet straight for that darn cactus! But, he might be able to block it! (Press Return)";
-                bulletPlayed = true;
-                StartCoroutine(endTutorialPopUp(popUp, textPopUp));
-            }
-            if (!defendPlayed && hoveredCard.thisCard.GetCardType() == "Defend")
-            {
-                popUp.SetActive(true);
-                textPopUp.enabled = true;
-                textPopUp.text = "You've played a Defend! When the timer hits zero, any bullets within your mouse cursor will be blocked!" +
-                " No clicking required! Just make sure your mouse is in the right space when zero comes around! (Press Return)";
-                defendPlayed = true;
-                StartCoroutine(endTutorialPopUp(popUp, textPopUp));
-            }
-            if (!takeAimPlayed && hoveredCard.thisCard.NAME == "Take Aim")
-            {
-                popUp.SetActive(true);
-                textPopUp.enabled = true;
-                textPopUp.text = "You've played a Take Aim! Any bullets that are fired within the two seconds after this card activates are supercharged!" +
-                " These superchared bullets won't be so easy for this cactus to defend! (Press Return)";
-                takeAimPlayed = true;
-                StartCoroutine(endTutorialPopUp(popUp, textPopUp));
-            }
         }
 
         if (hoveredCard.thisCard.NAME == "Focus Up")
@@ -578,19 +528,6 @@ public class EncounterControl : MonoBehaviour
         discardSpriteRenderer.sprite = lastCard.IMAGE;
         //Set size to match PlaceHolderDeck, remove this line to display full card size
         discardSpriteRenderer.size = new Vector2(3.875f, 5.85f);
-    }
-    public IEnumerator endTutorialPopUp(GameObject popUp, TextMeshProUGUI textPopUp)
-    {
-        Time.timeScale = 0;
-        combat = false;
-        while (!Input.GetKeyDown(KeyCode.Return))
-        {
-            yield return null;
-        }
-        popUp.SetActive(false);
-        textPopUp.enabled = false;
-        Time.timeScale = 1;
-        combat = true;
     }
 }
 
