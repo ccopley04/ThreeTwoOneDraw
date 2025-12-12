@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      boardWithArrowCost_0: 6803528478433960357
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

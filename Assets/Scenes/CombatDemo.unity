@@ -432,8 +432,6 @@ MonoBehaviour:
   stageBackground: {fileID: 939283833}
   cactusBackground: {fileID: 8214652891733932701, guid: d3b6ec7cddcdb294281754256d379da5, type: 3}
   banditBackground: {fileID: -6220445908178243625, guid: dbc2b594fe53ebb4abd1d36451dc7cda, type: 3}
-  currEnemy: {fileID: 0}
-  currPlayer: {fileID: 0}
   playerWonLast: 0
   cardBlueprint: {fileID: 109410727950391430, guid: fd76f9bc22ac35047b84ea1cfb6da7d0, type: 3}
   playerSpritePlaceholder: {fileID: 1705657348}
@@ -2013,7 +2011,7 @@ GameObject:
   - component: {fileID: 808609061}
   m_Layer: 5
   m_Name: SmallPlayerDefense
-  m_TagString: Untagged
+  m_TagString: SmallPlayerDefense
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
