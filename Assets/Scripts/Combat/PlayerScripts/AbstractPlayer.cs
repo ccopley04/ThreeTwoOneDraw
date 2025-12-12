@@ -10,6 +10,8 @@ public abstract class AbstractPlayer
     public int health { get; set; }
     public int maxHealth = 100;
     public string playerName;
+    public delegate void DamageTaken();
+    public DamageTaken damageTaken;
 
     public List<AbstractCard> hand;
     public List<AbstractCard> discardPile;
@@ -67,6 +69,8 @@ public abstract class AbstractPlayer
         {
             health = 0;
         }
+
+        damageTaken?.Invoke();
     }
 
     //Heal health equal to passed parameter, health cannot exceed max health

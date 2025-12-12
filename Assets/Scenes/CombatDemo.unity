@@ -181,7 +181,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1231453955}
   m_FillRect: {fileID: 1189188262}
   m_HandleRect: {fileID: 1231453953}
@@ -464,7 +464,6 @@ MonoBehaviour:
   position: 0
   visibleHand: []
   enemyTurn: 0
-  drawTurn: 0
   takeAimActive: 0
   focusedUp: 0
   combat: 0
@@ -1052,7 +1051,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1385788334}
   m_FillRect: {fileID: 1375052416}
   m_HandleRect: {fileID: 1385788332}
