@@ -53,6 +53,11 @@ public abstract class AbstractBullet : AbstractCard
     {
         return new Vector3(0, 0, 0);
     }
+
+    public void setSpeed(Speed newSpeed)
+    {
+        this.speed = newSpeed;
+    }
 }
 
 //All possible bullet speeds

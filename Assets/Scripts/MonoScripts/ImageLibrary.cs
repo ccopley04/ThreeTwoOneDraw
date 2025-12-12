@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ImageLibrary : MonoBehaviour
@@ -26,6 +27,14 @@ public class ImageLibrary : MonoBehaviour
     public static Sprite tomahawkIcon;
     public static Sprite sweetReward_art;
     public static Sprite reflect_art;
+    public static Sprite adrenalineIcon;
+    public static Sprite dynamiteIcon;
+    public static Sprite reflectIcon;
+    public static Sprite sleightIcon;
+    public static Sprite bandageIcon;
+    public static Sprite sweetRewardsIcon;
+
+
 
     public static Sprite sleight_art;
 
@@ -58,6 +67,13 @@ public class ImageLibrary : MonoBehaviour
         sweetReward_art = Resources.Load<Sprite>("CardArt/sweetRewardsCard");
         reflect_art = Resources.Load<Sprite>("CardArt/reflectCard");
         sleight_art = Resources.Load<Sprite>("CardArt/sleightOfHandCard");
+
+        adrenalineIcon = Resources.Load<Sprite>("TimeSlots/Icons/BlueAdrenalineIcon");
+        dynamiteIcon = Resources.Load<Sprite>("TimeSlots/Icons/BlueDynamiteIcon");
+        reflectIcon = Resources.Load<Sprite>("TimeSlots/Icons/BlueReflectIcon");
+        sleightIcon = Resources.Load<Sprite>("TimeSlots/Icons/BlueSlightOfHandIcon");
+        bandageIcon = Resources.Load<Sprite>("TimeSlots/Icons/BlueBandageIcon");
+        sweetRewardsIcon = Resources.Load<Sprite>("TimeSlots/Icons/BlueSweetRewardsIcon");
 
         DontDestroyOnLoad(gameObject);
     }

@@ -14,8 +14,12 @@ public class NPCInteraction : MonoBehaviour
     public GameObject enterPrompt;
     public GameObject player;
     private Boolean fighting;
+    public bool tutorialNPC;
+
 
     public string[] lines;
+    public Sprite[] images;
+    public GameObject tutorialImage;
     private int lineNum;
 
     public bool playerIsNearby { get; private set; }
@@ -23,10 +27,6 @@ public class NPCInteraction : MonoBehaviour
     public string playerWinDialogue;
     public string playerLoseDialogue;
 
-    //Temp variable to indicate if we are testing weapon selection
-    //The number corresponds to what line is the one to check, -1 means no line should be checked
-    public int weaponSelectLine = 3;
-    public int enemySelectLine = 4;
     public bool demoNPC = true;
 
 
@@ -45,6 +45,12 @@ public class NPCInteraction : MonoBehaviour
             dialogueText.gameObject.SetActive(true);
             dialogueText.text = lines[0];
 
+            if (tutorialNPC && images[0] != null)
+            {
+                tutorialImage.SetActive(true);
+                tutorialImage.GetComponent<Image>().sprite = images[0];
+            }
+
             SpriteMovement movement = player.GetComponent<SpriteMovement>();
             movement.isFrozen = true;
         }
@@ -52,53 +58,7 @@ public class NPCInteraction : MonoBehaviour
         //Displays next line of dialogue and end dialogue when all lines read
         if (inDialogue)
         {
-            if (weaponSelectLine == lineNum)
-            {
-                enterPrompt.SetActive(false);
-                if (Input.GetKeyDown(KeyCode.Alpha1))
-                {
-                    OverworldManager.weapon = new Tomahawk();
-                    nextLine();
-                }
-                else if (Input.GetKeyDown(KeyCode.Alpha2))
-                {
-                    OverworldManager.weapon = new Winchester();
-                    nextLine();
-                }
-                else if (Input.GetKeyDown(KeyCode.Alpha3))
-                {
-                    OverworldManager.weapon = new SixShooter();
-                    nextLine();
-                }
-            }
-            else if (enemySelectLine == lineNum)
-            {
-                enterPrompt.SetActive(false);
-                if (Input.GetKeyDown(KeyCode.Alpha1))
-                {
-                    OverworldManager.enemy = new Cactus();
-                    OverworldManager.isTutorial = true;
-                    EncounterControl.Instance.bulletPlayed = false;
-                    EncounterControl.Instance.defendPlayed = false;
-                    EncounterControl.Instance.takeAimPlayed = false;
-                    EncounterControl.Instance.deckRanOut = false;
-                    EncounterControl.Instance.battleStarted = false;
-                    nextLine();
-                }
-                else if (Input.GetKeyDown(KeyCode.Alpha2))
-                {
-                    OverworldManager.enemy = new Cactus();
-                    OverworldManager.isTutorial = false;
-                    nextLine();
-                }
-                else if (Input.GetKeyDown(KeyCode.Alpha3))
-                {
-                    OverworldManager.enemy = new BanditBoss();
-                    OverworldManager.isTutorial = false;
-                    nextLine();
-                }
-            }
-            else if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Return))
             {
                 nextLine();
             }
@@ -157,6 +117,10 @@ public class NPCInteraction : MonoBehaviour
                 dialogueText.gameObject.SetActive(false);
                 enterPrompt.SetActive(false);
                 dialogueBox.SetActive(false);
+                if (tutorialNPC)
+                {
+                    tutorialImage.SetActive(false);
+                }
 
                 movement.isFrozen = false;
                 inDialogue = false;
@@ -164,6 +128,18 @@ public class NPCInteraction : MonoBehaviour
         }
         else
         {
+            if (tutorialNPC)
+            {
+                if (images[lineNum] != null)
+                {
+                    tutorialImage.SetActive(true);
+                    tutorialImage.GetComponent<Image>().sprite = images[lineNum];
+                }
+                else
+                {
+                    tutorialImage.SetActive(false);
+                }
+            }
             enterPrompt.SetActive(true);
             dialogueText.text = lines[lineNum];
         }

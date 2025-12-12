@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SweetRewards : AbstractSkill
 {
-    public SweetRewards() : base("Sweet Rewards", 4, ImageLibrary.sweetReward_art, "Draw three cards instantly.") { }
+    public SweetRewards() : base("Sweet Rewards", 4, ImageLibrary.sweetReward_art, "Draw three cards instantly.", ImageLibrary.sweetRewardsIcon) { }
 
     public override void use(AbstractPlayer user, float duration, TimeSlot slot)
     {

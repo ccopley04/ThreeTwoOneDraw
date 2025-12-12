@@ -8,8 +8,8 @@ public class Winchester : AbstractWeapon
             this.bullets.Add(new WinchesterBullet());
         }
 
-        this.nodes[0] = new InfoNode(1);
-        this.nodes[1] = new InfoNode(1);
+        this.nodes[0] = new InfoNode(0);
+        this.nodes[1] = new InfoNode(0);
         this.nodes[2] = new SpeedUpNode(3);
         this.nodes[3] = new SpeedUpNode(3);
     }

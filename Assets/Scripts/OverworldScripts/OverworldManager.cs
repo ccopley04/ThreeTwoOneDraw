@@ -46,7 +46,7 @@ public class OverworldManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Delete))
         {
             Application.Quit();
         }
@@ -60,7 +60,7 @@ public class OverworldManager : MonoBehaviour
             StartCoroutine(startCombat(weapon, starterDeck, enemy));
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             tempInventory.SetActive(!tempInventory.activeSelf);
             movement.isFrozen = !movement.isFrozen;

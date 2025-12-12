@@ -89,6 +89,7 @@ public class InventoryButtons : MonoBehaviour
             defaultDeck.Add(new Defend());
             defaultDeck.Add(new Defend());
             destructionDeck.Add(new Dynamite());
+            destructionDeck.Add(new Defend());
             patientDeck.Add(new Defend());
         }
         defaultDeck.Add(new SweetRewards());
@@ -101,7 +102,6 @@ public class InventoryButtons : MonoBehaviour
             destructionDeck.Add(new AdrenalineShot());
             if ((i % 2) == 0)
             {
-                destructionDeck.Add(new IronSteelPlate());
                 patientDeck.Add(new Deflect());
                 patientDeck.Add(new TakeAim());
             }
@@ -257,7 +257,7 @@ public class InventoryButtons : MonoBehaviour
             displayRenderer.sprite = currWeaponSprite;
             OverworldManager.weapon = new Winchester();
             infoText.text = "-Shuffles FOURTEEN Winchester Bullets into your deck.\n-Each card draw has a delay of "
-            + OverworldManager.weapon.drawDelay + " seconds.\n-Gives you FOUR time slots.\n\t-Time Slot 1 and 2: Add 1 second to cards played here."
+            + OverworldManager.weapon.drawDelay + " seconds.\n-Gives you FOUR time slots.\n\t-Time Slot 1 and 2: No Effect."
             + "\n\t-Time Slot 3 and 4: Add 3 seconds to cards played here. Bullets played here go faster.";
         }
     }
@@ -305,12 +305,12 @@ public class InventoryButtons : MonoBehaviour
         {
             card1Image.sprite = ImageLibrary.reflect_art;
             card2Image.sprite = ImageLibrary.dynamite_art;
-            card3Image.sprite = ImageLibrary.ironSteelPlate_art;
+            card3Image.sprite = ImageLibrary.defend_art;
             card4Image.sprite = ImageLibrary.adrenaline_art;
 
             card1Count.text = "x4";
             card2Count.text = "x3";
-            card3Count.text = "x2";
+            card3Count.text = "x3";
             card4Count.text = "x4";
 
             OverworldManager.starterDeck = destructionDeck;
