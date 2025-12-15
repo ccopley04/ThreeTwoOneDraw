@@ -15,8 +15,15 @@ public class EncounterControl : MonoBehaviour
     public delegate void Draw();
     public Draw draw;
 
-    //Temp variable that says whether the mouse controls hand traversal or not
-    public bool mouseMode = true;
+    //Event system that is called when E is pressed. Includes methods added here and the Sound Manager's PlayReload
+    public delegate void PlayerInput();
+    public static PlayerInput EPressed;
+
+    //Event system that is called when either combat starts or ends
+    //Many of the methods in the system are from EncounterControl, but other classes can add their own without EncounterControl being coupled to those files
+    public delegate void CombatState();
+    public static CombatState start;
+    public static CombatState end;
 
     //Create a single, static instance of this manager that will be referenced 
     public static EncounterControl Instance { get; private set; }
@@ -50,7 +57,6 @@ public class EncounterControl : MonoBehaviour
     public CardPrefab hoveredCard { get; set; }
 
     //All UI elements
-
     public Slider playerHealthBar;
     public Slider enemyHealthBar;
 
@@ -62,15 +68,9 @@ public class EncounterControl : MonoBehaviour
 
     public List<GameObject> allObjects = new List<GameObject>();
 
-    //Holds the index of the card that is being selected
-    public int position;
-
     //List of all cards that in the player hand
     public List<CardPrefab> visibleHand;
     public List<AbstractCard> deck;
-
-    //Relays if the enemy can currently play a card or perform an action
-    public bool enemyTurn;
 
     //Variable to hold if the next bullet negates enemy defends
     public bool takeAimActive;
@@ -91,8 +91,6 @@ public class EncounterControl : MonoBehaviour
     private Sprite cardBack;
     [SerializeField]
     private GameObject drawPrompt;
-
-
 
     //If the instance is the first one, it becomes the Instance.
     //Otherwise is is destroyed
@@ -115,6 +113,7 @@ public class EncounterControl : MonoBehaviour
     //Begin the passed Encounter instance
     public void startEncounter(Encounter encounter, bool tutorialActive) //when you start combat
     {
+        start?.Invoke();
         MusicManager.playSound(MusicType.Tutorial, 0.4F);
         MusicManager.audioSource.loop = true;
         setUI(true);
@@ -128,12 +127,8 @@ public class EncounterControl : MonoBehaviour
         //give player their chose weapon, bullets, and time slots
         currPlayer.addBullets(encounter.weapon.bullets);
         WeaponMono.Instance.activateWeapon(encounter.weapon);
-        timeSlotInfo.text = encounter.weapon.timeSlotInfo;
 
-        position = -1;
         visibleHand = new List<CardPrefab>();
-
-        enemyTurn = true;
         takeAimActive = false;
 
         currPlayer.damageTaken += updateHealth;
@@ -142,9 +137,15 @@ public class EncounterControl : MonoBehaviour
         currPlayer.playerDeath += PlayerLoss;
         currEnemy.playerDeath += PlayerWin;
 
+
+        EPressed += currPlayer.Shuffle;
+        EPressed += updateDiscardPile;
+        EPressed += updateDeck;
+
         draw?.Invoke();
         updateHealth();
         reapplyHand();
+        StartCoroutine(wait(currEnemy.trySomething() + currEnemy.costAdjust, currEnemy));
     }
 
     //Destroy all card prefabs and created a new list of prefabs to visually represent the current hand
@@ -243,125 +244,64 @@ public class EncounterControl : MonoBehaviour
     //Check every update whether the player draws or plays a card
     void Update()
     {
-        if (combat)
+        if (Input.GetKeyDown(KeyCode.Delete))
         {
-            if (Input.GetKeyDown(KeyCode.Delete))
+            Application.Quit();
+        }
+        if (currEncounter != null && combat)
+        {
+            //Reshuffle the deck if the player clicks E
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                Application.Quit();
+                EPressed?.Invoke();
             }
-
-            //If the enemy has a turn, randomly pick an action and pause the enemy turn for the returned seconds
-            if (enemyTurn)
+            //If a card is selected, the player has an action, and the user clicks the mouse  => Call the card's use() method and discard it
+            else if (hoveredCard != null)
             {
-                StartCoroutine(wait(currEnemy.trySomething() + currEnemy.costAdjust, currEnemy));
-            }
-            if (currEncounter != null)
-            {
-                //Exit the card selection if the player clicks S
-                if (Input.GetKeyDown(KeyCode.E))
+                //For any number key pressed (0-9), call the time slot with the associated index
+                if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
-                    discardSpriteRenderer.sprite = null;
-                    currPlayer.Shuffle();
-                    SoundManager.playSound(SoundType.Reload);
-                    discardPileText.text = currEncounter.player.discardPile.Count.ToString();
-                    updateDeck();
+                    playCardToSlot(0);
                 }
-                //Exit the card selection if the player clicks S
-                else if (Input.GetKeyDown(KeyCode.DownArrow) && !mouseMode)
+                else if (Input.GetKeyDown(KeyCode.Alpha2))
                 {
-                    position = -1;
-                    if (hoveredCard != null)
-                    {
-                        hoveredCard.deselected();
-                        hoveredCard = null;
-                    }
+                    playCardToSlot(1);
                 }
-                //Move the index of the selected card right when the playef clicks D
-                else if (Input.GetKeyDown(KeyCode.RightArrow) && !mouseMode)
+                else if (Input.GetKeyDown(KeyCode.Alpha3))
                 {
-                    if (position == -1 || position == currPlayer.hand.Count - 1)
-                    {
-                        position = 0;
-                    }
-                    else
-                    {
-                        position += 1;
-                    }
-                    //Move the index of the selected card left when the playef clicks A
+                    playCardToSlot(2);
                 }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow) && !mouseMode)
+                else if (Input.GetKeyDown(KeyCode.Alpha4))
                 {
-                    if (position == -1 || position == 0)
-                    {
-                        position = currPlayer.hand.Count - 1;
-                    }
-                    else
-                    {
-                        position -= 1;
-                    }
+                    playCardToSlot(3);
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha5))
+                {
+                    playCardToSlot(4);
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha6))
+                {
+                    playCardToSlot(5);
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha7))
+                {
+                    playCardToSlot(6);
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha8))
+                {
+                    playCardToSlot(7);
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha9))
+                {
+                    playCardToSlot(8);
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha0))
+                {
+                    playCardToSlot(9);
                 }
 
-                //If a card is selected, the player has an action, and the user clicks the mouse  => Call the card's use() method and discard it
-                else if (hoveredCard != null)
-                {
-
-                    //For any number key pressed (0-9), call the time slot with the associated index
-                    if (Input.GetKeyDown(KeyCode.Alpha1))
-                    {
-                        playCardToSlot(0);
-                    }
-                    else if (Input.GetKeyDown(KeyCode.Alpha2))
-                    {
-                        playCardToSlot(1);
-                    }
-                    else if (Input.GetKeyDown(KeyCode.Alpha3))
-                    {
-                        playCardToSlot(2);
-                    }
-                    else if (Input.GetKeyDown(KeyCode.Alpha4))
-                    {
-                        playCardToSlot(3);
-                    }
-                    else if (Input.GetKeyDown(KeyCode.Alpha5))
-                    {
-                        playCardToSlot(4);
-                    }
-                    else if (Input.GetKeyDown(KeyCode.Alpha6))
-                    {
-                        playCardToSlot(5);
-                    }
-                    else if (Input.GetKeyDown(KeyCode.Alpha7))
-                    {
-                        playCardToSlot(6);
-                    }
-                    else if (Input.GetKeyDown(KeyCode.Alpha8))
-                    {
-                        playCardToSlot(7);
-                    }
-                    else if (Input.GetKeyDown(KeyCode.Alpha9))
-                    {
-                        playCardToSlot(8);
-                    }
-                    else if (Input.GetKeyDown(KeyCode.Alpha0))
-                    {
-                        playCardToSlot(9);
-                    }
-
-                }
-            }
-
-            //Visually show which card is selected and set hoveredCard to the currently selected card
-            if (position < visibleHand.Count && position >= 0)
-            {
-                if (hoveredCard != null)
-                {
-                    hoveredCard.deselected();
-                }
-                hoveredCard = visibleHand[position];
-                hoveredCard.selected();
             }
         }
-
     }
 
     //Turn on or off all UI elements
@@ -377,11 +317,6 @@ public class EncounterControl : MonoBehaviour
     //Turn off player turn for the passed cost
     public IEnumerator wait(float sec, AbstractPlayer player)
     {
-        if (player is Enemy)
-        {
-            EncounterControl.Instance.enemyTurn = false;
-        }
-
         //While there is time left
         float duration = sec;
         while (duration > 0)
@@ -396,9 +331,9 @@ public class EncounterControl : MonoBehaviour
 
             yield return null;
         }
-        if (player is Enemy)
+        if (player is Enemy && combat)
         {
-            EncounterControl.Instance.enemyTurn = true;
+            StartCoroutine(wait(currEnemy.trySomething() + currEnemy.costAdjust, currEnemy));
         }
         else if (combat)
         {
@@ -409,6 +344,7 @@ public class EncounterControl : MonoBehaviour
     //The encounter ends whenever player or enemy reach 0 health
     public void endEncounter(AbstractPlayer winner)
     {
+        end?.Invoke();
         MusicManager.audioSource.Stop();
         MusicManager.playSound(MusicType.Theme, 0.5F);
         MusicManager.audioSource.loop = true;
@@ -499,9 +435,6 @@ public class EncounterControl : MonoBehaviour
 
         //Discard the card
         currPlayer.removeFromHand(hoveredCard.thisCard);
-
-        //Reapply the visuals for the player's hand
-        position = (position == 0) ? position + 1 : position - 1;
         reapplyHand();
 
     }
@@ -518,10 +451,16 @@ public class EncounterControl : MonoBehaviour
         smokeScreen.SetActive(false);
     }
 
+    //Update discard pile sprite with default arguments
+    public void updateDiscardPile()
+    {
+        updateDiscardPile(null);
+    }
+
     //Update discard pile sprite
     public void updateDiscardPile(AbstractCard lastCard)
     {
-        discardSpriteRenderer.sprite = lastCard.IMAGE;
+        discardSpriteRenderer.sprite = lastCard == null ? null : lastCard.IMAGE;
         //Set size to match PlaceHolderDeck, remove this line to display full card size
         discardSpriteRenderer.size = new Vector2(3.875f, 5.85f);
 

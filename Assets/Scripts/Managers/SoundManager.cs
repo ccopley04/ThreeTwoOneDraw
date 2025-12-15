@@ -29,6 +29,9 @@ public class SoundManager : MonoBehaviour
     {
         DontDestroyOnLoad(this);
         audioSource = gameObject.GetComponent<AudioSource>();
+
+        EncounterControl.EPressed += PlayReload;
+
         sounds.Add(sixShooterSounds);
         sounds.Add(defendSounds);
         sounds.Add(cardDrawSounds);
@@ -46,6 +49,12 @@ public class SoundManager : MonoBehaviour
             return;
         }
         audioSource.PlayOneShot(sounds[((int)sound)][UnityEngine.Random.Range(0, sounds[((int)sound)].Length)], volume);
+    }
+
+    //Play the reload sound, used in the event system when E is pressed
+    private void PlayReload()
+    {
+        playSound(SoundType.Reload);
     }
 }
 
