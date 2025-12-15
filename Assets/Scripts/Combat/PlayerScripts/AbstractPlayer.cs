@@ -84,6 +84,8 @@ public abstract class AbstractPlayer
         {
             health = maxHealth;
         }
+
+        damageTaken?.Invoke();
     }
 
     /* public void getPoisoned(int tickDamage, double duration)

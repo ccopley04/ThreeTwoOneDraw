@@ -200,6 +200,7 @@ public class EncounterControl : MonoBehaviour
 
     }
 
+    //Called whenever damage is taken or healed by either player
     private void updateHealth()
     {
         //Calculate the current health of the enemy and player
@@ -208,14 +209,38 @@ public class EncounterControl : MonoBehaviour
 
     }
 
+    //Attempt to draw a card, is called every time currEncounter.weapon.drawDelay seconds passes
     private void AttemptDraw()
     {
+        //If a draw is possible, draw a card and update visuals
         if (currPlayer.hand.Count < currPlayer.maxHandSize)
         {
             currPlayer.Draw();
+            updateDeck();
             reapplyHand();
         }
+
+        //Whether or not a draw was performed, start the timer for the next AttemptDraw() call
         StartCoroutine(wait(currEncounter.weapon.drawDelay, currPlayer));
+    }
+
+    //Private method called whenever the deck has card returned or taken from it
+    private void updateDeck()
+    {
+        //Change the sprite to the appropiate visual indicator of the deck size
+        if (currEncounter.player.deck.Count == 0)
+        {
+            drawPrompt.SetActive(true);
+            drawPile.sprite = null;
+        }
+        else
+        {
+            drawPrompt.SetActive(false);
+            drawPile.sprite = cardBack;
+        }
+
+        //Change the text to reflect the current deck count
+        drawText.text = currEncounter.player.deck.Count.ToString();
     }
 
     //Check every update whether the player draws or plays a card
@@ -223,19 +248,6 @@ public class EncounterControl : MonoBehaviour
     {
         if (combat)
         {
-            if (currEncounter.player.deck.Count == 0)
-            {
-                drawPrompt.SetActive(true);
-                drawPile.sprite = null;
-            }
-            else
-            {
-                drawPrompt.SetActive(false);
-                drawPile.sprite = cardBack;
-            }
-            drawText.text = currEncounter.player.deck.Count.ToString();
-            discardPileText.text = currEncounter.player.discardPile.Count.ToString();
-
             if (Input.GetKeyDown(KeyCode.Delete))
             {
                 Application.Quit();
@@ -266,6 +278,8 @@ public class EncounterControl : MonoBehaviour
                     discardSpriteRenderer.sprite = null;
                     currPlayer.Shuffle();
                     SoundManager.playSound(SoundType.Reload);
+                    discardPileText.text = currEncounter.player.discardPile.Count.ToString();
+                    updateDeck();
                 }
                 //Exit the card selection if the player clicks S
                 else if (Input.GetKeyDown(KeyCode.DownArrow) && !mouseMode)
@@ -368,9 +382,6 @@ public class EncounterControl : MonoBehaviour
     //Turn on or off all UI elements
     private void setUI(bool state)
     {
-        //deckPlaceholder.SetActive(state);
-        //discardPilePlaceholder.SetActive(state);
-
         combat = state;
         foreach (GameObject item in allObjects)
         {
@@ -528,6 +539,9 @@ public class EncounterControl : MonoBehaviour
         discardSpriteRenderer.sprite = lastCard.IMAGE;
         //Set size to match PlaceHolderDeck, remove this line to display full card size
         discardSpriteRenderer.size = new Vector2(3.875f, 5.85f);
+
+        //Update the current discard pile text to reflect the current count
+        discardPileText.text = currEncounter.player.discardPile.Count.ToString();
     }
 }
 
