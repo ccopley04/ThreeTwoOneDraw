@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
+using System.Diagnostics;
 
 public class WeaponMono : MonoBehaviour
 {
@@ -24,12 +25,16 @@ public class WeaponMono : MonoBehaviour
         else
         {
             Instance = this;
+            EncounterControl.start += this.activateWeapon;
+
+            EncounterControl.end += this.DestroyTimeSlots;
         }
     }
 
     //Call this method when combat starts and pass the current weapon
-    public void activateWeapon(AbstractWeapon weapon)
+    public void activateWeapon(Encounter encounter)
     {
+        AbstractWeapon weapon = encounter.weapon;
         //Attach each node from the weapon to the newly created time slots
         for (int i = 0; i < weapon.nodes.Length; i++)
         {
@@ -39,6 +44,17 @@ public class WeaponMono : MonoBehaviour
                 slot.setData(weapon.nodes[i], numberedSprites[i]);
                 allSlots[i] = slot;
             }
+        }
+    }
+
+    //Destroy all time slot objects when the combat ends
+    private void DestroyTimeSlots(Encounter encounter)
+    {
+        //Deactivate all time slots
+        GameObject[] visibleSlots = GameObject.FindGameObjectsWithTag("TimeSlot");
+        foreach (GameObject slot in visibleSlots)
+        {
+            Destroy(slot);
         }
     }
 

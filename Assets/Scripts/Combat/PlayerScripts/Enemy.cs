@@ -49,12 +49,10 @@ public abstract class Enemy : AbstractPlayer
         if (deck.Count <= 1 || num >= deck.Count || num < 0 ||
         (BulletManager.Instance.playerBullet == 0 && deck[num] is AbstractDefend))
         {
-            Debug.Log(type);
             this.Shuffle();
             return 1;
         }
 
-        Debug.Log(deck[num].NAME);
         cost = deck[num].COST;
         deck[num].use(this, 0, null);
         discardPile.Add(deck[num]);
