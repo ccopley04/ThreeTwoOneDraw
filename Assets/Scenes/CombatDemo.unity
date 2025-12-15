@@ -406,6 +406,7 @@ RectTransform:
   - {fileID: 1243157323}
   - {fileID: 1705657351}
   - {fileID: 1684503684}
+  - {fileID: 1284414122}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3535,6 +3536,60 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d43cb120dc1fa34491c423121c63615, type: 3}
+--- !u!1 &1284414121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1284414122}
+  - component: {fileID: 1284414123}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1284414122
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284414121}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 201181781}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1284414123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284414121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf45f2300d3d384391e8017f25654a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cactusLibrary: {fileID: 7108339969198208228, guid: 7e0fecc7632737c45a5fceb125959dd2, type: 3}
+  banditBossLibrary: {fileID: 7108339969198208228, guid: bca9c126a7bc8ad4dbe51ea04a0c23a7, type: 3}
+  enemyObject: {fileID: 1656953158}
+  stageBackground: {fileID: 939283833}
+  cactusBackground: {fileID: 8214652891733932701, guid: d3b6ec7cddcdb294281754256d379da5, type: 3}
+  banditBackground: {fileID: -6220445908178243625, guid: dbc2b594fe53ebb4abd1d36451dc7cda, type: 3}
 --- !u!1 &1323941497
 GameObject:
   m_ObjectHideFlags: 0
