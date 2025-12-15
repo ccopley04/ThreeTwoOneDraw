@@ -10,6 +10,9 @@ public class BulletManager : MonoBehaviour
     public CombatAnimations combat_Anim;
     public CombatAnimations enemy_Anim;
 
+    public GameObject enemySpritePlaceholder;
+    public GameObject playerSpritePlaceholder;
+
 
     //Create a single, static instance of this manager that will be referenced 
     public static BulletManager Instance { get; private set; }
@@ -53,7 +56,7 @@ public class BulletManager : MonoBehaviour
             {
                 SoundManager.playSound(sound);
                 newBullet = Instantiate(bulletBlueprint,
-                EncounterControl.Instance.enemySpritePlaceholder.transform.position + new Vector3(0, 0.4F, 0), Quaternion.Euler(0f, 180f, 0f)) as BulletPrefab;
+                enemySpritePlaceholder.transform.position + new Vector3(0, 0.4F, 0), Quaternion.Euler(0f, 180f, 0f)) as BulletPrefab;
                 newBullet.setData(bullet, shooter, false);
                 bullet.setSpeed(Speed.Average);
                 StartCoroutine(delayEnemyShooting(1.1F, shooter, bullet, sound));
@@ -63,7 +66,7 @@ public class BulletManager : MonoBehaviour
             {
                 SoundManager.playSound(sound);
                 newBullet = Instantiate(bulletBlueprint,
-                    EncounterControl.Instance.enemySpritePlaceholder.transform.position + new Vector3(0, 0.4F, 0), Quaternion.Euler(0f, 180f, 0f)) as BulletPrefab;
+                    enemySpritePlaceholder.transform.position + new Vector3(0, 0.4F, 0), Quaternion.Euler(0f, 180f, 0f)) as BulletPrefab;
                 newBullet.setData(bullet, shooter, false);
             }
         }
@@ -87,7 +90,7 @@ public class BulletManager : MonoBehaviour
 
         SoundManager.playSound(sound);
         BulletPrefab newBullet2 = Instantiate(bulletBlueprint,
-            EncounterControl.Instance.playerSpritePlaceholder.transform.position + new Vector3(0, 0.5F, 0), Quaternion.identity) as BulletPrefab;
+            playerSpritePlaceholder.transform.position + new Vector3(0, 0.5F, 0), Quaternion.identity) as BulletPrefab;
         newBullet2.setData(bullet, shooter, wasTakeAim);
         EncounterControl.Instance.takeAimActive = false;
         playerBullet++;
@@ -111,7 +114,7 @@ public class BulletManager : MonoBehaviour
 
         SoundManager.playSound(sound);
         BulletPrefab newBullet2 = Instantiate(bulletBlueprint,
-            EncounterControl.Instance.enemySpritePlaceholder.transform.position + new Vector3(0, 0.5F, 0), Quaternion.Euler(0f, 180f, 0f)) as BulletPrefab;
+            enemySpritePlaceholder.transform.position + new Vector3(0, 0.5F, 0), Quaternion.Euler(0f, 180f, 0f)) as BulletPrefab;
         newBullet2.setData(bullet, shooter, false);
     }
 

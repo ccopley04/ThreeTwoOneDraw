@@ -51,22 +51,22 @@ public class BulletPrefab : MonoBehaviour
 
         if (EncounterControl.Instance.focusedUp == true && (shooter is Enemy))
         {
-            gameObject.transform.position += (thisBullet.flightPath(gameObject.transform.position.x, gameObject.transform.position.y, pixelPerSecond)/2);
-        } 
-        else 
+            gameObject.transform.position += (thisBullet.flightPath(gameObject.transform.position.x, gameObject.transform.position.y, pixelPerSecond) / 2);
+        }
+        else
         {
             gameObject.transform.position += thisBullet.flightPath(gameObject.transform.position.x, gameObject.transform.position.y, pixelPerSecond);
         }
 
         gameObject.transform.Rotate(thisBullet.rotation(gameObject.transform.position.x, gameObject.transform.position.y, pixelPerSecond));
 
-        if (!(shooter is Enemy) && this.transform.position.x >= EncounterControl.Instance.enemySpritePlaceholder.transform.position.x)
+        if (!(shooter is Enemy) && this.transform.position.x >= BulletManager.Instance.enemySpritePlaceholder.transform.position.x)
         {
             EncounterControl.Instance.currEnemy.takeDamage(thisBullet.GetDamage());
             BulletManager.Instance.playerBullet--;
             Destroy(gameObject);
         }
-        else if ((shooter is Enemy) && this.transform.position.x <= EncounterControl.Instance.playerSpritePlaceholder.transform.position.x - 1)
+        else if ((shooter is Enemy) && this.transform.position.x <= BulletManager.Instance.playerSpritePlaceholder.transform.position.x - 1)
         {
             EncounterControl.Instance.currPlayer.takeDamage(thisBullet.GetDamage());
             Destroy(gameObject);
