@@ -50,10 +50,6 @@ public class EncounterControl : MonoBehaviour
     public CardPrefab hoveredCard { get; set; }
 
     //All UI elements
-    public GameObject playerSpritePlaceholder;
-    public GameObject enemySpritePlaceholder;
-    public GameObject playerHealthBarSprite;
-    public GameObject enemyHealthBarSprite;
 
     public Slider playerHealthBar;
     public Slider enemyHealthBar;
@@ -83,22 +79,6 @@ public class EncounterControl : MonoBehaviour
     public bool focusedUp = false;
 
     public bool combat;
-
-    //Determines if we are in the tutorial or not
-    public bool tutorial;
-
-    public bool bulletPlayed = false;
-
-    public bool defendPlayed = false;
-
-    public bool takeAimPlayed = false;
-
-    public bool deckRanOut = false;
-    public bool battleStarted = false;
-
-    public GameObject popUp;
-
-    public TextMeshProUGUI textPopUp;
 
     public TextMeshProUGUI timeSlotInfo;
 
@@ -138,7 +118,6 @@ public class EncounterControl : MonoBehaviour
         MusicManager.playSound(MusicType.Tutorial, 0.4F);
         MusicManager.audioSource.loop = true;
         setUI(true);
-        tutorial = tutorialActive;
         currEnemy = encounter.enemy;
         currPlayer = encounter.player;
         currEncounter = encounter;
@@ -155,11 +134,13 @@ public class EncounterControl : MonoBehaviour
         visibleHand = new List<CardPrefab>();
 
         enemyTurn = true;
-
         takeAimActive = false;
 
         currPlayer.damageTaken += updateHealth;
         currEnemy.damageTaken += updateHealth;
+
+        currPlayer.playerDeath += PlayerLoss;
+        currEnemy.playerDeath += PlayerWin;
 
         draw?.Invoke();
         updateHealth();
@@ -243,6 +224,22 @@ public class EncounterControl : MonoBehaviour
         drawText.text = currEncounter.player.deck.Count.ToString();
     }
 
+    //Method called when the current player's health is zero
+    private void PlayerLoss()
+    {
+        EncounterControl.Instance.playerWonLast = false;
+        DisableOverworld.Instance.enableOverworld(true);
+        endEncounter(currEnemy);
+    }
+
+    //Method called when the current enemy's health is zero
+    private void PlayerWin()
+    {
+        EncounterControl.Instance.playerWonLast = true;
+        DisableOverworld.Instance.enableOverworld(true);
+        endEncounter(currPlayer);
+    }
+
     //Check every update whether the player draws or plays a card
     void Update()
     {
@@ -251,18 +248,6 @@ public class EncounterControl : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Delete))
             {
                 Application.Quit();
-            }
-            if (currPlayer.health == 0)
-            {
-                EncounterControl.Instance.playerWonLast = false;
-                DisableOverworld.Instance.enableOverworld(true);
-                endEncounter(currEnemy);
-            }
-            else if (currEnemy.health == 0)
-            {
-                EncounterControl.Instance.playerWonLast = true;
-                DisableOverworld.Instance.enableOverworld(true);
-                endEncounter(currPlayer);
             }
 
             //If the enemy has a turn, randomly pick an action and pause the enemy turn for the returned seconds

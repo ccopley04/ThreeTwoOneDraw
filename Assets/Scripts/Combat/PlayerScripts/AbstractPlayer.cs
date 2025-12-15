@@ -10,8 +10,16 @@ public abstract class AbstractPlayer
     public int health { get; set; }
     public int maxHealth = 100;
     public string playerName;
+
+    //Event system that is called whenever damage is taken or healed
+    //Encounter Control adds specific methods for both enemy and player objects of the encounter
     public delegate void DamageTaken();
     public DamageTaken damageTaken;
+
+    //Event system that is called whenever this player instance dies
+    //Encounter Control adds specific methods for both enemy and player objects of the encounter
+    public delegate void PlayerDeath();
+    public PlayerDeath playerDeath;
 
     public List<AbstractCard> hand;
     public List<AbstractCard> discardPile;
@@ -68,6 +76,7 @@ public abstract class AbstractPlayer
         if (health <= 0)
         {
             health = 0;
+            playerDeath?.Invoke();
         }
 
         damageTaken?.Invoke();
