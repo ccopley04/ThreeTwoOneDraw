@@ -425,7 +425,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c874dafd52be27d47911caf81ddc3754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseMode: 1
   cactusLibrary: {fileID: 7108339969198208228, guid: 7e0fecc7632737c45a5fceb125959dd2, type: 3}
   banditBossLibrary: {fileID: 7108339969198208228, guid: bca9c126a7bc8ad4dbe51ea04a0c23a7, type: 3}
   enemyObject: {fileID: 1656953158}
@@ -441,7 +440,6 @@ MonoBehaviour:
   allObjects:
   - {fileID: 1544027551}
   - {fileID: 662626839}
-  - {fileID: 1819232897}
   - {fileID: 619394800}
   - {fileID: 453303499}
   - {fileID: 574429397}
@@ -457,9 +455,7 @@ MonoBehaviour:
   - {fileID: 1380360579}
   - {fileID: 519420028}
   - {fileID: 1586098931}
-  position: 0
   visibleHand: []
-  enemyTurn: 0
   takeAimActive: 0
   focusedUp: 0
   combat: 0
@@ -4697,7 +4693,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1819232898
 MonoBehaviour:
   m_ObjectHideFlags: 0

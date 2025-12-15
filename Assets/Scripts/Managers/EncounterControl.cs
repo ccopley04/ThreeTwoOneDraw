@@ -21,7 +21,7 @@ public class EncounterControl : MonoBehaviour
 
     //Event system that is called when either combat starts or ends
     //Many of the methods in the system are from EncounterControl, but other classes can add their own without EncounterControl being coupled to those files
-    public delegate void CombatState();
+    public delegate void CombatState(Encounter encounter);
     public static CombatState start;
     public static CombatState end;
 
@@ -107,16 +107,16 @@ public class EncounterControl : MonoBehaviour
             playerWonLast = false;
             cardBack = drawPile.sprite;
             draw += AttemptDraw;
+
+            start += setUI;
+            end += setUI;
         }
     }
 
     //Begin the passed Encounter instance
     public void startEncounter(Encounter encounter, bool tutorialActive) //when you start combat
     {
-        start?.Invoke();
-        MusicManager.playSound(MusicType.Tutorial, 0.4F);
-        MusicManager.audioSource.loop = true;
-        setUI(true);
+        start?.Invoke(encounter);
         currEnemy = encounter.enemy;
         currPlayer = encounter.player;
         currEncounter = encounter;
@@ -126,7 +126,6 @@ public class EncounterControl : MonoBehaviour
 
         //give player their chose weapon, bullets, and time slots
         currPlayer.addBullets(encounter.weapon.bullets);
-        WeaponMono.Instance.activateWeapon(encounter.weapon);
 
         visibleHand = new List<CardPrefab>();
         takeAimActive = false;
@@ -305,9 +304,10 @@ public class EncounterControl : MonoBehaviour
     }
 
     //Turn on or off all UI elements
-    private void setUI(bool state)
+    private void setUI(Encounter encounter)
     {
-        combat = state;
+        combat = !combat;
+        bool state = combat;
         foreach (GameObject item in allObjects)
         {
             item.SetActive(state);
@@ -344,12 +344,7 @@ public class EncounterControl : MonoBehaviour
     //The encounter ends whenever player or enemy reach 0 health
     public void endEncounter(AbstractPlayer winner)
     {
-        end?.Invoke();
-        MusicManager.audioSource.Stop();
-        MusicManager.playSound(MusicType.Theme, 0.5F);
-        MusicManager.audioSource.loop = true;
-
-        setUI(false);
+        end?.Invoke(this.currEncounter);
 
         //Deactivate all visible cards
         GameObject[] visibleCards = GameObject.FindGameObjectsWithTag("Card");
@@ -358,13 +353,6 @@ public class EncounterControl : MonoBehaviour
             Destroy(card);
         }
         discardSpriteRenderer.sprite = null;
-
-        //Deactivate all time slots
-        GameObject[] visibleSlots = GameObject.FindGameObjectsWithTag("TimeSlot");
-        foreach (GameObject slot in visibleSlots)
-        {
-            Destroy(slot);
-        }
 
         //Deactivate all visible bullets
         GameObject[] allBullets = GameObject.FindGameObjectsWithTag("Bullet");
