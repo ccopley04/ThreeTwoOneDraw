@@ -28,20 +28,6 @@ public class EncounterControl : MonoBehaviour
     //Create a single, static instance of this manager that will be referenced 
     public static EncounterControl Instance { get; private set; }
 
-    [SerializeField]
-    private SpriteLibraryAsset cactusLibrary;
-    [SerializeField]
-    private SpriteLibraryAsset banditBossLibrary;
-    [SerializeField]
-    private GameObject enemyObject;
-    [SerializeField]
-    private GameObject stageBackground;
-    [SerializeField]
-    private Sprite cactusBackground;
-    [SerializeField]
-    private Sprite banditBackground;
-
-
     //Variables dictated by the passed Encounter
     public Encounter currEncounter;
     public Enemy currEnemy;
@@ -121,10 +107,7 @@ public class EncounterControl : MonoBehaviour
         currPlayer = encounter.player;
         currEncounter = encounter;
 
-        enemyObject.GetComponent<SpriteLibrary>().spriteLibraryAsset = (currEnemy is Cactus) ? cactusLibrary : banditBossLibrary;
-        stageBackground.GetComponent<SpriteRenderer>().sprite = (currEnemy is Cactus) ? cactusBackground : banditBackground;
-
-        //give player their chose weapon, bullets, and time slots
+        //give player their chosen weapon's bullets
         currPlayer.addBullets(encounter.weapon.bullets);
 
         visibleHand = new List<CardPrefab>();
@@ -372,7 +355,8 @@ public class EncounterControl : MonoBehaviour
     {
 
         //If the time slot does not exist or if it has a card already in it
-        if (WeaponMono.Instance.allSlots[index] == null || WeaponMono.Instance.allSlots[index].occupied)
+        if (WeaponMono.Instance == null || WeaponMono.Instance.allSlots == null ||
+            WeaponMono.Instance.allSlots[index] == null || WeaponMono.Instance.allSlots[index].occupied)
         {
             return;
         }
