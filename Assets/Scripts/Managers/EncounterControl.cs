@@ -226,10 +226,6 @@ public class EncounterControl : MonoBehaviour
     //Check every update whether the player draws or plays a card
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Delete))
-        {
-            Application.Quit();
-        }
         if (currEncounter != null && combat)
         {
             //Reshuffle the deck if the player clicks E

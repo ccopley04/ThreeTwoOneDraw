@@ -17,6 +17,7 @@ public class OverworldManager : MonoBehaviour
     public static bool isTutorial = false;
     public GameObject player;
     private SpriteMovement movement;
+    public static bool canExit = true;
 
     public static List<AbstractCard> starterDeck = new List<AbstractCard>();
 
@@ -46,11 +47,9 @@ public class OverworldManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Delete))
-        {
-            Application.Quit();
+        if (Input.GetKeyDown(KeyCode.Delete) && canExit) {
+            returnToMenu();
         }
-
         if (Input.GetKeyDown(KeyCode.B))
         {
             if (!SceneManager.GetSceneByName("CombatDemo").isLoaded)
@@ -90,6 +89,12 @@ public class OverworldManager : MonoBehaviour
         SoundManager.playSound(SoundType.SixShooterBullet);
         DisableOverworld.Instance.enableOverworld(false);
         EncounterControl.Instance.startEncounter(new Encounter(new Player(deck, 100, 2, 2), enemy, weapon), isTutorial);
+    }
+
+
+    private void returnToMenu() {
+        DisableOverworld.Instance.enableOverworld(false);
+        MenuManager.Instance.ReturnToMenu();
     }
 
 }

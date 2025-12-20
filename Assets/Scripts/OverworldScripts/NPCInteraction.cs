@@ -37,6 +37,7 @@ public class NPCInteraction : MonoBehaviour
         if (playerIsNearby && !inDialogue && Input.GetKeyDown(KeyCode.E))
         {
             inDialogue = true;
+            OverworldManager.canExit = false;
             lineNum = 0;
 
             interactPrompt.SetActive(false);
@@ -123,6 +124,7 @@ public class NPCInteraction : MonoBehaviour
                 }
 
                 movement.isFrozen = false;
+                OverworldManager.canExit = true;
                 inDialogue = false;
             }
         }
