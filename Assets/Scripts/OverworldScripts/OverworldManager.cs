@@ -20,6 +20,7 @@ public class OverworldManager : MonoBehaviour
     public static bool canExit = true;
 
     public static List<AbstractCard> starterDeck = new List<AbstractCard>();
+    public List<GameObject> pauseButtons = new List<GameObject>();
 
     void Start()
     {
@@ -37,9 +38,6 @@ public class OverworldManager : MonoBehaviour
         starterDeck.Add(new SweetRewards());
         starterDeck.Add(new SweetRewards());
         starterDeck.Add(new Bandage());
-
-        MusicManager.playSound(MusicType.Theme, 0.5F);
-        MusicManager.audioSource.loop = true;
         OverworldManager.weapon = new SixShooter();
         movement = player.GetComponent<SpriteMovement>();
     }
@@ -47,9 +45,6 @@ public class OverworldManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Delete) && canExit) {
-            returnToMenu();
-        }
         if (Input.GetKeyDown(KeyCode.B))
         {
             if (!SceneManager.GetSceneByName("CombatDemo").isLoaded)
@@ -89,12 +84,6 @@ public class OverworldManager : MonoBehaviour
         SoundManager.playSound(SoundType.SixShooterBullet);
         DisableOverworld.Instance.enableOverworld(false);
         EncounterControl.Instance.startEncounter(new Encounter(new Player(deck, 100, 2, 2), enemy, weapon), isTutorial);
-    }
-
-
-    private void returnToMenu() {
-        DisableOverworld.Instance.enableOverworld(false);
-        MenuManager.Instance.ReturnToMenu();
     }
 
 }

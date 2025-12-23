@@ -14,7 +14,7 @@ public class MusicManager : MonoBehaviour
     private static List<AudioClip> sounds = new List<AudioClip>();
     public static AudioSource audioSource;
 
-    private void Start()
+    private void Awake()
     {
         DontDestroyOnLoad(this);
         audioSource = gameObject.GetComponent<AudioSource>();
