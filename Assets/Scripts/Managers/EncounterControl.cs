@@ -210,9 +210,11 @@ public class EncounterControl : MonoBehaviour
     //Method called when the current player's health is zero
     private void PlayerLoss()
     {
-        EncounterControl.Instance.playerWonLast = false;
-        DisableOverworld.Instance.enableOverworld(true);
-        endEncounter(currEnemy);
+        if (currEnemy.health != 0) {
+            EncounterControl.Instance.playerWonLast = false;
+            DisableOverworld.Instance.enableOverworld(true);
+            endEncounter(currEnemy);
+        }
     }
 
     //Method called when the current enemy's health is zero

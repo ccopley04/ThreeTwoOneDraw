@@ -12,10 +12,13 @@ public class MenuManager : MonoBehaviour
 {
 
     public List<GameObject> buttons = new List<GameObject>();
+    public GameObject startButton;
     public List<GameObject> UIObjects = new List<GameObject>();
     public List<GameObject> credits = new List<GameObject>();
 
     public static MenuManager Instance { get; private set; }
+
+    public Animator startAnimator;
 
     public void Awake()
         {
@@ -26,6 +29,8 @@ public class MenuManager : MonoBehaviour
             else
             {
                 Instance = this;
+                MusicManager.playSound(MusicType.Theme, 0.5F);
+                MusicManager.audioSource.loop = true;
             }
         }
 
@@ -33,7 +38,24 @@ public class MenuManager : MonoBehaviour
         Application.Quit();
     }
 
+
     public void StartGame() {
+        StartCoroutine(WaitToStartGame());
+    }
+
+    public IEnumerator WaitToStartGame() {
+        Sprite firstSprite = startButton.GetComponent<SpriteRenderer>().sprite;
+        float duration = 2.50F;
+        while (duration > 0)
+        {
+            //Alter the time by the time since last frame
+            duration -= Time.deltaTime;
+            if (duration <= 0)
+            {
+                duration = 0;
+            }
+            yield return null;
+        }
         if (!SceneManager.GetSceneByName("CombatDemo").isLoaded)
         {
             SceneManager.LoadScene("CombatDemo", LoadSceneMode.Additive);
@@ -48,6 +70,7 @@ public class MenuManager : MonoBehaviour
         foreach (GameObject button in buttons) {
             button.SetActive(false);
         }
+        startButton.GetComponent<SpriteRenderer>().sprite = firstSprite;
     }
 
     public void ReturnToMenu() {
@@ -74,4 +97,22 @@ public class MenuManager : MonoBehaviour
                 uiObject.SetActive(true);
             }
         }
+
+    public IEnumerator wait(float sec)
+    {
+            //While there is time left
+            float duration = sec;
+            while (duration > 0)
+            {
+
+                //Alter the time by the time since last frame
+                duration -= Time.deltaTime;
+                if (duration <= 0)
+                {
+                    duration = 0;
+                }
+
+            yield return null;
+        }
+    }
 }
