@@ -35,8 +35,28 @@ public class MenuManager : MonoBehaviour
         }
 
     public void Quit() {
-        Application.Quit();
+        StartCoroutine(WaitToQuitGame());
     }
+
+    public IEnumerator WaitToQuitGame() {
+            bool shot = false;
+
+            float duration = 1.2F;
+            while (duration > 0)
+            {
+                //Alter the time by the time since last frame
+                duration -= Time.deltaTime;
+                if (duration <= 0)
+                {
+                    duration = 0;
+                } else if (duration <= 0.7F && !shot) {
+                    shot = true;
+                    SoundManager.playSound(SoundType.SixShooterBullet);
+                }
+                yield return null;
+            }
+            Application.Quit();
+        }
 
 
     public void StartGame() {
@@ -44,6 +64,7 @@ public class MenuManager : MonoBehaviour
     }
 
     public IEnumerator WaitToStartGame() {
+        bool shot = false;
         Sprite firstSprite = startButton.GetComponent<SpriteRenderer>().sprite;
         float duration = 2.50F;
         while (duration > 0)
@@ -53,6 +74,9 @@ public class MenuManager : MonoBehaviour
             if (duration <= 0)
             {
                 duration = 0;
+            } else if (duration <= 1.45F && !shot) {
+                shot = true;
+                SoundManager.playSound(SoundType.SixShooterBullet);
             }
             yield return null;
         }
@@ -97,22 +121,4 @@ public class MenuManager : MonoBehaviour
                 uiObject.SetActive(true);
             }
         }
-
-    public IEnumerator wait(float sec)
-    {
-            //While there is time left
-            float duration = sec;
-            while (duration > 0)
-            {
-
-                //Alter the time by the time since last frame
-                duration -= Time.deltaTime;
-                if (duration <= 0)
-                {
-                    duration = 0;
-                }
-
-            yield return null;
-        }
-    }
 }
