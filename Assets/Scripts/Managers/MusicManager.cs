@@ -18,12 +18,15 @@ public class MusicManager : MonoBehaviour
     {
         DontDestroyOnLoad(this);
         audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.loop = true;
         sounds.Add(mainTheme);
         sounds.Add(intro);
         sounds.Add(tutorialTheme);
 
         EncounterControl.start += PlayCombatTheme;
         EncounterControl.end += EndCombatTheme;
+
+        MusicManager.playSound(MusicType.Theme, 0.5F);
     }
 
     public static void playSound(MusicType sound, float volume = 1)
