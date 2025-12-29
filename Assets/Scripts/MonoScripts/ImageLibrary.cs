@@ -49,7 +49,7 @@ public class ImageLibrary : MonoBehaviour
         default_card = Resources.Load<Sprite>("CardArt/default_card");
         dynamite_art = Resources.Load<Sprite>("CardArt/dynamiteCard");
         tomahawk_art = Resources.Load<Sprite>("CardArt/tomahawkCard");
-        winchester_art = Resources.Load<Sprite>("CardArt/winchestersRifleCard");
+        winchester_art = Resources.Load<Sprite>("CardArt/winchesterRifleCard");
         adrenaline_art = Resources.Load<Sprite>("CardArt/adrenalineCard");
         ironSteelPlate_art = Resources.Load<Sprite>("CardArt/ironSteelPlateCard");
         winchester_bullet = Resources.Load<Sprite>("CharSprites/Bullets/Winchester/WinchesterBullet");

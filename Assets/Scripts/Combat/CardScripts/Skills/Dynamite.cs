@@ -9,7 +9,6 @@ public class Dynamite : AbstractSkill
 
     public override void use(AbstractPlayer user, float duration, TimeSlot slot)
     {
-        Debug.Log(this.ICON);
         SoundManager.playSound(SoundType.Explosion);
         EncounterControl.Instance.currPlayer.takeDamage(Damage);
         EncounterControl.Instance.currEnemy.takeDamage(Damage);

@@ -18,7 +18,6 @@ public class PlayerDefense : MonoBehaviour
     public void defend(AbstractDefend defendCard)
     {
         this.defendCard = defendCard;
-        Debug.Log(BulletManager.Instance.playerBullet);
         StartCoroutine(colliderActivate(0.3F));
     }
 

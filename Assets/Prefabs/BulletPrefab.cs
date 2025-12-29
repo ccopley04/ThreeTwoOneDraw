@@ -90,10 +90,12 @@ public class BulletPrefab : MonoBehaviour
     {
         if (shooter is Enemy)
         {
+            BulletManager.Instance.playerBullet++;
             shooter = EncounterControl.Instance.currPlayer;
         }
         else
         {
+            BulletManager.Instance.playerBullet--;
             shooter = EncounterControl.Instance.currEnemy;
         }
         setPixelPerSecond();
