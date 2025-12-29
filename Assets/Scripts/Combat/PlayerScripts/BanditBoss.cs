@@ -16,7 +16,6 @@ public class BanditBoss : Enemy
         {
             deck.Add(new Defend());
             deck.Add(new Bandage());
-            deck.Add(new Bandage());
             deck.Add(new DoubleSixShooterBullet(Speed.Slow));
         }
 

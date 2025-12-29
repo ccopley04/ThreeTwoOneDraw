@@ -31,7 +31,7 @@ public abstract class Enemy : AbstractPlayer
     float cost = 0;
 
     //Randomly selects a card in the enemy deck, plays it, and returns the amount of seconds until the next enemy turn
-    //If the deck runs low on cards, the discardpile is shuffled back into the deck
+    //If the deck runs low on cards, the discard pile is shuffled back into the deck
     public float trySomething()
     {
 
@@ -41,13 +41,16 @@ public abstract class Enemy : AbstractPlayer
         }
         else
         {
-            defendChance /= 2;
+            defendChance *= 0;
         }
         string type = RollType();
         suggestCardType(type);
+        if ((BulletManager.Instance.playerBullet == 0 && deck[num] is AbstractDefend)) {
+            type = "Bullet";
+            suggestCardType(type);
+        }
 
-        if (deck.Count <= 1 || num >= deck.Count || num < 0 ||
-        (BulletManager.Instance.playerBullet == 0 && deck[num] is AbstractDefend))
+        if (deck.Count <= 1 || num >= deck.Count || num < 0)
         {
             this.Shuffle();
             return 1;
