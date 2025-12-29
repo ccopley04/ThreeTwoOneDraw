@@ -325,6 +325,9 @@ public class EncounterControl : MonoBehaviour
     //The encounter ends whenever player or enemy reach 0 health
     public void endEncounter(AbstractPlayer winner)
     {
+        if (!combat) {
+            return;
+        }
         end?.Invoke(this.currEncounter);
 
         //Deactivate all visible cards

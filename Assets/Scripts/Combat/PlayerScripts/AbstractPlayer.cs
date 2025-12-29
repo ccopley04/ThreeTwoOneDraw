@@ -72,14 +72,13 @@ public abstract class AbstractPlayer
         {
             health -= (int)(num * mod);
         }
+        damageTaken?.Invoke();
 
         if (health <= 0)
         {
             health = 0;
             playerDeath?.Invoke();
         }
-
-        damageTaken?.Invoke();
     }
 
     //Heal health equal to passed parameter, health cannot exceed max health
