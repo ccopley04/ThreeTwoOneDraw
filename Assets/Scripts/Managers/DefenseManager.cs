@@ -73,7 +73,7 @@ public class DefenseManager : MonoBehaviour
     {
         if (user is Enemy)
         {
-            //Retrieve all bullets and set the enmy defense to the correct starting position
+            //Retrieve all bullets and set the enemy defense to the correct starting position
             GameObject[] allBullets = GameObject.FindGameObjectsWithTag("Bullet");
             smallEnemyDefense.transform.position = enemySmallDefendPos;
 
