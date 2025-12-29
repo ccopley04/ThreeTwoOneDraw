@@ -18,6 +18,7 @@ public class PlayerDefense : MonoBehaviour
     public void defend(AbstractDefend defendCard)
     {
         this.defendCard = defendCard;
+        Debug.Log(BulletManager.Instance.playerBullet);
         StartCoroutine(colliderActivate(0.3F));
     }
 
@@ -25,6 +26,10 @@ public class PlayerDefense : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         defendCard.onBulletEnter(other);
+    }
+
+    public void disableHitbox(Encounter encounter) {
+        hitBox.enabled = false;
     }
 
 

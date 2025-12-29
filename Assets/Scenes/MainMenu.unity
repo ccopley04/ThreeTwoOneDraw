@@ -709,40 +709,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Caleb Copley - Project Lead
-
-    Ekaterina Gaidachuk - Project Lead
-
-    Adrianna
-    Musser - Programming
-
-    Andy Chen - Programming / Design / Art / Music
-
-    Eugene
-    Li - Programming / Art
-
-    Nicholas Nitsche - Programming / Design
-
-    Nirupama
-    Reddy - Programming
-
-    Joshua Sevilla - Programming / UI
-
-    Declan Miller
-    - Writing
-
-    Kellen Madigan - Writing
-
-    Michael Ivanov - Writing (Non GT
-    Student)
-
-    Adna Cufurovic - Art
-
-    Amy Gao - Art
-
-
-
-'
+  m_text: "Caleb Copley - Project Lead\r\nEkaterina Gaidachuk - Project Lead\r\n\rAdrianna
+    Musser - Programming\r\nAndy Chen - Programming / Design / Art / Music\r\nEugene
+    Li - Programming / Art\r\nNicholas Nitsche - Programming / Design\r\nNirupama
+    Reddy - Programming\r\nJoshua Sevilla - Programming / UI\r\n\rDeclan Miller -
+    Writing\r\nKellen Madigan - Writing\r\nMichael Ivanov - Writing (Non GT Student)\r\nAmy
+    Gao - Art\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 84a22cb2b7b9d794a92f76546d30495d, type: 2}
   m_sharedMaterial: {fileID: 521364788597568706, guid: 84a22cb2b7b9d794a92f76546d30495d, type: 2}
@@ -1706,28 +1678,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Audrey Roemer - Art / Design / UI
-
-    Sindhoora Garimella - Art
-
-    Toby
-    Chiu - Art / Music
-
-    Kenneth - Art
-
-    Yu Zhou - Art
-
-    Luke Lindeman -
-    Design
-
-    Nancy Nguyen - UI
-
-    Malik-Harmony Sa''Di - Music
-
-    Thomas Vu
-    - SFX (Non GT Student)
-
-'
+  m_text: "Adna Cufurovic - Art\r\nAudrey Roemer - Art / Design / UI\r\nSindhoora
+    Garimella - Art\r\nToby Chiu - Art / Music\r\nKenneth - Art\r\nYu Zhou - Art\r\n\rLuke
+    Lindeman - Design\r\n\rNancy Nguyen - UI\r\n\rMalik-Harmony Sa'Di - Music\r\nThomas
+    Vu - SFX (Non GT Student)\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 84a22cb2b7b9d794a92f76546d30495d, type: 2}
   m_sharedMaterial: {fileID: 521364788597568706, guid: 84a22cb2b7b9d794a92f76546d30495d, type: 2}

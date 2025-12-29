@@ -34,6 +34,7 @@ public class BulletManager : MonoBehaviour
         {
             Instance = this;
             playerBullet = 0;
+            EncounterControl.start += reset;
         }
     }
 
@@ -116,6 +117,10 @@ public class BulletManager : MonoBehaviour
         BulletPrefab newBullet2 = Instantiate(bulletBlueprint,
             enemySpritePlaceholder.transform.position + new Vector3(0, 0.5F, 0), Quaternion.Euler(0f, 180f, 0f)) as BulletPrefab;
         newBullet2.setData(bullet, shooter, false);
+    }
+
+    private void reset(Encounter encounter) {
+        playerBullet = 0;
     }
 
 }

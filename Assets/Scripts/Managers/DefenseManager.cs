@@ -42,6 +42,10 @@ public class DefenseManager : MonoBehaviour
             mediumDefenseSprite = mediumPlayerDefense.GetComponent<SpriteRenderer>();
             largeDefenseSprite = largePlayerDefense.GetComponent<SpriteRenderer>();
             smallEnemyDefenseSprite = smallEnemyDefense.GetComponent<SpriteRenderer>();
+
+            EncounterControl.start += smallEnemyDefense.GetComponent<PlayerDefense>().disableHitbox;
+            EncounterControl.start += smallPlayerDefense.GetComponent<PlayerDefense>().disableHitbox;
+
         }
     }
 
