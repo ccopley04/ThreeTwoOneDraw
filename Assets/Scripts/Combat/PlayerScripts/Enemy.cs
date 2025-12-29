@@ -45,17 +45,22 @@ public abstract class Enemy : AbstractPlayer
         }
         string type = RollType();
         suggestCardType(type);
-        if ((BulletManager.Instance.playerBullet == 0 && deck[num] is AbstractDefend)) {
-            type = "Bullet";
-            suggestCardType(type);
-        }
 
         if (deck.Count <= 1 || num >= deck.Count || num < 0)
         {
             this.Shuffle();
             return 1;
         }
+        if ((BulletManager.Instance.playerBullet == 0 && deck[num] is AbstractDefend)) {
+                    type = "Bullet";
+                    suggestCardType(type);
+                            if (num >= deck.Count || num < 0)
+                            {
+                                        this.Shuffle();
+                                        return 1;
+                            }
 
+                }
         cost = deck[num].COST;
         deck[num].use(this, 0, null);
         discardPile.Add(deck[num]);
