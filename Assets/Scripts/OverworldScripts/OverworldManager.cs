@@ -5,15 +5,22 @@ using System.Collections;
 using System;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+using NUnit.Framework;
 
 public class OverworldManager : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject tempInventory;
     public static AbstractWeapon weapon = new SixShooter();
+    public static Enemy enemy = new Cactus();
+    public static bool isTutorial = false;
     public GameObject player;
-
-    private static bool transition = false;
+    private SpriteMovement movement;
+    public static bool canExit = true;
 
     public static List<AbstractCard> starterDeck = new List<AbstractCard>();
+    public List<GameObject> pauseButtons = new List<GameObject>();
 
     void Start()
     {
@@ -22,29 +29,41 @@ public class OverworldManager : MonoBehaviour
             SceneManager.LoadScene("CombatDemo", LoadSceneMode.Additive);
         }
 
+
         for (int i = 0; i < 3; i++)
         {
-            starterDeck.Add(new Defend());
             starterDeck.Add(new TakeAim());
+            starterDeck.Add(new Defend());
         }
+        starterDeck.Add(new SweetRewards());
+        starterDeck.Add(new SweetRewards());
+        starterDeck.Add(new Bandage());
+        OverworldManager.weapon = new SixShooter();
+        movement = player.GetComponent<SpriteMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            if (!SceneManager.GetSceneByName("CombatDemo").isLoaded)
+            {
+                SceneManager.LoadScene("CombatDemo", LoadSceneMode.Additive);
+            }
+            StartCoroutine(startCombat(weapon, starterDeck, enemy));
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
-        }
-        if (!MusicManager.audioSource.isPlaying && !transition)
-        {
-            MusicManager.playSound(MusicType.Theme, 0.5F);
+            tempInventory.SetActive(!tempInventory.activeSelf);
+            movement.isFrozen = !movement.isFrozen;
         }
     }
 
-    public static IEnumerator startCombat(AbstractWeapon weapon, List<AbstractCard> deck)
+    public static IEnumerator startCombat(AbstractWeapon weapon, List<AbstractCard> deck, Enemy enemy)
     {
-        transition = true;
+        MusicManager.audioSource.loop = true;
         MusicManager.audioSource.Stop();
         MusicManager.playSound(MusicType.Intro);
 
@@ -63,9 +82,8 @@ public class OverworldManager : MonoBehaviour
         }
 
         SoundManager.playSound(SoundType.SixShooterBullet);
-        transition = false;
         DisableOverworld.Instance.enableOverworld(false);
-        EncounterControl.Instance.startEncounter(new Encounter(new Player(deck, 100, 2, 2), new Bandit(), weapon));
+        EncounterControl.Instance.startEncounter(new Encounter(new Player(deck, 100, 2, 2), enemy, weapon), isTutorial);
     }
 
 }

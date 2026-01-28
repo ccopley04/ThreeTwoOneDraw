@@ -26,4 +26,9 @@ public class HealthBarHelper : MonoBehaviour, IPointerEnterHandler, IPointerExit
         text.text = (gameObject.name == "PlayerSlider") ? (EncounterControl.Instance.currPlayer.health + " / " + EncounterControl.Instance.currPlayer.maxHealth) :
                                                         (EncounterControl.Instance.currEnemy.health + " / " + EncounterControl.Instance.currEnemy.maxHealth);
     }
+
+    public void Awake()
+    {
+        text.enabled = false;
+    }
 }

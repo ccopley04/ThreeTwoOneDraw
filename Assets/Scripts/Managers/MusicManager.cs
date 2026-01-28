@@ -8,16 +8,25 @@ public class MusicManager : MonoBehaviour
     private AudioClip mainTheme;
     [SerializeField]
     private AudioClip intro;
+    [SerializeField]
+    private AudioClip tutorialTheme;
 
     private static List<AudioClip> sounds = new List<AudioClip>();
     public static AudioSource audioSource;
 
-    private void Start()
+    private void Awake()
     {
         DontDestroyOnLoad(this);
         audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.loop = true;
         sounds.Add(mainTheme);
         sounds.Add(intro);
+        sounds.Add(tutorialTheme);
+
+        EncounterControl.start += PlayCombatTheme;
+        EncounterControl.end += EndCombatTheme;
+
+        MusicManager.playSound(MusicType.Theme, 0.5F);
     }
 
     public static void playSound(MusicType sound, float volume = 1)
@@ -26,7 +35,22 @@ public class MusicManager : MonoBehaviour
         {
             return;
         }
-        audioSource.PlayOneShot(sounds[(int)sound], volume);
+        audioSource.volume = volume;
+        audioSource.clip = sounds[(int)sound];
+        audioSource.Play();
+    }
+
+    private void PlayCombatTheme(Encounter encounter)
+    {
+        MusicManager.playSound(MusicType.Tutorial, 0.4F);
+        MusicManager.audioSource.loop = true;
+    }
+
+    private void EndCombatTheme(Encounter encounter)
+    {
+        MusicManager.audioSource.Stop();
+        MusicManager.playSound(MusicType.Theme, 0.5F);
+        MusicManager.audioSource.loop = true;
     }
 
 }
@@ -34,5 +58,6 @@ public class MusicManager : MonoBehaviour
 public enum MusicType
 {
     Theme,
-    Intro
+    Intro,
+    Tutorial
 }

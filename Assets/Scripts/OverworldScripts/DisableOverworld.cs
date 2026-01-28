@@ -8,7 +8,7 @@ public class DisableOverworld : MonoBehaviour
 
     [SerializeField]
     public string Combat = "CombatDemo";
-    public string Overworld = "OverworldWildWest";
+    public string Overworld = "OverWEug";
     public GameObject player;
 
 
@@ -29,17 +29,6 @@ public class DisableOverworld : MonoBehaviour
     private List<GameObject> allObjects = new List<GameObject>();
     public void enableOverworld(bool state)
     {
-
-        if (EncounterControl.Instance != null)
-        {
-            Debug.Log("Player won last: " + EncounterControl.Instance.playerWonLast);
-        }
-        else
-        {
-            Debug.Log("EncounterControl.Instance is null!");
-        }
-
-        MusicManager.audioSource.Stop();
         player.GetComponent<SpriteMovement>().isFrozen = !state;
         foreach (GameObject singleObject in allObjects)
         {

@@ -31,7 +31,7 @@ public class CardPrefab : MonoBehaviour
     public void selected()
     {
         //Visually indicate this card is selected
-        gameObject.transform.position += new Vector3(0, 1.75F, 0);
+        gameObject.transform.position += new Vector3(0, 3F, 0);
         rendr.sortingOrder = 100;
     }
 
@@ -39,7 +39,7 @@ public class CardPrefab : MonoBehaviour
     public void deselected()
     {
         //Set visuals back to default
-        gameObject.transform.position -= new Vector3(0, 1.75F, 0);
+        gameObject.transform.position -= new Vector3(0, 3F, 0);
         rendr.sortingOrder = originalOrder;
 
         //Make any defense sprite no longer visible
@@ -51,20 +51,14 @@ public class CardPrefab : MonoBehaviour
 
     void OnMouseEnter()
     {
-        if (EncounterControl.Instance.mouseMode)
-        {
-            EncounterControl.Instance.hoveredCard = this;
-            selected();
-        }
+        EncounterControl.Instance.hoveredCard = this;
+        selected();
     }
 
     void OnMouseExit()
     {
-        if (EncounterControl.Instance.mouseMode)
-        {
-            EncounterControl.Instance.hoveredCard = null;
-            deselected();
-        }
+        EncounterControl.Instance.hoveredCard = null;
+        deselected();
     }
 
 

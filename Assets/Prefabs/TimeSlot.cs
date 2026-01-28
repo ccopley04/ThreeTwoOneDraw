@@ -23,8 +23,12 @@ public class TimeSlot : MonoBehaviour
     //Count what card is playing next to apply multipliers
     public int counter = 0;
 
+    public Coroutine currentWaitCoroutine;
+
+    private Sprite defaultSprite;
+
     //Set all the data associated with this slot
-    public void setData(InfoNode info)
+    public void setData(InfoNode info, Sprite numberedSprite)
     {
         thisInfo = info;
 
@@ -33,10 +37,25 @@ public class TimeSlot : MonoBehaviour
 
         timerText = TempTimer.GetComponent<TextMesh>();
         rendr = ImageRender.GetComponent<SpriteRenderer>();
+        rendr.sprite = numberedSprite;
+        defaultSprite = numberedSprite;
         occupied = false;
     }
 
     public AbstractCard occupyingCard;
+    
+    //Public method to reset slot state when overriding
+    public void ResetSlot()
+    {
+        occupied = false;
+        occupyingCard = null;
+        if (rendr != null)
+        {
+            rendr.sprite = defaultSprite;
+        }
+        currentWaitCoroutine = null;
+    }
+    
     //Start this slot's timer based on the provided cards cost
     public IEnumerator wait(float sec, AbstractPlayer user, AbstractCard selectedCard)
     {
@@ -50,8 +69,14 @@ public class TimeSlot : MonoBehaviour
             thisInfo.ifBullet((AbstractBullet)selectedCard);
         }
 
+        //If card is a Smoke Screen, set up the smoke screen
+        if (occupyingCard.NAME == "Smoke Screen")
+        {
+            EncounterControl.Instance.setUpSmokeScreen();
+        }
+
         //Set the image to the sprite of the occupying card
-        rendr.sprite = selectedCard.IMAGE;
+        rendr.sprite = selectedCard.ICON;
 
         //Calculate duration
         float duration = sec + thisInfo.diff;
@@ -86,15 +111,12 @@ public class TimeSlot : MonoBehaviour
         {
             selectedCard.use(user, totalDuration, this);
             ++counter;
+            EncounterControl.Instance.currPlayer.addToDiscardPile(selectedCard);
+            EncounterControl.Instance.updateDiscardPile(selectedCard);
         }
 
-        //Remove sprite and change the slot to unoccupied
-        if (rendr != null)
-        {
-            rendr.sprite = null;
-        }
-        occupyingCard = null;
-        occupied = false;
+        //Reset the slot
+        ResetSlot();
     }
 
 }

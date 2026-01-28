@@ -8,6 +8,8 @@ public abstract class AbstractCard
     public readonly Sprite IMAGE;
     private readonly string DESC;
 
+    public readonly Sprite ICON;
+
     public readonly string[] SkillCards = {
         "Take Aim",
         "Grenade"
@@ -18,16 +20,22 @@ public abstract class AbstractCard
         "Winchester Bullet"
     };
     public readonly string[] DefendCards = {
-        "Defend"
+        "Defend",
+        "That Was Close"
+    };
+
+    public readonly string[] OverrideCards = {
+        "That Was Close"
     };
 
     //4 argument constructor
-    public AbstractCard(string name, float cost, Sprite image, string description)
+    public AbstractCard(string name, float cost, Sprite image, string description, Sprite icon = null)
     {
         NAME = name;
         COST = cost;
         IMAGE = image;
         DESC = description;
+        ICON = icon;
     }
 
     //The tostring for all cards, simply returns the card name
@@ -50,6 +58,11 @@ public abstract class AbstractCard
     public bool IsCardType(String type)
     {
         return type == GetCardType();
+    }
+
+    public bool CanOverrideSlot()
+    {
+        return System.Array.IndexOf(OverrideCards, NAME) != -1;
     }
 
     //Abstract method to be implement by specific cards

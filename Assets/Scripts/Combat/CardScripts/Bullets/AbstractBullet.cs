@@ -12,10 +12,11 @@ public abstract class AbstractBullet : AbstractCard
     public readonly Sprite bulletSprite;
     public readonly Sprite superBulletSprite;
     public readonly SoundType sound;
+    public readonly string timeSlotInfo;
 
     //Constructor that calls the AbstractCard constructor
     public AbstractBullet(string name, int cost, Sprite image, string desc, int baseDamage, Speed speed, Sprite bullet,
-        Sprite superBullet, SoundType sound) : base(name, cost, image, desc)
+        Sprite superBullet, SoundType sound, Sprite icon = null) : base(name, cost, image, desc, icon)
     {
         this.baseDamage = baseDamage;
         this.speed = speed;
@@ -51,6 +52,11 @@ public abstract class AbstractBullet : AbstractCard
     public virtual Vector3 rotation(float x, float y, float pixelPerSecond)
     {
         return new Vector3(0, 0, 0);
+    }
+
+    public void setSpeed(Speed newSpeed)
+    {
+        this.speed = newSpeed;
     }
 }
 

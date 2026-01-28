@@ -7,7 +7,7 @@ public class TakeAim : AbstractSkill
     private static Timer myTimer;
 
     //0 argument constructor that makes a basic take aim card
-    public TakeAim() : base("Take Aim", 3, ImageLibrary.takeAim_art, "The next bullet you fire ignores any defense.")
+    public TakeAim() : base("Take Aim", 3, ImageLibrary.takeAim_art, "The next bullet you fire ignores any defense.", ImageLibrary.takeAimIcon)
     {
     }
 

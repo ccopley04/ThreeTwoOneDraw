@@ -11,6 +11,6 @@ public class DefendMedium : AbstractDefend
     public override void use(AbstractPlayer user, float duration, TimeSlot slot)
     {
         DefenseManager.Instance.makeInvisible(this.TYPE);
-        DefenseManager.Instance.defend(this.TYPE, user, PlayerDefense.DefenseType.Defend);
+        DefenseManager.Instance.defend(this.TYPE, user, this);
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public abstract class AbstractPlayer
 {
@@ -8,7 +9,17 @@ public abstract class AbstractPlayer
     public List<AbstractCard> masterDeck;
     public int health { get; set; }
     public int maxHealth = 100;
-    public string name;
+    public string playerName;
+
+    //Event system that is called whenever damage is taken or healed
+    //Encounter Control adds specific methods for both enemy and player objects of the encounter
+    public delegate void DamageTaken();
+    public DamageTaken damageTaken;
+
+    //Event system that is called whenever this player instance dies
+    //Encounter Control adds specific methods for both enemy and player objects of the encounter
+    public delegate void PlayerDeath();
+    public PlayerDeath playerDeath;
 
     public List<AbstractCard> hand;
     public List<AbstractCard> discardPile;
@@ -33,7 +44,7 @@ public abstract class AbstractPlayer
         hand = new List<AbstractCard>();
         discardPile = new List<AbstractCard>();
         incomingDamageMods = new Queue<double>();
-        this.name = name;
+        this.playerName = name;
     }
 
     //Combine the weapons bullets with the master deck
@@ -61,14 +72,16 @@ public abstract class AbstractPlayer
         {
             health -= (int)(num * mod);
         }
+        damageTaken?.Invoke();
 
         if (health <= 0)
         {
             health = 0;
+            playerDeath?.Invoke();
         }
     }
 
-    //Heal health equal to passed parameter, health cannot exceed 100
+    //Heal health equal to passed parameter, health cannot exceed max health
     public void healDamage(int num)
     {
         if (num >= 0)
@@ -77,9 +90,27 @@ public abstract class AbstractPlayer
         }
         if (health >= maxHealth)
         {
-            health = 100;
+            health = maxHealth;
         }
+
+        damageTaken?.Invoke();
     }
+
+    /* public void getPoisoned(int tickDamage, double duration)
+    {
+        StartCoroutine(poisonDamage(tickDamage, duration));
+    }
+
+    public IEnumerator poisonDamage(int tickDamage, double duration)
+    {
+        double timer = 0;
+        while (timer <= duration)
+        {
+            takeDamage(tickDamage);
+            timer += Time.deltaTime;
+            yield return new WaitForSeconds(0.1f);
+        }
+    } */
 
     //Remove a single random card from the deck and put into hand
     public void Draw()
@@ -98,7 +129,23 @@ public abstract class AbstractPlayer
     {
         if (discardedCard != null)
         {
+            addToDiscardPile(discardedCard);
+            removeFromHand(discardedCard);
+        }
+    }
+
+    public void addToDiscardPile(AbstractCard discardedCard)
+    {
+        if (discardedCard != null)
+        {
             discardPile.Add(discardedCard);
+        }
+    }
+
+    public void removeFromHand(AbstractCard discardedCard)
+    {
+        if (discardedCard != null)
+        {
             hand.Remove(discardedCard);
         }
     }
@@ -113,7 +160,7 @@ public abstract class AbstractPlayer
     //Return only the name of this object
     public override string ToString()
     {
-        return name;
+        return playerName;
     }
 
     //Method to combine the discard pile and deck
@@ -130,6 +177,6 @@ public abstract class AbstractPlayer
 
     public int CountCardsOfType(string type)
     {
-        return GetCardsOfType(type).Count;
+        return GetCardsOfType(type).Count; //counts elements of given type in List
     }
 }

@@ -1,0 +1,9 @@
+Layering plan (higher priority is more in front)
+1 - Ground
+2 - Things to walk in front (WalkInFront)
+3 - parts to collide with (Collision)
+
+3.5 - Player
+
+4 - parts to walk behind (WalkBehind)
+5 - Potential (Decor)
