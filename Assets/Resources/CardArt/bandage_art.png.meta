@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 73d4b906d2620e742b1f939b594c7daf
+guid: 5c086752374d2394297a40abed73c610
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5866331938695177028
-    second: bandage_art_0
+      213: 6090638137744106971
+    second: bandage_art 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,12 +37,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
-    wrapW: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bandage_art_0
+      name: bandage_art 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 661
-        height: 942
+        width: 927
+        height: 1332
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cbc9b83de2a969ea0800000000000000
-      internalID: -5866331938695177028
+      spriteID: bd52fafdd1b468450800000000000000
+      internalID: 6090638137744106971
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bandage_art_0: -5866331938695177028
+      bandage_art 1_0: 6090638137744106971
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

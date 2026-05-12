@@ -57,6 +57,8 @@ public class InventoryButtons : MonoBehaviour
     private List<AbstractCard> patientDeck;
     private String currDeck;
 
+    public GameObject inventoryCanvas;
+
     void Start()
     {
         currWeaponSprite = ImageLibrary.sixShooter_art;
@@ -343,6 +345,17 @@ public class InventoryButtons : MonoBehaviour
             OverworldManager.starterDeck = patientDeck;
             currDeck = "Patient";
         }
+    }
+
+    public void QuitGame() {
+
+        returnToMenu();
+    }
+
+    private void returnToMenu() {
+        inventoryCanvas.SetActive(false);
+        DisableOverworld.Instance.enableOverworld(false);
+        MenuManager.Instance.ReturnToMenu();
     }
 
 }

@@ -1,0 +1,827 @@
+fileFormatVersion: 2
+guid: fe400592dcc6e0a49864474f4f5d0ba8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6939733180858795670
+    second: buttonsSpriteSheet_0
+  - first:
+      213: -2289521153430307284
+    second: buttonsSpriteSheet_1
+  - first:
+      213: 2400163632955015534
+    second: buttonsSpriteSheet_2
+  - first:
+      213: 7611232695664823256
+    second: buttonsSpriteSheet_3
+  - first:
+      213: -975740031305048875
+    second: buttonsSpriteSheet_4
+  - first:
+      213: -5305993747805216290
+    second: buttonsSpriteSheet_5
+  - first:
+      213: -1681095838316651209
+    second: buttonsSpriteSheet_6
+  - first:
+      213: 6015063940411611422
+    second: buttonsSpriteSheet_7
+  - first:
+      213: 5390683599259341274
+    second: buttonsSpriteSheet_8
+  - first:
+      213: 6845623460540072704
+    second: buttonsSpriteSheet_9
+  - first:
+      213: 7699506817906825047
+    second: buttonsSpriteSheet_10
+  - first:
+      213: -4696808920699055722
+    second: buttonsSpriteSheet_11
+  - first:
+      213: 436571778911354310
+    second: buttonsSpriteSheet_12
+  - first:
+      213: 8122969502190663763
+    second: buttonsSpriteSheet_13
+  - first:
+      213: -652406860978937408
+    second: buttonsSpriteSheet_14
+  - first:
+      213: -4114397052125406761
+    second: buttonsSpriteSheet_15
+  - first:
+      213: 5479549464382521670
+    second: buttonsSpriteSheet_16
+  - first:
+      213: -820633831414870575
+    second: buttonsSpriteSheet_17
+  - first:
+      213: -6743702695958887815
+    second: buttonsSpriteSheet_18
+  - first:
+      213: -3127640199484924058
+    second: buttonsSpriteSheet_19
+  - first:
+      213: -3985658197915831652
+    second: buttonsSpriteSheet_20
+  - first:
+      213: -4136992891541960487
+    second: buttonsSpriteSheet_21
+  - first:
+      213: 2660458955115319297
+    second: buttonsSpriteSheet_22
+  - first:
+      213: -4698695804374728785
+    second: buttonsSpriteSheet_23
+  - first:
+      213: 3375627595527622935
+    second: buttonsSpriteSheet_24
+  - first:
+      213: 5365646379000154380
+    second: buttonsSpriteSheet_25
+  - first:
+      213: 8078218943109054147
+    second: buttonsSpriteSheet_26
+  - first:
+      213: -8123024014449034864
+    second: buttonsSpriteSheet_27
+  - first:
+      213: -9017100947760730943
+    second: buttonsSpriteSheet_28
+  - first:
+      213: 3980232338229894934
+    second: buttonsSpriteSheet_29
+  - first:
+      213: -727920819562599963
+    second: buttonsSpriteSheet_30
+  - first:
+      213: -2550828902824409295
+    second: buttonsSpriteSheet_31
+  - first:
+      213: -7323224395432087437
+    second: buttonsSpriteSheet_32
+  - first:
+      213: -6621545819896106066
+    second: buttonsSpriteSheet_33
+  - first:
+      213: 619768481193336187
+    second: buttonsSpriteSheet_34
+  - first:
+      213: -8488774017803889339
+    second: buttonsSpriteSheet_35
+  - first:
+      213: 5341474797041826663
+    second: buttonsSpriteSheet_36
+  - first:
+      213: -8565990220468161020
+    second: buttonsSpriteSheet_37
+  - first:
+      213: -8095473962684239544
+    second: buttonsSpriteSheet_38
+  - first:
+      213: -1051215304868235320
+    second: buttonsSpriteSheet_39
+  - first:
+      213: 2950533675223715792
+    second: buttonsSpriteSheet_40
+  - first:
+      213: 2499116289677890457
+    second: buttonsSpriteSheet_41
+  - first:
+      213: -7759332897644555878
+    second: buttonsSpriteSheet_42
+  - first:
+      213: -3956211229888804631
+    second: buttonsSpriteSheet_43
+  - first:
+      213: -6567391233741939708
+    second: buttonsSpriteSheet_44
+  - first:
+      213: -3072915510413450773
+    second: buttonsSpriteSheet_45
+  - first:
+      213: -5167549684588929142
+    second: buttonsSpriteSheet_46
+  - first:
+      213: -5225849483694258559
+    second: buttonsSpriteSheet_47
+  - first:
+      213: -9068385005635688367
+    second: buttonsSpriteSheet_48
+  - first:
+      213: -5402467530477884371
+    second: buttonsSpriteSheet_49
+  - first:
+      213: 119458211998081211
+    second: buttonsSpriteSheet_50
+  - first:
+      213: 2816218177545924969
+    second: buttonsSpriteSheet_51
+  - first:
+      213: -8572908917563157706
+    second: buttonsSpriteSheet_52
+  - first:
+      213: 2760896998915738659
+    second: buttonsSpriteSheet_53
+  - first:
+      213: 5913044233502310621
+    second: buttonsSpriteSheet_54
+  - first:
+      213: 8405429625297328863
+    second: buttonsSpriteSheet_55
+  - first:
+      213: -4341096208618544542
+    second: buttonsSpriteSheet_56
+  - first:
+      213: 562837121954513557
+    second: buttonsSpriteSheet_57
+  - first:
+      213: -5290139575797385784
+    second: buttonsSpriteSheet_58
+  - first:
+      213: 5223838736436144791
+    second: buttonsSpriteSheet_59
+  - first:
+      213: 8291458319041897675
+    second: buttonsSpriteSheet_60
+  - first:
+      213: -5075342787673167821
+    second: buttonsSpriteSheet_61
+  - first:
+      213: -3408243899222643218
+    second: buttonsSpriteSheet_62
+  - first:
+      213: -7572334190253906503
+    second: buttonsSpriteSheet_63
+  - first:
+      213: 5466045396774589748
+    second: buttonsSpriteSheet_64
+  - first:
+      213: -9067050021017315955
+    second: buttonsSpriteSheet_65
+  - first:
+      213: -6034686834155817828
+    second: buttonsSpriteSheet_66
+  - first:
+      213: 1628495620518289574
+    second: buttonsSpriteSheet_67
+  - first:
+      213: 4853832320002534776
+    second: buttonsSpriteSheet_68
+  - first:
+      213: 53217628349034871
+    second: buttonsSpriteSheet_69
+  - first:
+      213: -1442935815964926872
+    second: buttonsSpriteSheet_70
+  - first:
+      213: -4103416466837789518
+    second: buttonsSpriteSheet_71
+  - first:
+      213: -408820766344552292
+    second: buttonsSpriteSheet_72
+  - first:
+      213: -8515749853573225222
+    second: buttonsSpriteSheet_73
+  - first:
+      213: -658364570314808710
+    second: buttonsSpriteSheet_74
+  - first:
+      213: 1732840016837908882
+    second: buttonsSpriteSheet_75
+  - first:
+      213: 6088671314029381022
+    second: buttonsSpriteSheet_76
+  - first:
+      213: -8786451296857671830
+    second: buttonsSpriteSheet_77
+  - first:
+      213: 3512762834486760837
+    second: buttonsSpriteSheet_78
+  - first:
+      213: 756224983410756477
+    second: buttonsSpriteSheet_79
+  - first:
+      213: -802425594262292637
+    second: buttonsSpriteSheet_80
+  - first:
+      213: 8722017477630797183
+    second: buttonsSpriteSheet_81
+  - first:
+      213: 2997370637576906518
+    second: buttonsSpriteSheet_82
+  - first:
+      213: -8756933692550531523
+    second: buttonsSpriteSheet_83
+  - first:
+      213: 1520702109343904258
+    second: buttonsSpriteSheet_84
+  - first:
+      213: 2457941598191005756
+    second: buttonsSpriteSheet_85
+  - first:
+      213: -3300843906564253189
+    second: buttonsSpriteSheet_86
+  - first:
+      213: -979991032846224150
+    second: buttonsSpriteSheet_87
+  - first:
+      213: 8289460425727177647
+    second: buttonsSpriteSheet_88
+  - first:
+      213: 4428292719052129288
+    second: buttonsSpriteSheet_89
+  - first:
+      213: 7881990126300691738
+    second: buttonsSpriteSheet_90
+  - first:
+      213: -8898243276033931741
+    second: buttonsSpriteSheet_91
+  - first:
+      213: 6400577798775264318
+    second: buttonsSpriteSheet_92
+  - first:
+      213: 3624557864297776199
+    second: buttonsSpriteSheet_93
+  - first:
+      213: -3486895353684491871
+    second: buttonsSpriteSheet_94
+  - first:
+      213: 7549048881058819317
+    second: buttonsSpriteSheet_95
+  - first:
+      213: -2889713667384526991
+    second: buttonsSpriteSheet_96
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: quitSprite_0
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 255
+        width: 114
+        height: 102
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b489b7110aef2c3458b07db96ef20273
+      internalID: -2116892152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quitSprite_1
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 255
+        width: 114
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66df30258d4da5b4ba3e06f017c21044
+      internalID: -1318786784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quitSprite_2
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 255
+        width: 114
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 079710aadfa300446a2a8e6c7591d9f9
+      internalID: -1798757548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quitSprite_3
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 255
+        width: 114
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ed1d75ea14f5994c9c3965fe8d7a469
+      internalID: 1125880022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quitSprite_4
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 255
+        width: 114
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab31d445d9ee2ec4b986b23d8bd20ce8
+      internalID: -67738528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quitSprite_5
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 255
+        width: 114
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a04c9adbcadb0b4b9ad946d12d3c951
+      internalID: -449463483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quitSprite_6
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 255
+        width: 114
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bd03ee249b4aad46aac9d93c18543e1
+      internalID: 802748363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quitSprite_7
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 0
+        width: 117
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b107d62ed6280e445ac76480de06fcdb
+      internalID: 231928462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quitSprite_8
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 0
+        width: 117
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23c4cc735317ad2449fbea6597e2d9e5
+      internalID: 1813592962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quitSprite_9
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 0
+        width: 117
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3722c634b0fc7d146bb2674042eada47
+      internalID: -1974394762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quitSprite_10
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 0
+        width: 117
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55608f825090df34cbed8211fd807b90
+      internalID: -988886841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quitSprite_11
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 0
+        width: 117
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69a6f805ea491994980a63e8d5eeb4d4
+      internalID: -372171656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quitSprite_12
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 0
+        width: 112
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ee70196b02824d489f56bf512470651
+      internalID: 746458857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quitSprite_13
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 0
+        width: 117
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08af83601169fda418efea4ed99fb520
+      internalID: -1919873231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 3e5ed410bb88ae24da2c850b36f63dbb
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      buttonsSpriteSheet_0: 6939733180858795670
+      buttonsSpriteSheet_1: -2289521153430307284
+      buttonsSpriteSheet_10: 7699506817906825047
+      buttonsSpriteSheet_11: -4696808920699055722
+      buttonsSpriteSheet_12: 436571778911354310
+      buttonsSpriteSheet_13: 8122969502190663763
+      buttonsSpriteSheet_14: -652406860978937408
+      buttonsSpriteSheet_15: -4114397052125406761
+      buttonsSpriteSheet_16: 5479549464382521670
+      buttonsSpriteSheet_17: -820633831414870575
+      buttonsSpriteSheet_18: -6743702695958887815
+      buttonsSpriteSheet_19: -3127640199484924058
+      buttonsSpriteSheet_2: 2400163632955015534
+      buttonsSpriteSheet_20: -3985658197915831652
+      buttonsSpriteSheet_21: -4136992891541960487
+      buttonsSpriteSheet_22: 2660458955115319297
+      buttonsSpriteSheet_23: -4698695804374728785
+      buttonsSpriteSheet_24: 3375627595527622935
+      buttonsSpriteSheet_25: 5365646379000154380
+      buttonsSpriteSheet_26: 8078218943109054147
+      buttonsSpriteSheet_27: -8123024014449034864
+      buttonsSpriteSheet_28: -9017100947760730943
+      buttonsSpriteSheet_29: 3980232338229894934
+      buttonsSpriteSheet_3: 7611232695664823256
+      buttonsSpriteSheet_30: -727920819562599963
+      buttonsSpriteSheet_31: -2550828902824409295
+      buttonsSpriteSheet_32: -7323224395432087437
+      buttonsSpriteSheet_33: -6621545819896106066
+      buttonsSpriteSheet_34: 619768481193336187
+      buttonsSpriteSheet_35: -8488774017803889339
+      buttonsSpriteSheet_36: 5341474797041826663
+      buttonsSpriteSheet_37: -8565990220468161020
+      buttonsSpriteSheet_38: -8095473962684239544
+      buttonsSpriteSheet_39: -1051215304868235320
+      buttonsSpriteSheet_4: -975740031305048875
+      buttonsSpriteSheet_40: 2950533675223715792
+      buttonsSpriteSheet_41: 2499116289677890457
+      buttonsSpriteSheet_42: -7759332897644555878
+      buttonsSpriteSheet_43: -3956211229888804631
+      buttonsSpriteSheet_44: -6567391233741939708
+      buttonsSpriteSheet_45: -3072915510413450773
+      buttonsSpriteSheet_46: -5167549684588929142
+      buttonsSpriteSheet_47: -5225849483694258559
+      buttonsSpriteSheet_48: -9068385005635688367
+      buttonsSpriteSheet_49: -5402467530477884371
+      buttonsSpriteSheet_5: -5305993747805216290
+      buttonsSpriteSheet_50: 119458211998081211
+      buttonsSpriteSheet_51: 2816218177545924969
+      buttonsSpriteSheet_52: -8572908917563157706
+      buttonsSpriteSheet_53: 2760896998915738659
+      buttonsSpriteSheet_54: 5913044233502310621
+      buttonsSpriteSheet_55: 8405429625297328863
+      buttonsSpriteSheet_56: -4341096208618544542
+      buttonsSpriteSheet_57: 562837121954513557
+      buttonsSpriteSheet_58: -5290139575797385784
+      buttonsSpriteSheet_59: 5223838736436144791
+      buttonsSpriteSheet_6: -1681095838316651209
+      buttonsSpriteSheet_60: 8291458319041897675
+      buttonsSpriteSheet_61: -5075342787673167821
+      buttonsSpriteSheet_62: -3408243899222643218
+      buttonsSpriteSheet_63: -7572334190253906503
+      buttonsSpriteSheet_64: 5466045396774589748
+      buttonsSpriteSheet_65: -9067050021017315955
+      buttonsSpriteSheet_66: -6034686834155817828
+      buttonsSpriteSheet_67: 1628495620518289574
+      buttonsSpriteSheet_68: 4853832320002534776
+      buttonsSpriteSheet_69: 53217628349034871
+      buttonsSpriteSheet_7: 6015063940411611422
+      buttonsSpriteSheet_70: -1442935815964926872
+      buttonsSpriteSheet_71: -4103416466837789518
+      buttonsSpriteSheet_72: -408820766344552292
+      buttonsSpriteSheet_73: -8515749853573225222
+      buttonsSpriteSheet_74: -658364570314808710
+      buttonsSpriteSheet_75: 1732840016837908882
+      buttonsSpriteSheet_76: 6088671314029381022
+      buttonsSpriteSheet_77: -8786451296857671830
+      buttonsSpriteSheet_78: 3512762834486760837
+      buttonsSpriteSheet_79: 756224983410756477
+      buttonsSpriteSheet_8: 5390683599259341274
+      buttonsSpriteSheet_80: -802425594262292637
+      buttonsSpriteSheet_81: 8722017477630797183
+      buttonsSpriteSheet_82: 2997370637576906518
+      buttonsSpriteSheet_83: -8756933692550531523
+      buttonsSpriteSheet_84: 1520702109343904258
+      buttonsSpriteSheet_85: 2457941598191005756
+      buttonsSpriteSheet_86: -3300843906564253189
+      buttonsSpriteSheet_87: -979991032846224150
+      buttonsSpriteSheet_88: 8289460425727177647
+      buttonsSpriteSheet_89: 4428292719052129288
+      buttonsSpriteSheet_9: 6845623460540072704
+      buttonsSpriteSheet_90: 7881990126300691738
+      buttonsSpriteSheet_91: -8898243276033931741
+      buttonsSpriteSheet_92: 6400577798775264318
+      buttonsSpriteSheet_93: 3624557864297776199
+      buttonsSpriteSheet_94: -3486895353684491871
+      buttonsSpriteSheet_95: 7549048881058819317
+      buttonsSpriteSheet_96: -2889713667384526991
+      quitSprite_0: -2116892152
+      quitSprite_1: -1318786784
+      quitSprite_10: -988886841
+      quitSprite_11: -372171656
+      quitSprite_12: 746458857
+      quitSprite_13: -1919873231
+      quitSprite_2: -1798757548
+      quitSprite_3: 1125880022
+      quitSprite_4: -67738528
+      quitSprite_5: -449463483
+      quitSprite_6: 802748363
+      quitSprite_7: 231928462
+      quitSprite_8: 1813592962
+      quitSprite_9: -1974394762
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

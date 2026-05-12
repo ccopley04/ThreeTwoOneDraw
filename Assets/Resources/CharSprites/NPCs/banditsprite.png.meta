@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      banditsprite_0: 5937185774522097528
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

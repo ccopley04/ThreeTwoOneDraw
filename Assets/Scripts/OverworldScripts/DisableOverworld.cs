@@ -29,16 +29,6 @@ public class DisableOverworld : MonoBehaviour
     private List<GameObject> allObjects = new List<GameObject>();
     public void enableOverworld(bool state)
     {
-
-        if (EncounterControl.Instance != null)
-        {
-            Debug.Log("Player won last: " + EncounterControl.Instance.playerWonLast);
-        }
-        else
-        {
-            Debug.Log("EncounterControl.Instance is null!");
-        }
-
         player.GetComponent<SpriteMovement>().isFrozen = !state;
         foreach (GameObject singleObject in allObjects)
         {
@@ -48,7 +38,6 @@ public class DisableOverworld : MonoBehaviour
         if (state)
         {
             Scene overworldScene = SceneManager.GetSceneByName(Overworld);
-            Debug.Log(Overworld);
             if (!overworldScene.isLoaded) //Checks if scene is not loaded
             {
                 SceneManager.LoadScene(Overworld, LoadSceneMode.Additive);

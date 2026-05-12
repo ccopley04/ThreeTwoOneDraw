@@ -13,7 +13,20 @@ public class Deflect : AbstractDefend
     public override void use(AbstractPlayer user, float duration, TimeSlot slot)
     {
         DefenseManager.Instance.makeInvisible(this.TYPE);
-        PlayerDefense.DefenseType deflectType = PlayerDefense.DefenseType.Deflect;
-        DefenseManager.Instance.defend(this.TYPE, user, deflectType);
+        DefenseManager.Instance.defend(this.TYPE, user, this);
+    }
+
+    public override void bulletBlocked(Collider2D other, BulletPrefab bullet)
+    {
+        if (bullet.isSuper)
+        {
+            DefenseManager.Destroy(other.gameObject);
+        }
+        else
+        {
+            // Change owner of bullet in order to deflect
+            bullet.switchOwnership();
+            bullet.rendr.flipX = !bullet.rendr.flipX;   // Flip the bullet to face the other direction.
+        }
     }
 }
