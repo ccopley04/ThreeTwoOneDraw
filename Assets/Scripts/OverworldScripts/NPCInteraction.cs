@@ -23,7 +23,7 @@ public class NPCInteraction : MonoBehaviour
     public DialogueLine[] lines2;
     public Sprite[] images;
     public GameObject tutorialImage;
-    private int lineNum;
+    public int lineNum;
     private bool runNextLine = true;
     private bool npcInteractedWith = false;
 
@@ -39,7 +39,7 @@ public class NPCInteraction : MonoBehaviour
     public DialogueChoice[] choices;
     public DialogueChoice[] choices2;
 
-    public bool demoNPC = true;
+    public bool demoNPC = false;
 
 
     // Update is called once per frame
@@ -47,6 +47,7 @@ public class NPCInteraction : MonoBehaviour
     {
         if (lines2.Length != 0 && npcInteractedWith) {
             lines = lines2;
+            demoNPC = true;
         }
         
         if (choices2.Length != 0 && npcInteractedWith) {
@@ -150,7 +151,9 @@ public class NPCInteraction : MonoBehaviour
         {
             playerIsNearby = false;
             interactPrompt.SetActive(false);
-            npcInteractedWith = true;
+            if (lineNum > 0 && lineNum == lines.Length) {
+                npcInteractedWith = true;
+            }
         }
     }
 
