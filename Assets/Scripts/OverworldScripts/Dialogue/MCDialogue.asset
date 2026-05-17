@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36733e2fb18a0604ca8ac36be7eda7b9, type: 3}
+  m_Name: MCDialogue
+  m_EditorClassIdentifier: 
+  saloonOwnerDialogue:
+  - speakerId: saloon
+    text: 'Howdy, Bill! Let me guess. The usual?
+
+'
+    quit: 0
+  - speakerId: bill
+    text: 'You got it.
+
+'
+    quit: 0
+  - speakerId: saloon
+    text: "I\u2019ll get that right out to ya!\r\n"
+    quit: 0
+  - speakerId: bill
+    text: "\u2026You ever think about changing your past?\r\n"
+    quit: 0
+  - speakerId: saloon
+    text: "I don\u2019t follow.\r\n"
+    quit: 0
+  - speakerId: bill
+    text: 'Fixing your old mistakes, wronging your rights. You ever think about that?
+
+'
+    quit: 0
+  - speakerId: saloon
+    text: 'Hmm.
+
+'
+    quit: 0
+  - speakerId: saloon
+    text: "Not really. I\u2019ve been working here as long as I can remember. There\u2019s
+      not much for me to fix. But that\u2019s alright with me! "
+    quit: 0
+  - speakerId: bill
+    text: "\u2026Well, I have been. A lot. But I think it\u2019s time I stop thinking
+      and start fixing. I\u2019m gonna be headin\u2019 out of town for a while.\r\n"
+    quit: 0
+  - speakerId: saloon
+    text: "That\u2019s a shame. You think you\u2019re gonna come back? "
+    quit: 0
+  - speakerId: bill
+    text: I intend to.
+    quit: 0
+  - speakerId: saloon
+    text: "Well, I\u2019ll be right here when ya get back! "
+    quit: 1
+  - speakerId: bill
+    text: I'm not sure.
+    quit: 0
+  - speakerId: saloon
+    text: "Darn\u2026"
+    quit: 0
+  - speakerId: bill
+    text: "I wanted to tell you thanks for being by my side for so long here. You\u2019ve
+      been a great pal.\r\n"
+    quit: 0
+  - speakerId: saloon
+    text: "Now, don\u2019t make me cry, Bill!"
+    quit: 1
+  sheriffDialogue: []
+  speakers:
+  - id: bill
+    displayName: Bullseye Bill
+    portrait: {fileID: 0}
+    defaultSide: 0
+  - id: saloon
+    displayName: Saloon Owner
+    portrait: {fileID: 0}
+    defaultSide: 1
+  - id: sheriff
+    displayName: Sheriff
+    portrait: {fileID: 0}
+    defaultSide: 1
+  choices:
+  - options:
+    - dialogueIndex: 10
+      text: I intend to.
+      nextLineIndex: 11
+      nextNextLineIndex: 12
+    - dialogueIndex: 10
+      text: I'm not sure.
+      nextLineIndex: 13
+      nextNextLineIndex: 14
+  typingSpeed: 0.05
+  autoProgressLines: 
+  autoProgressLinesDelay: 1.5

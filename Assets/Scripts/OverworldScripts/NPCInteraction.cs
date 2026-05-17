@@ -9,23 +9,35 @@ public class NPCInteraction : MonoBehaviour
 {
     //Elements in scene
     public GameObject dialogueBox;
+    public Image portrait;
+    public TextMeshProUGUI speakerName;
     public TextMeshProUGUI dialogueText;
     public GameObject interactPrompt;
     public GameObject enterPrompt;
     public GameObject player;
     private Boolean fighting;
     public bool tutorialNPC;
-
-
-    public string[] lines;
+    [SerializeField] private DialogueButtons dialogueButtons;
+    
+    public DialogueLine[] lines;
+    public DialogueLine[] lines2;
     public Sprite[] images;
     public GameObject tutorialImage;
     private int lineNum;
+    private bool runNextLine = true;
+    private bool npcInteractedWith = false;
 
     public bool playerIsNearby { get; private set; }
     public bool inDialogue { get; private set; }
     public string playerWinDialogue;
     public string playerLoseDialogue;
+
+    [Header("Speakers (define MC + other characters here)")]
+    public SpeakerDefinition[] speakers;
+
+    [Header("Choices (indexed by dialogue line index)")]
+    public DialogueChoice[] choices;
+    public DialogueChoice[] choices2;
 
     public bool demoNPC = true;
 
@@ -33,18 +45,38 @@ public class NPCInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (lines2.Length != 0 && npcInteractedWith) {
+            lines = lines2;
+        }
+        
+        if (choices2.Length != 0 && npcInteractedWith) {
+            choices = choices2;
+        }
         //If NPC is interacted with: sets up UI and first line, freezes player
         if (playerIsNearby && !inDialogue && Input.GetKeyDown(KeyCode.E))
         {
             inDialogue = true;
             OverworldManager.canExit = false;
             lineNum = 0;
-
             interactPrompt.SetActive(false);
             dialogueBox.SetActive(true);
             enterPrompt.SetActive(true);
             dialogueText.gameObject.SetActive(true);
-            dialogueText.text = lines[0];
+            dialogueText.text = lines[0].text;
+            runNextLine = true;
+            if (dialogueButtons != null) {
+                if (dialogueButtons.SetTextButton(0)) {
+                    runNextLine = false;
+                    enterPrompt.SetActive(false);
+                    Debug.Log("Beginning runNextLine: " + runNextLine);
+                }
+            }
+            foreach (SpeakerDefinition speaker in speakers) {
+                if (speaker.id == lines[0].speakerId) {
+                    portrait.sprite = speaker.portrait;
+                    speakerName.text = speaker.displayName;
+                }
+            }
 
             if (tutorialNPC && images[0] != null)
             {
@@ -59,11 +91,44 @@ public class NPCInteraction : MonoBehaviour
         //Displays next line of dialogue and end dialogue when all lines read
         if (inDialogue)
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Return) && runNextLine)
             {
                 nextLine();
             }
         }
+    }
+    public IEnumerator PlayAtIndex(int index)
+    {
+        lineNum = index;
+
+        dialogueText.text = lines[lineNum].text;
+
+        foreach (SpeakerDefinition speaker in speakers)
+        {
+            if (speaker.id == lines[lineNum].speakerId)
+            {
+                portrait.sprite = speaker.portrait;
+                speakerName.text = speaker.displayName;
+            }
+        }
+        if (dialogueButtons != null)
+        {
+            if (dialogueButtons.SetTextButton(lineNum))
+            {
+                runNextLine = false;
+                enterPrompt.SetActive(false);
+
+            }
+            else
+            {
+                runNextLine = true;
+                enterPrompt.SetActive(true);
+
+            }
+        }
+
+        yield return null;
+
     }
 
     //Enter NPC hitbox
@@ -72,7 +137,9 @@ public class NPCInteraction : MonoBehaviour
         if (other.CompareTag("Player") && !inDialogue)
         {
             playerIsNearby = true;
+
             interactPrompt.SetActive(true);
+
         }
     }
 
@@ -83,18 +150,37 @@ public class NPCInteraction : MonoBehaviour
         {
             playerIsNearby = false;
             interactPrompt.SetActive(false);
+            npcInteractedWith = true;
         }
     }
 
+    public int getLineNum() {
+        return lineNum;
+    }
+
+    public void setRunNextLine(bool value) {
+        runNextLine = value;
+    }
     private void nextLine()
     {
-        ++lineNum;
-        if (lineNum == lines.Length || (demoNPC && lineNum == lines.Length - 1))
+        if (!runNextLine)
+        {
+            Debug.Log("Blocked dialogue progression");
+            return;
+        }
+
+        Debug.Log("RunNextLine in NextLine: " + runNextLine);
+        if (runNextLine) {
+            ++lineNum;
+        }    
+        //runNextLine = true;
+        Debug.Log("Linenum: " + lineNum);
+        if ((demoNPC && lineNum == lines.Length - 1) || lines[lineNum - 1].quit == 1)
         {
             dialogueText.gameObject.SetActive(false);
             enterPrompt.SetActive(false);
             dialogueBox.SetActive(false);
-
+            runNextLine = true;
 
             SpriteMovement movement = player.GetComponent<SpriteMovement>();
 
@@ -126,6 +212,7 @@ public class NPCInteraction : MonoBehaviour
                 movement.isFrozen = false;
                 OverworldManager.canExit = true;
                 inDialogue = false;
+                runNextLine = true;
             }
         }
         else
@@ -143,7 +230,19 @@ public class NPCInteraction : MonoBehaviour
                 }
             }
             enterPrompt.SetActive(true);
-            dialogueText.text = lines[lineNum];
+            dialogueText.text = lines[lineNum].text;
+            if (dialogueButtons != null) {
+                if (dialogueButtons.SetTextButton(lineNum)) {
+                    runNextLine = false;
+                    Debug.Log("Setting false in next line" + runNextLine);
+                }
+            }
+            foreach (SpeakerDefinition speaker in speakers) {
+                if (speaker.id == lines[lineNum].speakerId) {
+                    portrait.sprite = speaker.portrait;
+                    speakerName.text = speaker.displayName;
+                }
+            }
         }
     }
 
@@ -152,7 +251,9 @@ public class NPCInteraction : MonoBehaviour
         if (fighting && demoNPC)
         {
             fighting = false;
-            lines[lines.Length - 1] = (EncounterControl.Instance.playerWonLast) ? playerWinDialogue : playerLoseDialogue;
+            string resultText = (EncounterControl.Instance.playerWonLast) ? playerWinDialogue : playerLoseDialogue;
+            lineNum = lines.Length - 1;
+            lines[lineNum].text = resultText;
             inDialogue = true;
             lineNum = lines.Length - 1;
 
@@ -160,7 +261,7 @@ public class NPCInteraction : MonoBehaviour
             dialogueBox.SetActive(true);
             enterPrompt.SetActive(true);
             dialogueText.gameObject.SetActive(true);
-            dialogueText.text = lines[lineNum];
+            dialogueText.text = lines[lineNum].text;
 
             SpriteMovement movement = player.GetComponent<SpriteMovement>();
             movement.isFrozen = true;
