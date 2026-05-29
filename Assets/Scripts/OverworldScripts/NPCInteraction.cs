@@ -17,7 +17,11 @@ public class NPCInteraction : MonoBehaviour
     public GameObject player;
     private Boolean fighting;
     public bool tutorialNPC;
-    [SerializeField] private DialogueButtons dialogueButtons;
+    public int sheriffWin;
+    public int banditWin;
+    [SerializeField] public DialogueButtons dialogueButtons;
+    
+
     
     public DialogueLine[] lines;
     public DialogueLine[] lines2;
@@ -29,8 +33,10 @@ public class NPCInteraction : MonoBehaviour
 
     public bool playerIsNearby { get; private set; }
     public bool inDialogue { get; private set; }
-    public string playerWinDialogue;
-    public string playerLoseDialogue;
+    public DialogueLine[] postSheriffWinDialogue;
+    public DialogueLine[] postBanditWinDialogue;
+    public DialogueLine[] playerWinDialogue;
+    public DialogueLine[] playerLoseDialogue;
 
     [Header("Speakers (define MC + other characters here)")]
     public SpeakerDefinition[] speakers;
@@ -38,20 +44,65 @@ public class NPCInteraction : MonoBehaviour
     [Header("Choices (indexed by dialogue line index)")]
     public DialogueChoice[] choices;
     public DialogueChoice[] choices2;
+    public DialogueChoice[] postSheriffWinChoices;
+    public DialogueChoice[] postBanditWinChoices;
+    public DialogueChoice[] playerWinChoices;
+    public DialogueChoice[] playerLoseChoices;
+
+    public DialogueLine[] resultText;
 
     public bool demoNPC = false;
+    public TutorialFight tutorialScript;
 
 
     // Update is called once per frame
     void Update()
     {
-        if (lines2.Length != 0 && npcInteractedWith) {
+        // if (lines2.Length != 0 && npcInteractedWith) {
+        //     lines = lines2;
+        //     demoNPC = true;
+        // }
+        
+        // if (choices2.Length != 0 && npcInteractedWith) {
+        //     choices = choices2;
+        // }
+        // if (playerWinDialogue.Length != 0 && lines == playerWinDialogue && demoNPC == true)
+        // {
+        //     lines = playerWinDialogue;
+        //     //lines = playerLoseDialogue;
+
+        //     //nextLine();
+        // }
+        // if (playerLoseDialogue.Length != 0 && lines == playerLoseDialogue && demoNPC == true)
+        // {
+        //     lines = playerLoseDialogue;
+
+
+        //     //nextLine();
+        // }
+        if (lines2.Length != 0 && npcInteractedWith && demoNPC == false) {
             lines = lines2;
             demoNPC = true;
         }
         
-        if (choices2.Length != 0 && npcInteractedWith) {
+        if (choices2.Length != 0 && npcInteractedWith && lines == lines2) {
             choices = choices2;
+        }
+        if (postSheriffWinDialogue.Length != 0 && sheriffWin == 1)
+        {
+            lines = postSheriffWinDialogue;
+        }
+        if (lines == postSheriffWinDialogue)
+        {
+            choices = postSheriffWinChoices;
+        }
+        if (postBanditWinDialogue.Length != 0 && banditWin == 1)
+        {
+            lines = postBanditWinDialogue;
+        }
+        if (lines == postBanditWinDialogue)
+        {
+            choices = postBanditWinChoices;
         }
         //If NPC is interacted with: sets up UI and first line, freezes player
         if (playerIsNearby && !inDialogue && Input.GetKeyDown(KeyCode.E))
@@ -196,6 +247,10 @@ public class NPCInteraction : MonoBehaviour
                 else if (gameObject.tag == "BanditBoss")
                 {
                     OverworldManager.enemy = new BanditBoss();
+                } 
+                else if (gameObject.tag == "Sheriff")
+                {
+                    OverworldManager.enemy = new Sheriff();
                 }
 
                 OverworldManager.isTutorial = false;
@@ -254,17 +309,44 @@ public class NPCInteraction : MonoBehaviour
         if (fighting && demoNPC)
         {
             fighting = false;
-            string resultText = (EncounterControl.Instance.playerWonLast) ? playerWinDialogue : playerLoseDialogue;
-            lineNum = lines.Length - 1;
-            lines[lineNum].text = resultText;
+            DialogueLine[] resultText = (EncounterControl.Instance.playerWonLast) ? playerWinDialogue : playerLoseDialogue;
+            if (resultText == playerWinDialogue)
+            {
+                if (EncounterControl.Instance.currEnemy is Sheriff) {
+                    sheriffWin = 1;
+                } 
+                else
+                {
+                    banditWin = 1;
+                }
+            } 
+            else
+            {
+                if (EncounterControl.Instance.currEnemy is Sheriff)
+                {
+                    sheriffWin = -1;
+                }
+                else
+                {
+                    banditWin = -1;
+                }
+            }
+            DialogueChoice[] resultChoices = (EncounterControl.Instance.playerWonLast) ? playerWinChoices : playerLoseChoices;
+            lines = resultText;
+            choices = resultChoices;
+            lineNum = 0;
+            EncounterControl.Instance.tutorialScript.currentState = TutorialFight.TutorialState.None;
+            
+
             inDialogue = true;
-            lineNum = lines.Length - 1;
+            //lineNum = lines.Length - 1;
 
             interactPrompt.SetActive(false);
             dialogueBox.SetActive(true);
             enterPrompt.SetActive(true);
             dialogueText.gameObject.SetActive(true);
             dialogueText.text = lines[lineNum].text;
+            runNextLine = true;
 
             SpriteMovement movement = player.GetComponent<SpriteMovement>();
             movement.isFrozen = true;

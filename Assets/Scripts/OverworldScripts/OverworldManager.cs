@@ -11,19 +11,25 @@ using NUnit.Framework;
 public class OverworldManager : MonoBehaviour
 {
     [SerializeField]
+    public TutorialFight tutorialScript;
     private GameObject tempInventory;
     public static AbstractWeapon weapon = new SixShooter();
-    public static Enemy enemy = new Cactus();
+    public static Enemy enemy = new Sheriff();
     public static bool isTutorial = false;
     public GameObject player;
     private SpriteMovement movement;
     public static bool canExit = true;
+
 
     public static List<AbstractCard> starterDeck = new List<AbstractCard>();
     public List<GameObject> pauseButtons = new List<GameObject>();
 
     void Start()
     {
+        if (!SceneManager.GetSceneByName("TutorialCombat").isLoaded)
+        {
+           SceneManager.LoadScene("TutorialCombat", LoadSceneMode.Additive);
+        }
         if (!SceneManager.GetSceneByName("CombatDemo").isLoaded)
         {
             SceneManager.LoadScene("CombatDemo", LoadSceneMode.Additive);
@@ -45,6 +51,14 @@ public class OverworldManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (!SceneManager.GetSceneByName("TutorialCombat").isLoaded)
+            {
+                SceneManager.LoadScene("TutorialCombat", LoadSceneMode.Additive);
+            }
+            StartCoroutine(startCombat(weapon, starterDeck, enemy));
+        }
         if (Input.GetKeyDown(KeyCode.B))
         {
             if (!SceneManager.GetSceneByName("CombatDemo").isLoaded)
@@ -67,6 +81,7 @@ public class OverworldManager : MonoBehaviour
         MusicManager.audioSource.Stop();
         MusicManager.playSound(MusicType.Intro);
 
+
         float duration = 4F;
         while (duration > 0)
         {
@@ -83,6 +98,15 @@ public class OverworldManager : MonoBehaviour
 
         SoundManager.playSound(SoundType.SixShooterBullet);
         DisableOverworld.Instance.enableOverworld(false);
+        Debug.Log(EncounterControl.Instance);
+        ///Debug.Log(tutorialScript);
+        //Debug.Log(encounter);
+        //Debug.Log(encounter.enemy);
+        Debug.Log("startCombat deck: " + deck);
+        Debug.Log("startCombat enemy: " + enemy);
+        Debug.Log("startCombat weapon: " + weapon);
+        Debug.Log("startCombat tutorial: " + isTutorial);
+
         EncounterControl.Instance.startEncounter(new Encounter(new Player(deck, 100, 2, 2), enemy, weapon), isTutorial);
     }
 

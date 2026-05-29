@@ -77,6 +77,8 @@ public class EncounterControl : MonoBehaviour
     private Sprite cardBack;
     [SerializeField]
     private GameObject drawPrompt;
+    public TutorialFight tutorialScript;
+
 
     //If the instance is the first one, it becomes the Instance.
     //Otherwise is is destroyed
@@ -106,6 +108,10 @@ public class EncounterControl : MonoBehaviour
         currEnemy = encounter.enemy;
         currPlayer = encounter.player;
         currEncounter = encounter;
+        if (currEnemy is Sheriff)
+        {
+            tutorialScript.SetState(TutorialFight.TutorialState.ExplainBoard);
+        }
 
         //give player their chosen weapon's bullets
         currPlayer.addBullets(encounter.weapon.bullets);
@@ -218,7 +224,7 @@ public class EncounterControl : MonoBehaviour
     }
 
     //Method called when the current enemy's health is zero
-    private void PlayerWin()
+    public void PlayerWin()
     {
         EncounterControl.Instance.playerWonLast = true;
         DisableOverworld.Instance.enableOverworld(true);
@@ -302,6 +308,19 @@ public class EncounterControl : MonoBehaviour
         float duration = sec;
         while (duration > 0)
         {
+            if (player is Sheriff) {
+                UnityEngine.Debug.Log("delay enemy shooting: " + EncounterControl.Instance.tutorialScript.currentState);
+                if (tutorialScript != null && player is not Player && tutorialScript.isTutorialPaused || 
+                (EncounterControl.Instance.tutorialScript.currentState == TutorialFight.TutorialState.None || 
+                EncounterControl.Instance.tutorialScript.currentState == TutorialFight.TutorialState.ExplainBoard || 
+                EncounterControl.Instance.tutorialScript.currentState == TutorialFight.TutorialState.ExplainAttack ||
+                EncounterControl.Instance.tutorialScript.currentState == TutorialFight.TutorialState.ExplainSkill))
+                {
+                    UnityEngine.Debug.Log("bullet manager pausing" + player);
+                    duration = 4;
+                    yield return null;
+                }
+            }
 
             //Alter the time by the time since last frame
             duration -= Time.deltaTime;
@@ -309,6 +328,7 @@ public class EncounterControl : MonoBehaviour
             {
                 duration = 0;
             }
+            //UnityEngine.Debug.Log("Duration: " + duration);
 
             yield return null;
         }
@@ -365,6 +385,7 @@ public class EncounterControl : MonoBehaviour
         if (hoveredCard.thisCard.NAME == "Focus Up")
         {
             EncounterControl.Instance.focusedUp = true;
+
         }
 
         TimeSlot targetSlot = WeaponMono.Instance.allSlots[index];

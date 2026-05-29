@@ -35,6 +35,9 @@ public class MenuManager : MonoBehaviour
                 {
                     SceneManager.LoadScene("CombatDemo", LoadSceneMode.Additive);
                 }
+                if (!SceneManager.GetSceneByName("TutorialCombat").isLoaded) {
+                    SceneManager.LoadScene("TutorialCombat", LoadSceneMode.Additive);
+                }
                 if (!SceneManager.GetSceneByName("OverWEug").isLoaded)
                 {
                     SceneManager.LoadScene("OverWEug", LoadSceneMode.Additive);

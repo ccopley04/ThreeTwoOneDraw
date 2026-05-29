@@ -16,6 +16,8 @@ public class EnemySpawnerManager : MonoBehaviour
     [SerializeField]
     private SpriteLibraryAsset banditBossLibrary;
     [SerializeField]
+    private SpriteLibraryAsset sheriffLibrary;
+    [SerializeField]
     private GameObject enemyObject;
     [SerializeField]
     private GameObject stageBackground;
@@ -23,6 +25,8 @@ public class EnemySpawnerManager : MonoBehaviour
     private Sprite cactusBackground;
     [SerializeField]
     private Sprite banditBackground;
+    [SerializeField]
+    private Sprite sheriffBackground;
 
     void Start()
     {
@@ -32,7 +36,19 @@ public class EnemySpawnerManager : MonoBehaviour
     private void SetEnemyVisuals(Encounter encounter)
     {
         Enemy currEnemy = encounter.enemy;
-        enemyObject.GetComponent<SpriteLibrary>().spriteLibraryAsset = (currEnemy is Cactus) ? cactusLibrary : banditBossLibrary;
-        stageBackground.GetComponent<SpriteRenderer>().sprite = (currEnemy is Cactus) ? cactusBackground : banditBackground;
+        if (currEnemy is Cactus)
+        {
+            enemyObject.GetComponent<SpriteLibrary>().spriteLibraryAsset = cactusLibrary;
+        } 
+        else if (currEnemy is BanditBoss)
+        {
+            enemyObject.GetComponent<SpriteLibrary>().spriteLibraryAsset = banditBossLibrary;
+        } 
+        else
+        {
+            enemyObject.GetComponent<SpriteLibrary>().spriteLibraryAsset = sheriffLibrary;
+        }
+        //enemyObject.GetComponent<SpriteLibrary>().spriteLibraryAsset = (currEnemy is Cactus) ? cactusLibrary : banditBossLibrary;
+        stageBackground.GetComponent<SpriteRenderer>().sprite = (currEnemy is BanditBoss) ? banditBackground : cactusBackground;
     }
 }

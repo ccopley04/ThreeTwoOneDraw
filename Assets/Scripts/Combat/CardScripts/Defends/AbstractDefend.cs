@@ -2,6 +2,7 @@ using UnityEngine;
 
 public abstract class AbstractDefend : AbstractCard
 {
+    public TutorialFight tutorialScript;
     //Skill specific type
     public readonly Type TYPE;
     //Constructor that calls the AbstractCard constructor
@@ -30,6 +31,7 @@ public abstract class AbstractDefend : AbstractCard
         else
         {
             DefenseManager.Destroy(other.gameObject);
+            EncounterControl.Instance.tutorialScript.defendDone = true;
         }
     }
 }

@@ -15,7 +15,7 @@ public class TakeAim : AbstractSkill
     public override void use(AbstractPlayer user, float duration, TimeSlot slot)
     {
         EncounterControl.Instance.takeAimActive = true;
-        myTimer = new Timer(2000);
+        myTimer = new Timer(3000);
 
         myTimer.Elapsed += OnTimedEvent;
 

@@ -7,6 +7,7 @@ using TMPro;
 
 public class BulletManager : MonoBehaviour
 {
+    public TutorialFight tutorialScript;
     public CombatAnimations combat_Anim;
     public CombatAnimations enemy_Anim;
 
@@ -41,11 +42,13 @@ public class BulletManager : MonoBehaviour
     //Creates a new bullet prefab depending of the type of bullet and who fired
     public void fire(AbstractPlayer shooter, AbstractBullet bullet, SoundType sound)
     {
+        
         //Spawns the bullet on the head of the player
         if (!(shooter is Enemy))
         {
             combat_Anim.BillShoot();
             StartCoroutine(delayPlayerShooting(0.5F, shooter, bullet, sound));
+
         }
 
         //Spawns the bullet on the head of the enemy
@@ -91,16 +94,24 @@ public class BulletManager : MonoBehaviour
 
         SoundManager.playSound(sound);
         BulletPrefab newBullet2 = Instantiate(bulletBlueprint,
-            playerSpritePlaceholder.transform.position + new Vector3(0, 0.5F, 0), Quaternion.identity) as BulletPrefab;
+        playerSpritePlaceholder.transform.position + new Vector3(0, 0.5F, 0), Quaternion.identity) as BulletPrefab;
         newBullet2.setData(bullet, shooter, wasTakeAim);
         EncounterControl.Instance.takeAimActive = false;
         playerBullet++;
+        tutorialScript.attackDone = true;
+        if (EncounterControl.Instance.tutorialScript.currentState == TutorialFight.TutorialState.ExplainSkill && wasTakeAim)
+        {
+            tutorialScript.skillDone = true;
+        }
+
     }
 
     private IEnumerator delayEnemyShooting(float sec, AbstractPlayer shooter, AbstractBullet bullet, SoundType sound)
     {
+
         bool wasTakeAim = EncounterControl.Instance.takeAimActive;
         float duration = sec;
+
         //While there is time left
         while (duration > 0)
         {
@@ -115,7 +126,7 @@ public class BulletManager : MonoBehaviour
 
         SoundManager.playSound(sound);
         BulletPrefab newBullet2 = Instantiate(bulletBlueprint,
-            enemySpritePlaceholder.transform.position + new Vector3(0, 0.5F, 0), Quaternion.Euler(0f, 180f, 0f)) as BulletPrefab;
+        enemySpritePlaceholder.transform.position + new Vector3(0, 0.5F, 0), Quaternion.Euler(0f, 180f, 0f)) as BulletPrefab;
         newBullet2.setData(bullet, shooter, false);
     }
 

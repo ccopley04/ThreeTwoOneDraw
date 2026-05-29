@@ -12,6 +12,7 @@ TagManager:
   - Cactus
   - BanditBoss
   - SmallPlayerDefense
+  - Sheriff
   layers:
   - Default
   - TransparentFX
